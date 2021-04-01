@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.datastatistics.dao.DataInfoDao" >
+  <resultMap id="DataInfoMap" type="com.chinamobile.cmss.bcse.datastatistics.bean.DataInfoBean" >
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+    <result column="DATE_TIME" property="dateTime" jdbcType="TIMESTAMP" />
+    <result column="SIZE" property="size" jdbcType="INTEGER" />
+    <result column="FLAG" property="flag" jdbcType="INTEGER" />
+  </resultMap>
+
+	<!--查询最新数据量 -->
+	<select id="selectdataNumberNew" parameterType="String"
+		resultMap="DataInfoMap">
+		SELECT DATE_TIME,SIZE
+		FROM DATA_INFO
+		WHERE
+		APP_ID=#{APP_ID}
+		ORDER BY ID DESC,DATE_TIME DESC LIMIT
+		0,1
+	</select>
+	<!--查询指定某天之前数据量 -->
+	<select id="selectdataNumberBefore" parameterType="String"
+		resultMap="DataInfoMap">
+		SELECT DATE_TIME,SIZE
+		FROM DATA_INFO
+		WHERE
+		APP_ID=#{APP_ID}
+		AND
+		DATE_TIME &lt; #{OPER_DATE_START}
+		ORDER BY ID DESC,DATE_TIME DESC LIMIT
+		0,1
+	</select>
+	<!--查询指定某天的数据量 -->
+	<select id="selectdataNumberByDay" parameterType="String"
+		resultMap="DataInfoMap">
+		SELECT DATE_TIME,SIZE
+		FROM DATA_INFO
+		WHERE
+		APP_ID=#{APP_ID}
+		AND
+		DATE_TIME = #{OPER_DATE_START}
+		ORDER BY ID DESC,DATE_TIME DESC 
+	</select>
+	<!-- 插入语句块 -->
+	<insert id="insertdataNumberLatest" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.DataInfoBean">
+		INSERT INTO
+		DATA_INFO(USER_ID,APP_ID,DATE_TIME,
+		SIZE,FLAG)
+		VALUE
+		(#{userId},#{appId},#{dateTime},#{size},#{flag})
+	</insert>
+
+
+	<!--查询近段时间内的数据量 -->
+	<select id="selectdataNumberRecently" parameterType="String"
+		resultMap="DataInfoMap">
+		SELECT DATE_TIME,SIZE
+		FROM DATA_INFO
+		WHERE
+
+		APP_ID=#{APP_ID}
+		AND
+		DATE_TIME BETWEEN
+		#{OPER_DATE_START} AND
+		#{OPER_DATE_END}
+		ORDER BY ID ASC,DATE_TIME ASC
+	</select>
+	<!-- 删除应用：删除数据量 -->
+	<delete id="DeleteData" parameterType="String">
+		DELETE
+		FROM DATA_INFO
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+	</delete>
+</mapper>

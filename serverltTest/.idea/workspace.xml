@@ -6,20 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9ce2cd8-1b10-4320-88d5-61ddd885e221" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../dataStructrue/dataStructrue.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/ContainerRes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/WorkOrderBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/service/WorkorderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../react_demo/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../rpc-server/.idea/hydra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/exmple/serverlt/servlet/SSOServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config/gupao-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config/gupao-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config/gupao-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-test.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../config/gupao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" afterDir="false" />
-    </list>
+    <list default="true" id="f9ce2cd8-1b10-4320-88d5-61ddd885e221" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/exmple/socket/SocketServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="48" column="31" lean-forward="true" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+            <state relative-caret-position="290">
+              <caret line="26" column="47" lean-forward="true" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -160,10 +147,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1050" />
+    <option name="x" value="-167" />
+    <option name="y" value="109" />
+    <option name="width" value="1600" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -254,7 +241,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1617276547792" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1617279064504" />
     <property name="last_opened_file_path" value="D:/new-life/common/Common/4A/2020/2020-1N/bc-bdoc-bdpaas-4a" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -445,7 +432,7 @@
       <workItem from="1616669580532" duration="584000" />
       <workItem from="1616721729211" duration="1669000" />
       <workItem from="1616758012727" duration="108000" />
-      <workItem from="1617258749036" duration="4823000" />
+      <workItem from="1617258749036" duration="6218000" />
     </task>
     <servers />
   </component>
@@ -482,14 +469,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51770000" />
+    <option name="totallyTimeSpent" value="53165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6052142" visible="true" weight="0.21995708" />
-      <window_info id="Structure" order="1" sideWeight="0.39478585" side_tool="true" visible="true" weight="0.21995708" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60522497" visible="true" weight="0.26233906" />
+      <window_info id="Structure" order="1" sideWeight="0.39477503" side_tool="true" visible="true" weight="0.26233906" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -499,7 +486,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3529412" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39253393" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.22058824" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1024,8 +1011,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/exmple/socket/SocketServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="48" column="31" lean-forward="true" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        <state relative-caret-position="290">
+          <caret line="26" column="47" lean-forward="true" selection-start-line="26" selection-start-column="47" selection-end-line="26" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

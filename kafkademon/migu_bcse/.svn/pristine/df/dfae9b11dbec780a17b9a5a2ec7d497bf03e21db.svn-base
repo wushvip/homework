@@ -1,0 +1,48 @@
+
+<div class="order">
+  <h3>排序配置</h3>
+
+    <div class="rough">
+        <table class="table table-bordered table-hover table-condensed">
+          <caption>
+            排序权重配置
+            <span class="btn-group pull-right">
+              <button class="btn btn90 confirm" ng-click="addRough()" ng-disabled="roughs.length>=50||submitting">添加规则</button>
+              <button class="btn btn90 confirm" ng-click="deleteRoughs()" ng-disabled="roughs.length>=50||!selectedRules.length||submitting">删除</button>
+            </span>
+          </caption>
+          <thead>
+            <tr>
+              <th><input type="checkbox" ng-click="getAllSelectedRoughs()" ng-checked="roughs.length!==0&&selectedRules.length===roughs.length" ng-disabled="submitting"></th>
+              <th>{{messages.rule.series}}</th>
+              <th>{{messages.rule.ruleName}}
+                <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+                  <i class="glyphicon glyphicon-question-sign question-tips"></i>
+                </a>
+              </th>
+              <th>权重配置</td>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="rough in roughs | orderBy:['createDate.time']">
+            <td>
+              <input type="checkbox" ng-click="getSelectedRoughs(rough)" ng-checked="checkSelectedRough(rough)" ng-disabled="submitting">
+            </td>
+            <td ng-bind="$index+1"></td>
+            <td ng-bind="rough.ruleName"></td>
+            <td>
+								<span ng-if="rough.fields&&rough.fields.length>0" ng-repeat="confFieldVal in rough.fields">
+									<span>{{confFieldVal.fieldName}}:{{confFieldVal.fieldWeight}};</span>
+								</span>
+            </td>
+            <td>
+              <button class="btn btn90 blank-btn" ng-click="editRough(rough)"  ng-disabled="submitting">{{messages.edit}}</button>
+              <span class="line"></span>
+              <button class="btn btn90 blank-btn" ng-click="deleteRough(rough)"  ng-disabled="submitting">{{messages.delete}}</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

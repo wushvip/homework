@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.config.dao.RecoveryDicDao">
+	<resultMap id="dicResult" type="com.chinamobile.cmss.bcse.config.bean.RecoveryDicBean">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="APP_ID" jdbcType="VARCHAR" property="appId" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="DIC_TEXT" jdbcType="LONGVARCHAR" property="dicText" />
+		<result column="MODE" jdbcType="CHAR" property="mode" />
+		<result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+	</resultMap>
+    
+    <!--查询 数目，用来判断是添加还是修改-->
+	<select id="showNum" resultType="Integer" parameterType="com.chinamobile.cmss.bcse.config.bean.RecoveryDicBean">
+		SELECT count(*) from CORRECT_DIC where APP_ID=#{appId}
+		and MODE=#{mode}
+	</select>
+	
+	<!-- 添加数据库字典文件 -->
+	<insert id="insert" parameterType="com.chinamobile.cmss.bcse.config.bean.RecoveryDicBean" >
+		insert into CORRECT_DIC(ID,USER_ID,APP_ID,DIC_TEXT,MODE,CREATE_DATE)
+		values(null,#{userId},#{appId},#{dicText},#{mode},NOW())
+	</insert>
+	
+	<!-- 修改数据库中的字典文件 -->
+	<update id="update" parameterType="com.chinamobile.cmss.bcse.config.bean.RecoveryDicBean" >
+		update CORRECT_DIC
+		set DIC_TEXT=#{dicText},CREATE_DATE=NOW()
+		where APP_ID=#{appId} and MODE=#{mode}
+	</update>
+	
+	 <!--查询 字典-->
+	<select id="findByMode" resultType="String" parameterType="Map">
+		SELECT DIC_TEXT from CORRECT_DIC where APP_ID=#{appId}
+		and MODE=#{mode}
+	</select>
+		
+</mapper>

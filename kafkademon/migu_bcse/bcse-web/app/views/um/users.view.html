@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="pull">
+    <h1>用户管理</h1>
+  </div>
+		<div class="users">
+      <form class="row">
+        <div class="col-md-2 col-xs-3 text-right">
+          <label>用户名</label>
+        </div>
+        <div class="col-md-4 col-xs-5">
+          <input type="text" class="form-control" ng-model="searchName">
+        </div>
+        <div class="col-md-4 col-xs-4">
+          <button class="btn btn90 confirm" ng-click="getUser()" ng-disabled="submitting">查询</button>
+          <button class="btn btn90 confirm" ng-click="editOaUser()" ng-disabled="submitting">添加账户</button>
+        </div>
+        <div class="col-xs-12">
+          <p class="col-md-offset-2 col-xs-offset-3 text-tip"><span>支持模糊查询</span></p>
+        </div>
+			</form>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>序列</th>
+            <th>用户名</th>
+            <th>OA关联账户</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users">
+            <td>{{(page.currentPage-1)*page.numPerPage+$index+1}}</td>
+            <td ng-class="{'stopped':user.userStatus=='1'}">{{user.userName}}</td>
+            <td>{{user.oaUserName||"--"}}</td>
+            <td ng-class="{'stopped':user.userStatus==='1'}">
+              <button class="btn underline-btn" ng-click="resetPassword(user)" ng-disabled="user.role==='0'||user.operaDisabled">重置密码</button>
+              <span class="line"></span>
+              <button class="btn underline-btn" ng-click="operateUserStatus(user)" ng-disabled="user.role==='0'||user.operaDisabled">{{user.userStatus==='1'?'启用':'停用'}}</button>
+              <span class="line"></span>
+              <button class="btn underline-btn" ng-click="deleteUser(user)" ng-disabled="user.role==='0'||user.operaDisabled">删除</button>
+              <span class="line"></span>
+              <button class="btn underline-btn" ng-click="editOaUser(user)" ng-disabled="user.role==='0'||user.operaDisabled">编辑</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <form class="pagination-define text-center" ng-show="page.totalItems">
+        <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+        <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+        <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+      </form>
+  </div>
+</div>

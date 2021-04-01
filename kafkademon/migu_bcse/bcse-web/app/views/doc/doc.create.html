@@ -1,0 +1,192 @@
+<h2>2.应用管理</h2>
+<div class="app-create col-xs-12">
+  <article>
+    <h3>2.1 创建应用</h3>
+    <section>
+      创建应用的入口位于应用列表页面的右上方。通过点击创建应用按钮，按照创建步骤（填写基本信息、定义应用结构、确认明细、完成创建），可完成应用的创建，如下图所示：
+    </section>
+    <section class="center">
+      <img src="images/doc/create/1.jpg" animate-visible="true" animate-speed="0.5s" alt="应用列表管理页面">
+      <footer>图2.1 应用列表管理页面</footer>
+    </section>
+    <article>
+      <h4>1. 填写基本信息</h4>
+      <section>用户需要填写应用的名称和应用描述，其中应用名称为必填项。</section>
+      <section class="center">
+        <img src="images/doc/create/2.jpg" animate-visible="true" animate-speed="0.5s" alt="填写基本信息">
+        <footer>图2.1.1 填写基本信息</footer>
+      </section>
+    </article>
+    <article>
+      <h4>2. 定义应用结构</h4>
+      <section>应用结构提供两种定义方式，一是自定义数据结构，二是批量字段导入。自定义数据结构需要一个个添加字段，并对字段属性进行定义。而批量字段导入支持字段的批量输入，再针对每个字段进行属性定义。</section>
+      <article>
+        <h5>1)自定义数据结构</h5>
+        <section class="center">
+          <img src="images/doc/create/3.jpg" animate-visible="true" animate-speed="0.5s" alt="定义数据表">
+        </section>
+        <section class="center">
+          <img src="images/doc/create/4.jpg" animate-visible="true" animate-speed="0.5s" alt="定义数据表">
+          <footer>图2.2.1 定义数据表</footer>
+        </section>
+      </article>
+      <article>
+        <h5>2)批量字段导入</h5>
+        <section class="center">
+          <img src="images/doc/create/5.jpg" animate-visible="true" animate-speed="0.5s" alt="批量导入字段">
+        </section>
+        <section class="center">
+          <img src="images/doc/create/6.jpg" animate-visible="true" animate-speed="0.5s" alt="批量导入字段">
+          <footer>图2.2.2 批量导入字段</footer>
+        </section>
+      </article>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.2.1. 应用表结构属性说明</caption>
+        <thead>
+        <tr>
+          <th>属性</th>
+          <th>用法说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>主键</td>
+          <td>
+            <ul>
+              <ol>表示该条数据的唯一标识，选中此选项后不能再选择源字段和动态字段</ol>
+              <ol>主键选择后，可搜索、可展示默认选择</ol>
+              <ol>主键类型只能是STRING，INT，LONG</ol>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>多值</td>
+          <td>
+            <ul>
+              <ol>表示该字段可以存储多个值，并以多值分隔符划分</ol>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>可搜索</td>
+          <td>
+            <ul>
+              <ol>当这个属性被选中时，此字段的数据就能被存储在索引中，用户可以利用此字段进行搜索</ol>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>可展示</td>
+          <td>
+            <ul>
+              <ol>当这个属性被选中时，这个字段的源数据就会被存储起来，在搜索到此条信息时，此字段的内容可以被展示出来</ol>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>源字段</td>
+          <td>
+            <ul>
+              <ol>如果选中此选项，表示当前字段的内容来源于源字段</ol>
+              <ol>源字段可选多个，选中后多值选项也默认选中</ol>
+              <ol>源字段中不能选中动态字段</ol>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>动态字段</td>
+          <td>
+            <ul>
+              <ol>如果选中此选项，表示该字段的字段名事先不能确定，但是需填写索引到此字段的字段名后缀。如ss，表示*_ss</ol>
+              <ol>如设置的动态字段为ss，则动态字段为*ss。用户在后续文件上传中定义一个tss的字段，就能被ss动态字段索引</ol>
+              <ol>用户若选中动态字段，源字段默认不能选择</ol>
+              <ol>用户若选中动态字段，也不能被其他字段选成源字段</ol>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.2.2. 数据表类型说明</caption>
+        <thead>
+        <tr>
+          <th>数据类型</th>
+          <th>使用说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>STRING</td>
+          <td>字符串</td>
+        </tr>
+        <tr>
+          <td>INT</td>
+          <td>整数型</td>
+        </tr>
+        <tr>
+          <td>LONG</td>
+          <td>长整型</td>
+        </tr>
+        <tr>
+          <td>FLOAT</td>
+          <td>浮点型</td>
+        </tr>
+        <tr>
+          <td>DOUBLE</td>
+          <td>浮点型，双精度</td>
+        </tr>
+        <tr>
+          <td>DATE</td>
+          <td>日期类型</td>
+        </tr>
+        <tr>
+          <td>TEXT</td>
+          <td>长文本</td>
+        </tr>
+        <tr>
+          <td>ANSJ</td>
+          <td>支持通用分词功能</td>
+        </tr>
+        <tr>
+          <td>QP_NoSplit</td>
+          <td>全拼</td>
+        </tr>
+        <tr>
+          <td>JP_NoSplit</td>
+          <td>简拼</td>
+        </tr>
+        <tr>
+          <td>ANSJ_QP</td>
+          <td>ANSJ分词的情况下带全拼</td>
+        </tr>
+        <tr>
+          <td>ANSJ_JP</td>
+          <td>ANSJ分词的情况下带简拼</td>
+        </tr>
+        <tr>
+          <td>ANSJ_PY</td>
+          <td>ANSJ分词的情况下带全拼和简拼</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+    <article>
+      <h4>3. 确认明细</h4>
+      <section class="center">
+        <img src="images/doc/create/7.jpg" animate-visible="true" animate-speed="0.5s" alt="确认明细">
+        <footer>图2.3.1 确认明细</footer>
+      </section>
+    </article>
+    <article>
+      <h4>4. 完成创建</h4>
+      <section>
+        完成创建，可返回应用列表查看应用基本信息。
+      </section>
+      <section class="center">
+        <img src="images/doc/create/8.jpg" animate-visible="true" animate-speed="0.5s" alt="完成创建">
+        <footer>图2.4.1 完成创建</footer>
+      </section>
+    </article>
+  </article>
+  <back-to-top></back-to-top>
+</div>

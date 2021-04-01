@@ -1,0 +1,29 @@
+<div class="container user">
+  <div class="pull clearfix">
+    <h1 class="pull-left">个人信息管理</h1>
+  </div>
+	<div class="user-body row">
+		<table class="table text-center">
+			<tr>
+				<td>用户ID</td>
+				<td>{{userId}}</td>
+			</tr>
+			<tr>
+				<td>用户名</td>
+				<td>{{userName}}</td>
+			</tr>
+      <tr ng-if="oaUserName">
+        <td>关联oa用户名</td>
+        <td>{{oaUserName!=='undefined'?oaUserName:'--'}}</td>
+      </tr>
+      <tr>
+        <td>私钥</td>
+        <td>{{secretKey}}</td>
+      </tr>
+		</table>
+		<div class="">
+			<button class="btn confirm" ng-click="openModal()">修改密码</button>
+		</div>
+
+  </div>
+</div>

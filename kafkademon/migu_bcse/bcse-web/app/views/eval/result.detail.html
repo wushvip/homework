@@ -1,0 +1,44 @@
+<div class="evaluation-detail" discard-modal>
+  <div class="modal-header">
+    <span>语料详情</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <table class="table title-fixed">
+      <thead>
+      <th>序号</th>
+      <th class="col-xs-5">实际结果ID</th>
+      <th>实际结果标题</th>
+      </thead>
+    </table>
+    <div class="table-container">
+      <table class="table">
+        <tbody>
+        <tr ng-repeat="infact in infactRes track by $index">
+          <td>{{$index+1}}</td>
+          <td class="col-xs-5">{{infact.id}}</td>
+          <td>{{infact.title}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <table class="table title-fixed">
+      <thead>
+      <th>序号</th>
+      <th class="col-xs-5">语料ID</th>
+      <th>语料标题</th>
+      </thead>
+    </table>
+    <div class="table-container">
+      <table class="table">
+        <tbody>
+        <tr ng-repeat="data in dataRes track by $index">
+          <td>{{$index+1}}</td>
+          <td class="col-xs-5">{{data.id}}</td>
+          <td>{{data.title}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

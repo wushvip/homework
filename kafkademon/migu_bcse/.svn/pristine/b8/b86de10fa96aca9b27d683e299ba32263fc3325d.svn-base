@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.config.dao.FieldsDao">
+    
+ 	<!--查询粗排需要的字段-->
+	<select id="showRankFields" resultType="String"  parameterType="String">
+		SELECT FIELD_NAME from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN (select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID=#{appId})
+		and IS_SEARCH=1 and DYNAMIC_FIELD=0
+		and FIELD_TYPE NOT IN('INT','DOUBLE','FLOAT','DATE','LONG')
+	</select>
+	
+	<!--查询智能联想需要的字段-->
+	<select id="showSuggestFields" resultType="String" parameterType="String">
+		SELECT FIELD_NAME from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN (select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID=#{appId})
+		and IS_SEARCH=1 and FIELD_TYPE NOT IN('INT','DOUBLE','FLOAT','DATE','LONG')
+		and DYNAMIC_FIELD=0
+	</select>
+	
+	
+	<!--查询智能联想展示的字段-->
+	<select id="showShowFields" resultType="String" parameterType="String">
+		SELECT FIELD_NAME from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN (select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID=#{appId})
+		and IS_SHOW=1  and DYNAMIC_FIELD=0
+	</select>
+	
+	<!--查询分组需要的字段-->
+	<select id="showFacetFields" resultType="String" parameterType="String">
+		SELECT FIELD_NAME from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN (select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID=#{appId})
+		and IS_SEARCH=1  and FIELD_TYPE="STRING" and DYNAMIC_FIELD=0
+	</select>
+	
+	
+	
+</mapper>

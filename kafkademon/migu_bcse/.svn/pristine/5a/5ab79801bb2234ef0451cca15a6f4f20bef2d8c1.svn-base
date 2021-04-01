@@ -1,0 +1,20 @@
+<div class="app-result col-xs-12">
+  <article>
+    <h3>4.6 分组统计</h3>
+    <section>
+      用户可点击分组统计后面的添加规则按钮，配置分组统计的规则（可支持多条规则，规则名不允许重复）,每条规则里可配置一个或多个字段。只有String类型的字段可以设置分组统计。
+    </section>
+    <section class="center">
+      <img src="images/doc/app/facet/1.jpg" animate-visible="true" animate-speed="0.5s" alt="分组统计配置">
+      <footer>图4.6.1 分组统计配置</footer>
+    </section>
+    <section>
+      点击搜索测试按钮，进入搜索测试界面，选择相应的应用，规则，然后在查询框中输入关键字，最后点击查询按钮。用户搜索“小时候”，总共有13条记录，其中类别为漫画的有10条，类别为动画的有3条。
+    </section>
+    <section class="center">
+      <img src="images/doc/app/facet/2.jpg" animate-visible="true" animate-speed="0.5s" alt="分组统计配置">
+      <footer>图4.6.2 分组统计效果图</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

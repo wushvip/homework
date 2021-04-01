@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.user.dao.UserDao">
+	<resultMap id="UserMap"
+		type="com.chinamobile.cmss.bcse.user.bean.UserBean">
+		<id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+		<result column="OA_USER_NAME" property="oaUserName" jdbcType="VARCHAR" />
+		<result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+		<result column="USER_MAIL" property="userMail" jdbcType="VARCHAR" />
+		<result column="ROLE" property="role" jdbcType="VARCHAR" />
+		<result column="USER_STATUS" property="userStatus" jdbcType="VARCHAR" />
+		<result column="USER_TEL" property="userTel" jdbcType="VARCHAR" />
+		<result column="SECRET_KEY" property="secretKey" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="userField">
+		USER_ID,USER_NAME,OA_USER_NAME,USER_STATUS,ROLE,USER_MAIL,USER_TEL,SECRET_KEY
+	</sql>
+
+	
+	<!-- 根据id名获取当前用户基本信息-->
+	<select id="getUserById" parameterType="String" resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		where
+		BINARY USER_ID = #{userId}
+		
+
+	</select>
+	
+	<!-- 根据用户名获取当前用户基本信息-->
+	<select id="getUserByName" parameterType="String" resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		where
+		BINARY USER_NAME = #{userName}
+		
+
+	</select>
+	<!-- 登录时验证密码 -->
+	<select id="checkPwd" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		WHERE
+		BINARY PASSWORD = #{password}
+		AND 
+		BINARY USER_NAME = #{userName}
+			
+	</select>
+	
+		<!-- 根据userId,password验证密码 -->
+	<select id="checkPwdId" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		WHERE
+		BINARY PASSWORD = #{password}
+		AND 
+		BINARY USER_ID = #{id}
+			
+	</select>
+
+	<!-- 展示用户列表，支持模糊查询 -->
+	<select id="selectUserList" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		<where>
+			<if test="searchName != null">
+					BINARY USER_NAME LIKE CONCAT('%',#{searchName},'%')
+			</if>
+
+		</where>
+			<if test="pageIndex != 0 and pageNum != 0">
+                   limit #{startNum},#{pageNum}
+            </if>
+	</select>
+	
+	<!-- 是否有指定oa关联账号 -->
+	<select id="selectUserByOA" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		WHERE
+		BINARY OA_USER_NAME=#{oaUserName} AND BINARY USER_NAME != #{userName}
+	</select>
+	
+	<select id="selectOaUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		WHERE
+		BINARY OA_USER_NAME=#{userName}
+	</select>
+	
+	<!-- 查询总记录数(目前只有展示用户列表时需要分页) -->
+	<select id="getTotalItems" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultType="java.lang.Integer">
+		select count(1) from USER_INFO
+		<where>
+				<if test="searchName != null">
+					BINARY USER_NAME LIKE CONCAT('%',#{searchName},'%')
+				</if>
+				
+		</where>
+	</select>
+	
+	<!-- 查询要添加的用户是否已经存在 -->
+	<select id="selectAddUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		USER_NAME
+		FROM
+		USER_INFO
+		WHERE
+		BINARY USER_NAME = #{userName}
+	</select>
+	<!-- 插入语句块 -->
+	<insert id="insertUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean">
+		INSERT INTO
+		USER_INFO(USER_ID,USER_NAME,OA_USER_NAME,PASSWORD,USER_MAIL,ROLE,USER_STATUS,USER_TEL,SECRET_KEY)
+		VALUES
+		(#{userId},#{userName},#{oaUserName},#{password},#{userMail},#{role},#{userStatus},#{userTel},#{secretKey})
+	</insert>
+
+	<!-- 删除语句块 -->
+	<delete id="deleUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean">
+		DELETE FROM
+		USER_INFO
+		WHERE
+		USER_ID = #{id}
+	</delete>
+
+	<!-- 更新语句块 -->
+	<update id="updateUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean">
+		UPDATE
+		USER_INFO
+		<set>
+			
+			<if test="updatePassword != null">
+				PASSWORD = #{updatePassword},
+			</if>
+			<if test="userStatus != null">
+				USER_STATUS = #{userStatus},
+			</if>
+			<if test="oaUserName != null">
+				OA_USER_NAME = #{oaUserName},
+			</if>
+
+		</set>
+		WHERE
+		USER_ID = #{id}
+	</update>
+	<!-- 模糊查询用户列表 -->
+	<select id="obscureSelectUser" parameterType="com.chinamobile.cmss.bcse.user.bean.UserBean"
+		resultMap="UserMap">
+		SELECT
+		<include refid="userField"></include>
+		FROM
+		USER_INFO
+		WHERE
+		BINARY USER_NAME LIKE CONCAT('%',#{searchName},'%')
+	</select>
+
+</mapper>

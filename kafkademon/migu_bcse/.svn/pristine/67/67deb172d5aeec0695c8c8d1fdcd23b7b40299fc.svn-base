@@ -1,0 +1,67 @@
+<div class="app-java-sdk-update-index col-xs-12">
+  <article>
+    <h3>1.14 更新索引</h3>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>filePath</td>
+        <td>string</td>
+        <td>文档路径</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>mutiValueSplit</td>
+        <td>string</td>
+        <td>多值分隔符</td>
+        <td>是</td>
+        <td>
+          <ul>
+            <li>1、目前支持的字符为,*|#$%&./\</li>
+            <li>2、只能选择上面字符中的一个</li>
+            <li>3、不能和字段分隔符选择一样</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>fileSplit</td>
+        <td>string</td>
+        <td>字段分割符</td>
+        <td>是</td>
+        <td>
+          <ul>
+            <li>1、目前支持的字符为,*|#$%&./\</li>
+            <li>2、只能选择上面字符中的一个</li>
+            <li>3、且不能和多值分隔符选择一样</li>
+          </ul>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        BCSEIndex index = new BCSEIndex(client);
+        index.update(filePath);
+			</pre>
+      或者
+      <pre>
+        BCSEIndex index = new BCSEIndex(client);
+        String mutiValueSplit = "|";
+        String fileSplit= ",";
+        index.update(filePath,mutiValueSplit ,fileSplit);
+      </pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

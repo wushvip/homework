@@ -1,0 +1,26 @@
+
+<div class="modal-info" discard-modal>
+	<div class="modal-header blue-header">
+		<span>{{modalOptions.headerText}}</span>
+		<button type="button" class="close" ng-click="modalOptions.close()">&times;</button>
+	</div>
+	<div class="modal-body clearfix">
+		<div class="col-md-12">
+			<p class="msg-content">
+			<span ng-if="modalOptions.type=='1'" class="glyphicon glyphicon-ok-circle"></span>
+			<span ng-if="modalOptions.type=='2'" class="glyphicon glyphicon-warning-sign"></span>
+			<span ng-if="modalOptions.type=='3'" class="glyphicon glyphicon-remove-circle"></span>
+			<span>{{modalOptions.bodyText}}</span></p>
+		</div>
+	</div>
+	<div ng-if="modalOptions.confirm" class="modal-footer">
+		<button type="button" class="btn confirm" ng-click="modalOptions.ok()">{{modalOptions.actionButtonText}}</button>
+		<button type="button" class="btn cancel" ng-click="modalOptions.close()">{{modalOptions.closeButtonText}}</button>
+
+	</div>
+	<div ng-if="!modalOptions.confirm" class="modal-footer">
+		<button type="button" class="btn confirm" ng-click="modalOptions.close()">确定</button>
+	</div>
+
+</div>
+

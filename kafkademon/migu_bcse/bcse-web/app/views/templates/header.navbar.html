@@ -1,0 +1,30 @@
+<div class="bcse-header">
+  <nav class="navbar navbar-default" role="navigation">
+    <a ui-sref="manage.apps" style="position:absolute;"><img alt="中移BC-SE管理平台" src="images/bcse-brand-text.png"></a>
+    <div class="header-navbar">
+      <ul class="nav">
+        <li ui-sref-active="active" ng-repeat="nav in pubObj.navs">
+          <a ui-sref="{{nav.state}}">{{nav.title}}</a>
+        </li>
+        <li ui-sref-active="active" ng-show="isAdmin()">
+          <a ui-sref="manage.users">用户管理</a>
+        </li>
+      </ul>
+    </div>
+    <div class="user-info" ng-mouseover="isOpen=true" ng-mouseleave="isOpen=false">
+      <a href="javascript:void(0)" class="">
+        <span ng-bind="userName"></span>
+        <i class="glyphicon glyphicon-triangle-bottom"></i>
+      </a>
+      <ul class="nav" ng-show="isOpen">
+        <li ui-sref-active="active" class="username-display">
+          <a ui-sref="manage.user" ng-show="userId">个人中心</a>
+        </li>
+        <li ui-sref-active="active">
+          <a ui-sref="portal" ng-click="logout()">退出</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+

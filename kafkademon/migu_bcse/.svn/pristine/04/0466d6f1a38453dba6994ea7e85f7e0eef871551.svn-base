@@ -1,0 +1,29 @@
+<div class="result">
+  <div class="form-horizontal">
+    <div class="form-group">
+      <label for="evalItem" class="col-xs-2 col-md-2 col-lg-1 control-label">前N条<span class="red">*</span></label>
+      <div class="col-xs-2 col-md-2 col-lg-2">
+        <select name="evalItem" class="form-control" ng-options="item.id as item.label for item in showItems" ng-model="evalObj.showItem">
+        </select>
+      </div>
+      <div class="pull-right">
+        <button class="btn btn156 confirm" ng-click="showInstruction()">指标说明</button>
+        <button class="btn btn156 confirm" ng-click="exeEvaluation()" ng-disabled="submitting">开始测评</button>
+        <form name="downloadForm" action="http://10.139.4.130:8080/api_migu/evaluation/result" method="get" target="_seft" class="hidden">
+          <input type="hidden" name="userId" value="{{userId}}">
+          <input type="hidden" name="appId" value="{{evalObj.appId}}">
+          <input type="hidden" name="dataId" value="{{evalObj.dataId}}">
+          <input type="hidden" name="evaluateNumber" value="{{evalObj.showItem}}">
+        </form>
+        <button class="btn btn156 confirm" ng-click="exportReporter()" ng-disabled="!exeEvaluationSuccess">导出Excel</button>
+      </div>
+    </div>
+  </div>
+  <div ng-include="evalObj.templateUrl"></div>
+  <div class="row">
+    <div class="pull-right">
+      <button  ng-click="previous()" class="btn btn90 cancel" ng-disabled="submitting">{{messages.previous}}</button>
+      <a ui-sref="manage.apps" class="btn btn90 confirm">{{messages.done}}</a>
+    </div>
+  </div>
+</div>

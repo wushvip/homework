@@ -1,0 +1,67 @@
+<div class="add-config-modal" discard-modal>
+  <div class="modal-header">
+    <span>编辑规则</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+  <form class="modal-body" name="addRoughForm">
+    <div class="row">
+      <div class="col-md-2 text-right">排序名称<span class="red">*</span></div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" maxlength="30" placeholder="请输入排序名称" ng-model="rule.ruleName" name="configName" inputvalid required ng-blur="checkRuleName(rule,rules)" ng-disabled="!rule.isAddRule">
+        <p class="text-tip">{{messages.fieldNameTip}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 text-right">表达式配置<span class="red">*</span></div>
+      <div class="col-md-10">
+        <table class="table expre-config-content border-line">
+          <thead>
+          <tr>
+            <th class="col-2" colspan="1">
+              <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button ng-disabled="!fields||fields.length===0" class="btn confirm dropdown-toggle" id="dropdownSearchFileds" data-toggle="dropdown" uib-dropdown-toggle>添加搜索字段
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="dropdownSearchFileds">
+                  <li ng-repeat="field in fields">
+                    <label>
+                      <input type="checkbox" ng-click="toggleItem(rule,field)" name="searchFiled" ng-checked="checkSelected(rule,field)" >
+                      <span>{{field}}</span>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </th>
+            <th class="col-2">
+              权重
+              <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="必填,范围：1-9999" tooltip-class="customClass">
+                <i class="glyphicon glyphicon-question-sign question-tips"></i>
+              </a>
+            </th>
+            <th class="col-2">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-if="rule.fields.length" ng-repeat="item in rule.fields track by $index">
+            <td ng-bind="item.fieldName"></td>
+            <td>
+              <input ng-model="item.fieldWeight" name="formulaWeight" type="text" min="1" max="9999" datatype="INT" format-int required>
+            </td>
+            <td>
+              <button class="btn btn90 blank-btn" ng-click="toggleItem(rule,item.fieldName)">{{messages.delete}}</button>
+            </td>
+          </tr>
+          <tr ng-if="rule.fields.length === 0">
+            <td colspan="3" class="center">请添加表达式</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button class="btn confirm" ng-click="saveRough(rule,cancel)" ng-disabled="addRoughForm.$invalid||submitting">{{submitting?"正在保存...":"保存"}}</button>
+    <button type="reset" class="btn cancel" ng-click="cancel()" ng-disabled="submitting">取消</button>
+  </div>
+</div>
+

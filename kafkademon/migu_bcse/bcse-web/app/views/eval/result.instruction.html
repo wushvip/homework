@@ -1,0 +1,61 @@
+<div class="instruction">
+  <article>
+    <h3>1.P@N计算方法</h3>
+    <section>P@N本身是Precision@N的简称，指的是对特定的查询词，检测前N条结果的准确率。例如对单次搜索结果的前5篇，有4篇文档被检索到，则P@5 = 4/5 = 0.8 。</section>
+  </article>
+  <article>
+    <h3>2. S@N计算方法</h3>
+    <section>S@N体现的是文档的召回率，检测前N条结果的召回率指标。例如对单次搜索的结果前5篇，有4篇被检索到，而语料共20篇，则S@N = 4/20 = 0.2 。</section>
+  </article>
+  <article>
+    <h3>3. MRR计算方法</h3>
+    <section>由于搜索引擎的评价是和排序位置极为相关的。排第一的结果错误和第10位的结果错误，其严重程度有天壤之别。因此在评价系统中，需要引入位置这个因素。MRR是平均排序倒数（Mean Reciprocal Rank）的简称，更关注搜索引擎检索到的相关文档是否排在结果列表的前面。MRR方法首先计算每一个查询词的第一个相关文档位置的倒数，然后将所有倒数值求平均。例如一个包含三个查询词的测试集，前5条结果分别为：</section>
+    <section>
+      <ul>
+        <li>查询一结果：1.AN 2.AR 3.AN 4.AN 5.AR</li>
+        <li>查询二结果：1.AN 2.AR 3.AR 4.AR 5.AN </li>
+        <li>查询三结果：1.AR 2.AN 3.AN 4.AN 5.AR</li>
+      </ul>
+    </section>
+    <section>
+      其中AN表示不相关结果，AR表示相关结果。那么第一个查询词的排序倒数（Reciprocal Rank）RR1 = 1/2=0.5 ；第二个结果RR2 = 1/2 = 0.5 ；第三个结果RR3= 1/1 = 1。 对于这个测试集合，最终MRR=（RR1+RR2+RR3）/ 3 = 0.67
+    </section>
+    <section>
+      然而对大部分检索应用来说，只有一条结果无法满足需求，对这种情况，需要更合适的方法来计算效果，其中最常用的就是MAP方法。
+    </section>
+  </article>
+  <article>
+    <h3>4. MAP计算方法</h3>
+    <section>
+      MAP方法是Mean Average Precison，即平均准确率法的简称。其定义是求每个相关文档检索出后的准确率的平均值（即Average Precision）的算术平均值（Mean）。这里对准确率求了两次平均，因此称为Mean Average Precision。MAP 是反映系统在全部相关文档上性能的单值指标。系统检索出来的相关文档越靠前(rank 越高)，MAP就应该越高。如果系统没有返回相关文档，则准确率默认为0。
+    </section>
+    <section>
+      例如：假设有两个查询词：
+    </section>
+    <section>
+      <ul>
+        <li>查询词1的结果有4个相关网页，其rank分别为1, 2, 4, 7</li>
+        <li>查询词2的结果有5个相关网页，其rank分别为1,3,5</li>
+      </ul>
+    </section>
+    <section>
+      对于查询词1，平均准确率MAP计算公式为：
+    </section>
+    <section>
+      <ul>
+        <li>(1/1+2/2+3/4+4/7)/4=0.83。</li>
+      </ul>
+    </section>
+    <section>
+      对于查询词2，平均准确率MAP计算公式为：
+    </section>
+    <section>
+      <ul>
+        <li>(1/1+2/3+3/5+0+0)/5=0.45。</li>
+      </ul>
+    </section>
+    <section>
+      则MAP= (0.83+0.45)/2=0.64。
+    </section>
+  </article>
+</div>

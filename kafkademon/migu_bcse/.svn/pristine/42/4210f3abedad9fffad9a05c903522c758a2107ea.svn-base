@@ -1,0 +1,16 @@
+<div class="app-list col-xs-12">
+  <article>
+    <h3>2.2 应用列表管理</h3>
+    <section>
+      应用列表管理为应用管理一级页面，用户登录后默认进入此页面。
+    </section>
+    <section>
+      用户可在应用列表管理页面实现查看所创建的应用、昨日搜索次数、昨日搜索请求量峰值（秒）等数据，并提供了对应用名模糊搜索、索引处理、搜索测试、错误日志查看、应用状态进行暂停或启用、删除等快捷操作。界面如下：
+    </section>
+    <section class="center">
+      <img src="images/doc/apps/1.jpg" animate-visible="true" animate-speed="0.5s" alt="应用列表管理界面">
+      <footer>图2.2.1 应用列表管理界面</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.evaluate.dao.EvaluateAppInfoBeanDao">
+  <resultMap id="BaseResultMap" type="com.chinamobile.cmss.bcse.evaluate.bean.EvaluateAppInfoBean">
+    <result column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="IS_THIRD_PART" jdbcType="BIT" property="isThirdPart" />
+    <result column="REQUEST_URL" jdbcType="VARCHAR" property="requestUrl" />
+    <result column="REQUEST_TYPE" jdbcType="VARCHAR" property="requestType" />
+    <result column="REQUEST_CONTENT_TYPE" jdbcType="VARCHAR" property="requestContentType" />
+    <result column="REQUEST_CONTENT" jdbcType="VARCHAR" property="requestContent" />
+    <result column="REQUEST_WORD" jdbcType="VARCHAR" property="requestWord" />
+    <result column="PAGE_INDEX" jdbcType="INTEGER" property="pageIndex" />
+    <result column="PAGE_NUM" jdbcType="INTEGER" property="pageNum" />
+    <result column="EVALUATE_FIELD" jdbcType="VARCHAR" property="evaluateField" />
+    <result column="DATA_TYPE" jdbcType="VARCHAR" property="dataType" />
+     <result column="SORT_CONFIG" jdbcType="VARCHAR" property="sortConfig" />
+  </resultMap>
+  <sql id="Base_Column_List">
+		ID, IS_THIRD_PART,
+		REQUEST_URL,REQUEST_TYPE,REQUEST_CONTENT_TYPE,
+		REQUEST_CONTENT, REQUEST_WORD, PAGE_INDEX,
+		PAGE_NUM,EVALUATE_FIELD,DATA_TYPE,SORT_CONFIG
+	</sql>
+  <insert id="insert" parameterType="com.chinamobile.cmss.bcse.evaluate.bean.EvaluateAppInfoReqBean">
+    insert into EVALUATE_APP_INFO (ID, IS_THIRD_PART, REQUEST_URL, 
+      REQUEST_TYPE, REQUEST_CONTENT_TYPE, REQUEST_CONTENT, 
+      REQUEST_WORD, PAGE_INDEX, PAGE_NUM, 
+      EVALUATE_FIELD, DATA_TYPE,SORT_CONFIG)
+    values (#{appId,jdbcType=VARCHAR}, #{isThirdPart,jdbcType=BIT}, #{requestUrl,jdbcType=VARCHAR}, 
+      #{requestType,jdbcType=VARCHAR}, #{requestContentType,jdbcType=VARCHAR}, #{requestContent,jdbcType=VARCHAR}, 
+      #{requestWord,jdbcType=VARCHAR}, #{pageIndex,jdbcType=INTEGER}, #{pageNum,jdbcType=INTEGER}, 
+      #{evaluateField,jdbcType=VARCHAR}, #{dataType,jdbcType=VARCHAR},#{sortConfig,jdbcType=VARCHAR})
+  </insert>
+  <select id="getAppInfoById" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from EVALUATE_APP_INFO
+		where ID = #{appId,jdbcType=VARCHAR}
+	</select>
+  <!-- 查询应用信息是否存在 -->
+	<select id="isExistApp" parameterType="com.chinamobile.cmss.bcse.evaluate.bean.EvaluateAppInfoReqBean"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List"></include>
+		FROM
+		EVALUATE_APP_INFO 
+		WHERE
+		ID = #{appId}
+	</select>
+	<update id="update" parameterType="com.chinamobile.cmss.bcse.evaluate.bean.EvaluateAppInfoReqBean">
+		UPDATE
+		EVALUATE_APP_INFO
+		<set>
+			ID = #{appId}, 
+			IS_THIRD_PART = #{isThirdPart}, 
+			REQUEST_URL = #{requestUrl}, 
+      		REQUEST_TYPE = #{requestType}, 
+      		REQUEST_CONTENT_TYPE = #{requestContentType}, 
+      		REQUEST_CONTENT = #{requestContent}, 
+      		REQUEST_WORD = #{requestWord}, 
+      		PAGE_INDEX = #{pageIndex}, 
+      		SORT_CONFIG=#{sortConfig},
+      		PAGE_NUM = #{pageNum}, 
+      		EVALUATE_FIELD = #{evaluateField}, 
+      		DATA_TYPE = #{dataType}
+		</set>
+		WHERE
+		ID = #{appId}
+	</update>
+  <insert id="insertSelective" parameterType="com.chinamobile.cmss.bcse.evaluate.bean.EvaluateAppInfoReqBean">
+    insert into EVALUATE_APP_INFO
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        ID,
+      </if>
+      <if test="isThirdPart != null">
+        IS_THIRD_PART,
+      </if>
+      <if test="requestUrl != null">
+        REQUEST_URL,
+      </if>
+      <if test="requestType != null">
+        REQUEST_TYPE,
+      </if>
+      <if test="requestContentType != null">
+        REQUEST_CONTENT_TYPE,
+      </if>
+      <if test="requestContent != null">
+        REQUEST_CONTENT,
+      </if>
+      <if test="requestWord != null">
+        REQUEST_WORD,
+      </if>
+      <if test="pageIndex != null">
+        PAGE_INDEX,
+      </if>
+      <if test="pageNum != null">
+        PAGE_NUM,
+      </if>
+      <if test="evaluateField != null">
+        EVALUATE_FIELD,
+      </if>
+      <if test="dataType != null">
+        DATA_TYPE,
+      </if>
+       <if test="sortConfig != null">
+        SORT_CONFIG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="isThirdPart != null">
+        #{isThirdPart,jdbcType=BIT},
+      </if>
+      <if test="requestUrl != null">
+        #{requestUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="requestType != null">
+        #{requestType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestContentType != null">
+        #{requestContentType,jdbcType=VARCHAR},
+      </if>
+      <if test="requestContent != null">
+        #{requestContent,jdbcType=VARCHAR},
+      </if>
+      <if test="requestWord != null">
+        #{requestWord,jdbcType=VARCHAR},
+      </if>
+      <if test="pageIndex != null">
+        #{pageIndex,jdbcType=INTEGER},
+      </if>
+      <if test="pageNum != null">
+        #{pageNum,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateField != null">
+        #{evaluateField,jdbcType=VARCHAR},
+      </if>
+       <if test="sortConfig != null">
+        #{sortConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

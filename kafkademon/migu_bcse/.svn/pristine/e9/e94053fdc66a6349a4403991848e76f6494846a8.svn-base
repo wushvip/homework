@@ -1,0 +1,24 @@
+<div class="doc-left-sidebar document-sidebar">
+  <ul class="nav sidebar">
+    <li ng-repeat="docMenu in docMenus" ui-sref-active="active">
+      <a ng-if="!docMenu.subMenus" ui-sref="{{docMenu.surl}}"><span class="bg-icon {{docMenu.className}}"></span>{{docMenu.head}}</a>
+      <a ng-if="docMenu.subMenus" href="javascript:void(0)" ng-click="openMenu(docMenu)"><span class="bg-icon {{docMenu.className}}"></span>{{docMenu.head}}</a>
+      <ul ng-show="docMenu.subMenus" class="nav sidebar">
+        <li ng-repeat="subMenu1 in docMenu.subMenus" ui-sref-active="active" ng-show="docMenu.isOpen">
+          <a ng-if="!subMenu1.subMenus" ui-sref="{{subMenu1.surl}}"><span class="bg-icon dot-icon"></span>{{subMenu1.head}}</a>
+          <a ng-if="subMenu1.subMenus" href="javascript:void(0)" ng-click="openMenu(docMenu,subMenu1)">
+            <span class="bg-icon dot-icon {{subMenu1.className}}"></span>{{subMenu1.head}}
+            <i class="glyphicon" ng-class="{true:'glyphicon-menu-down',false:'glyphicon-menu-right'}[subMenu1.isOpen]"></i>
+          </a>
+          <ul ng-show="subMenu1.subMenus" class="nav sidebar">
+            <li ng-repeat="subMenu2 in subMenu1.subMenus" ui-sref-active="active" ng-show="subMenu1.isOpen">
+              <a ng-show="!subMenu2.subMenus" ui-sref="{{subMenu2.surl?subMenu2.surl:'.'}}"><span class="bg-icon indent-icon"></span>{{subMenu2.head}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<div class="doc-right-container doc-post" ui-view></div>
+

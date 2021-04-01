@@ -1,0 +1,49 @@
+
+<div class="struct-table" >
+  <div class="title" ng-click="collapsed = !collapsed">
+    <span>数据表</span>
+    <span class="pull-right">
+      <i class="glyphicon" ng-class="{true:'glyphicon-chevron-up',false:'glyphicon-chevron-down'}[!!collapsed]"></i>
+    </span>
+  </div>
+  <div class="table-list" uib-collapse="collapsed">
+    <div ng-repeat="table in tableStruct track by $index" class="table-item">
+      <div class="table-title" ng-click="table.$collapsed = !table.$collapsed">
+        <label class="control-label">{{table.tableName}}</label>
+        <span ng-if="table.isMainTab" > ( 主表 ) </span>
+        <span class="pull-right">
+          <i class="glyphicon" ng-class="{true:'glyphicon-chevron-up',false:'glyphicon-chevron-down'}[!!table.$collapsed]"></i>
+        </span>
+      </div>
+
+      <div uib-collapse="table.$collapsed"  >
+        <table  class="table table-bordered">
+          <thead>
+          <th></th>
+          <th>字段名称</th>
+          <th>主键</th>
+          <th>类型</th>
+          <th>可搜索</th>
+          <th>可展示</th>
+          <th>多值</th>
+          <th>源字段</th>
+          <th>动态字段</th>
+          </thead>
+          <tbody>
+          <tr ng-repeat="field in table.fields track by $index">
+            <td>{{$index+1}}</td>
+            <td>{{field.fieldName}}</td>
+            <td><i class="glyphicon" ng-class="{'1':'glyphicon-ok','0':'glyphicon-remove'}[field.isPk]"></i></td>
+            <td>{{field.fieldType}}</td>
+            <td><i class="glyphicon" ng-class="{'1':'glyphicon-ok','0':'glyphicon-remove'}[field.isSearch]"></i></td>
+            <td><i class="glyphicon" ng-class="{'1':'glyphicon-ok','0':'glyphicon-remove'}[field.isShow]"></i></td>
+            <td><i class="glyphicon" ng-class="{'1':'glyphicon-ok','0':'glyphicon-remove'}[field.isMutivalue]"></i></td>
+            <td>{{field.srcField}}</td>
+            <td>{{field.dynamicField==='1'?"是":"否"}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

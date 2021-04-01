@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.config.dao.RoughRuleDao">
+	<resultMap id="roughRuleResult" type="com.chinamobile.cmss.bcse.config.bean.Rule">
+		<id column="ID" jdbcType="VARCHAR" property="id" />
+		<result column="APP_ID" jdbcType="VARCHAR" property="appId" />
+		<result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+		<result column="RULE_NAME" jdbcType="VARCHAR" property="ruleName" />
+		<result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+		<result column="RULE_TYPE" jdbcType="CHAR" property="ruleType" />
+		<result column="INCLUDE_FIELDS" jdbcType="LONGVARCHAR" property="includeFields" />
+		<result column="FIELD_WEIGHTS" jdbcType="LONGVARCHAR" property="fieldWeights" />
+	</resultMap>
+    
+    <!--查询 粗排规则-->
+	<select id="show" resultMap="roughRuleResult" parameterType="Map">
+		SELECT RULE_NAME,INCLUDE_FIELDS, FIELD_WEIGHTS from RULE
+		where APP_ID=#{appId}  AND RULE_TYPE=#{ruleType}
+		
+		<if test="userId!=null and userId!='' ">
+				AND USER_ID=#{userId}
+		</if>
+		order by CREATE_DATE desc
+	</select>
+	
+	<!-- 添加粗排规则 -->
+	<insert id="insert" parameterType="com.chinamobile.cmss.bcse.config.bean.Rule" >
+		insert into RULE(ID,APP_ID,USER_ID,RULE_NAME,CREATE_DATE,RULE_TYPE,INCLUDE_FIELDS,FIELD_WEIGHTS)
+		values(null,#{appId},#{userId},#{ruleName},NOW(),#{ruleType},#{includeFields},#{fieldWeights})
+	</insert>
+	
+	<!-- 更新 粗排规则-->
+	<update id="update" parameterType="com.chinamobile.cmss.bcse.config.bean.Rule" >
+		update RULE 
+		<set>
+			<if test="includeFields!=null and includeFields!='' ">
+				INCLUDE_FIELDS=#{includeFields},
+			</if>
+			<if test="fieldWeights!=null and fieldWeights!='' ">
+				FIELD_WEIGHTS=#{fieldWeights},
+			</if>
+		</set>
+		where RULE_NAME=#{ruleName} and APP_ID=#{appId}
+		and RULE_TYPE=#{ruleType}
+	</update>
+	
+	<!-- 删除粗排规则 -->
+	<delete id="deleteByRuleName" parameterType="Map" >
+		delete from RULE WHERE RULE_NAME=#{ruleName} AND APP_ID=#{appId} and RULE_TYPE=#{ruleType}
+	</delete>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteByRuleNames" parameterType="Map" >
+		delete from RULE WHERE APP_ID=#{appId} and RULE_TYPE=#{ruleType} AND RULE_NAME in
+		<foreach collection="ruleNames" index="index" item="item" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</delete>
+	
+	 <!--查询 规则数目，用来校验规则数目的-->
+	<select id="showNum" resultType="Integer" parameterType="Map">
+		SELECT count(*) from RULE
+		<where>
+			<if test="appId!=null and appId!='' ">
+				and APP_ID=#{appId}
+			</if>
+			<if test="userId!=null and userId!='' ">
+				and USER_ID=#{userId}
+			</if>
+			<if test="ruleType!=null and ruleType!='' ">
+				and RULE_TYPE=#{ruleType}
+			</if>
+			<if test="ruleName!=null and ruleName!='' ">
+				and RULE_NAME=#{ruleName}
+			</if>
+		</where>
+	</select>
+		
+</mapper>

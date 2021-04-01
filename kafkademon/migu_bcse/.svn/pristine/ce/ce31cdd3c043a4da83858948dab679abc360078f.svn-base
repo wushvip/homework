@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.app.dao.AppTableMapBeanDao">
+	<resultMap id="ResultMap" type="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		<id column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+		<result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+		<result column="SOURCE_DIR" property="sourceDir" jdbcType="VARCHAR" />
+		<result column="IS_MAIN_TABLE" property="isMainTable" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Column_List">
+		TABLE_ID, APP_ID, TABLE_NAME, SOURCE_DIR, IS_MAIN_TABLE
+	</sql>
+	<select id="selectByAppId" resultMap="ResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Column_List" />
+		from APP_TABLE_MAPPING
+		where BINARY APP_ID = #{0}
+	</select>
+	
+	<select id="isExist" resultMap="ResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Column_List" />
+		from APP_TABLE_MAPPING
+		where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+	</select>
+	
+	<delete id="deleteByAppId" parameterType="java.lang.String">
+		delete from APP_TABLE_MAPPING
+		where APP_ID = #{appId,jdbcType=VARCHAR}
+	</delete>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from APP_TABLE_MAPPING
+		where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+	</delete>
+	
+	<insert id="insert" parameterType="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		insert into APP_TABLE_MAPPING (TABLE_ID, APP_ID, TABLE_NAME,
+		SOURCE_DIR, IS_MAIN_TABLE)
+		values (#{tableId,jdbcType=VARCHAR}, #{appId,jdbcType=VARCHAR},
+		#{tableName,jdbcType=VARCHAR},
+		#{sourceDir,jdbcType=VARCHAR}, #{isMainTable,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertSelective" parameterType="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		insert into APP_TABLE_MAPPING
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="tableId != null">
+				TABLE_ID,
+			</if>
+			<if test="appId != null">
+				APP_ID,
+			</if>
+			<if test="tableName != null">
+				TABLE_NAME,
+			</if>
+			<if test="sourceDir != null">
+				SOURCE_DIR,
+			</if>
+			<if test="isMainTable != null">
+				IS_MAIN_TABLE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="tableId != null">
+				#{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="tableName != null">
+				#{tableName,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceDir != null">
+				#{sourceDir,jdbcType=VARCHAR},
+			</if>
+			<if test="isMainTable != null">
+				#{isMainTable,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByTableId" parameterType="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		update APP_TABLE_MAPPING
+		<set>
+			<if test="appId != null">
+				APP_ID = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="tableName != null">
+				TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+			</if>
+			<if test="sourceDir != null">
+				SOURCE_DIR = #{sourceDir,jdbcType=VARCHAR},
+			</if>
+			<if test="isMainTable != null">
+				IS_MAIN_TABLE = #{isMainTable,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		update APP_TABLE_MAPPING
+		set APP_ID = #{appId,jdbcType=VARCHAR},
+		TABLE_NAME = #{tableName,jdbcType=VARCHAR},
+		SOURCE_DIR = #{sourceDir,jdbcType=VARCHAR},
+		IS_MAIN_TABLE = #{isMainTable,jdbcType=VARCHAR}
+		where TABLE_ID = #{tableId,jdbcType=VARCHAR}
+	</update>
+	
+	<update id="updateFile" parameterType="String">
+		update APP_TABLE_MAPPING
+		set SOURCE_DIR = #{1,jdbcType=VARCHAR}
+		where TABLE_ID = #{0,jdbcType=VARCHAR}
+	</update>
+</mapper>

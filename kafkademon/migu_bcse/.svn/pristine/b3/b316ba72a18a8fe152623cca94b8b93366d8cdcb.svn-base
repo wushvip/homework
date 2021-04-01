@@ -1,0 +1,18 @@
+<h2>3.基本配置</h2>
+<div class="app-quickStart col-xs-12">
+  <article>
+    <section>
+      基本配置为应用管理的二级页面，用户可在此查看基本信息、应用结构、实现索引处理等操作。</section>
+  </article>
+  <article>
+    <h3>3.1 功能快速入口</h3>
+    <section>
+      单个应用管理页面提供返回应用列表、创建应用、搜索测试、上传文件、删除应用等功能的快速入口按钮，用户可通过快速入口实现对常用功能的操作，如下图所示:
+    </section>
+    <section class="center">
+      <img src="images/doc/app/quickStart/1.jpg" animate-visible="true" animate-speed="0.5s" alt="功能快速入口">
+      <footer>图3.1.1 功能快速入口</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

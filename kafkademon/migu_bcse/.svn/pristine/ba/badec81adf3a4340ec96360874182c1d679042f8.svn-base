@@ -1,0 +1,64 @@
+<div class="history-record" discard-modal>
+  <div class="modal-header">
+    <span>历史记录</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <p class="col-xs-12">
+      <button class="btn btn90 btn-nocolor-sm" ng-class="{active: records.type==='1'}" ng-click="getHistory('1')" ng-disabled="submitting">索引更新</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-class="{active: records.type==='4'}" ng-click="getHistory('4')" ng-disabled="submitting">索引删除</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-class="{active: records.type==='2'}" ng-click="getHistory('2')" ng-disabled="submitting">索引清空</button>
+    </p>
+    <form class="col-xs-12" name="historyForm">
+      <label class="pull-left">选择时间范围: </label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" uib-datepicker-popup ng-model="records.startTime" is-open="records.startPopupOpened" datepicker-options="startDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+          <span class="input-group-btn">
+            <button type="button" class="btn cancel" ng-click="startOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+      <label class="to pull-left">至</label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" name="endTime" uib-datepicker-popup ng-model="records.endTime" is-open="records.endPopupOpened" datepicker-options="endDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+          <span class="input-group-btn">
+            <button type="button" class="btn cancel" ng-click="endOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+        </p>
+      </div>
+      <button class="btn btn90 confirm" ng-click="getHistory(records.type)" ng-disabled="historyForm.$invalid||submitting">查询</button>
+    </form>
+    <table class="table table-bordered table-responsive">
+      <thead>
+      <tr>
+        <th>操作对象</th>
+        <th>时间</th>
+        <th>操作类型</th>
+        <th>状态</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="text-center" ng-show="!results.length">
+        <td colspan="4">{{hotWords}}</td>
+      </tr>
+      <tr ng-repeat="result in results">
+        <td>{{result.operaObject}}</td>
+        <td>{{result.operaDate}}</td>
+        <td>{{result.operaType|typeToExpress}}</td>
+        <td>{{result.operaStatus=='0'?messages.public.success:messages.public.fail}}</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <form class="pagination-define text-center" ng-show="page.totalItems">
+      <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+      <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+      <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+      <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+    </form>
+
+  </div>
+</div>
+

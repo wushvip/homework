@@ -1,0 +1,5 @@
+<div class="bcse-header">
+  <nav class="navbar navbar-default" role="navigation">
+    <a ui-sref="manage.apps" style="position:absolute;"><img alt="中移BC-SE管理平台" src="images/bcse-brand-text.png"></a>
+  </nav>
+</div>

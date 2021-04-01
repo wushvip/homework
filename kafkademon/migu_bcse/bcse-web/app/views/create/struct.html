@@ -1,0 +1,13 @@
+<div class="select-template" ui-view="pic-slide"></div>
+<div class="create-container">
+  <div class="wrapper" ng-include="templateUrl"></div>
+
+  <div class="create-footer">
+    <div class="pull-right">
+      <a ui-sref="manage.apps" class="btn btn90 cancel">{{messages.cancel}}</a>
+      <button class="btn btn90 cancel" ng-click="previous()" ng-disabled="submitting">{{messages.previous}}</button>
+      <button class="btn btn90 confirm"  ng-click="saveStruct()" ng-disabled="!tableList.length||submitting">{{submitting?messages.saving:messages.next}}</button>
+    </div>
+  </div>
+</div>
+

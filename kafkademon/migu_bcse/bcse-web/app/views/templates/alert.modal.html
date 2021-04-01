@@ -1,0 +1,16 @@
+
+<div class="modal-info" discard-modal>
+  <div class="modal-header">
+    <span>{{text.header}}</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+  <div class="modal-body">
+      <span>{{text.body}}</span>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn90 confirm" ng-click="confirm()" ng-disabled="submitting">{{text.confirm}}</button>
+    <button type="button" class="btn btn90 cancel" ng-click="cancel()" ng-disabled="submitting">{{text.cancel}}</button>
+  </div>
+</div>
+
+

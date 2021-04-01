@@ -1,0 +1,39 @@
+<div class="facet">
+  <h3>分组统计</h3>
+  <span class="btn-group pull-right">
+    <button class="btn btn90 confirm" ng-click="addFacet()" ng-disabled="facets.length>=50||submitting">{{messages.rule.addRule}}</button>
+    <button class="btn btn90 confirm" ng-click="deleteFacets()" ng-disabled="facets.length>=50||!selectedRules.length||submitting">{{messages.delete}}</button>
+  </span>
+  <table class="table table-bordered table-condensed table-responsive">
+    <thead>
+    <tr>
+      <th><input type="checkbox" ng-click="getAllSelectedFacets()" ng-checked="facets.length!==0&&selectedRules.length===facets.length" ng-disabled="submitting"></th>
+      <th>{{messages.rule.series}}</th>
+      <th>{{messages.rule.ruleName}}
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th class="col-xs-5">分组统计</th>
+      <th>{{messages.rule.operate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="facet in facets | orderBy:['createDate.time']" >
+      <td><input type="checkbox" ng-click="getSelectedFacets(facet)" ng-checked="checkSelectedFacet(facet)" ng-disabled="facet.operaDisabled"></td>
+      <td ng-bind="$index+1"></td>
+      <td ng-bind="facet.ruleName"></td>
+      <td>
+        <span ng-repeat="field in facet.includeFields">
+          <span>{{field}};</span>
+        </span>
+      </td>
+      <td>
+        <button class="btn btn90 blank-btn" ng-click="editFacet(facet)" ng-disabled="submitting">{{messages.edit}}</button>
+        <span class="line"></span>
+        <button class="btn btn90 blank-btn" ng-click="deleteFacet(facet)" ng-disabled="submitting">{{messages.delete}}</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

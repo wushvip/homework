@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.index.dao.IndexFieldBeanDao">
+	<resultMap id="BaseResultMap"
+		type="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+		<result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+		<result column="IS_SEARCH" property="isSearch" jdbcType="VARCHAR" />
+		<result column="IS_FILTER" property="isFilter" jdbcType="VARCHAR" />
+		<result column="IS_SHOW" property="isShow" jdbcType="VARCHAR" />
+		<result column="IS_PK" property="isPk" jdbcType="VARCHAR" />
+		<result column="FOREIGN_KEY" property="foreignKey" jdbcType="VARCHAR" />
+		<result column="IS_MUTIVALUE" property="isMutivalue" jdbcType="VARCHAR" />
+		<result column="SRC_FIELD" property="srcField" jdbcType="VARCHAR" />
+		<result column="DYNAMIC_FIELD" property="dynamicField"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="FieldInfoMap"
+		type="com.chinamobile.cmss.bcse.app.bean.FieldInfoBean">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+		<result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 高级配置模块获取字段基本信息，如获取建立索引的字段，可展示字段等的基本信息 -->
+
+	<sql id="Base_Column_List">
+		ID, TABLE_ID, CREATE_DATE, FIELD_NAME, FIELD_TYPE,
+		IS_SEARCH, IS_FILTER,
+		IS_SHOW,
+		IS_PK,
+		FOREIGN_KEY,IS_MUTIVALUE,SRC_FIELD,DYNAMIC_FIELD
+	</sql>
+
+
+	<!-- 获取建立schema的字段 -->
+	<select id="selectFields" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+	</select>
+	<!-- 获取一张表的所有字段 -->
+	<select id="selectByTableId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID = #{0}
+	</select>
+
+
+</mapper>

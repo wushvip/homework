@@ -1,0 +1,16 @@
+com\ws\example\bean\Response.class
+com\ws\example\service\TestInterface.class
+com\ws\example\webservice\serviceImpl\AnimalImpl.class
+com\ws\example\bean\Response$ResponseBuilder.class
+com\ws\example\webservice\Animal.class
+com\ws\example\controller\JspController.class
+com\ws\example\webservice\serviceImpl\PersonImpl.class
+com\ws\example\webservice\serviceImpl\CheckAiuapTokenSoapImpl.class
+com\ws\example\service\TestImpl.class
+com\ws\example\webservice\CheckAiuapTokenSoap.class
+com\ws\example\controller\BussinessController.class
+com\ws\example\bean\BussinessBean.class
+com\ws\example\bean\ResponseBuilderImpl.class
+com\ws\example\bean\ResponseImpl.class
+com\ws\example\webservice\Person.class
+com\ws\example\controller\TestController.class

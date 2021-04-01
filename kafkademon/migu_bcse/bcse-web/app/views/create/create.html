@@ -1,0 +1,17 @@
+<div class="create container">
+  <div class="pull">
+    <h1>创建应用</h1>
+    <a ui-sref="manage.apps" class="icon-goback"><img src="images/goback.png">返回应用列表</a>
+  </div>
+  <ul class="steps-nav clearfix">
+    <li ng-repeat="step in nav.steps" ng-class="{actived: step.actived, passed: step.passed}" ng-click="clickGoStatus(step.passed, step.state)" >
+      <span ng-bind="step.label"></span>
+    </li>
+  </ul>
+  <hr />
+  <div class="content">
+    <div ui-view="content"></div>
+  </div>
+
+</div>
+

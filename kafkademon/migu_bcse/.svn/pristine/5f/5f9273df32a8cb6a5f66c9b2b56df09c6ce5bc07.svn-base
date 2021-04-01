@@ -1,0 +1,77 @@
+<div class="spread">
+  <h3>搜索推广</h3>
+  <span class="btn-group pull-right">
+    <button class="btn btn90 confirm" ng-click="addSpread()" ng-disabled="spreads.length>=50||isEditing||submitting">{{messages.rule.addRule}}</button>
+    <button class="btn btn90 confirm" ng-click="deleteSpreads()" ng-disabled="spreads.length>=50||!selectedRules.length||isEditing||submitting">{{messages.delete}}</button>
+  </span>
+  <table class="table table-bordered table-condensed table-responsive">
+    <thead>
+    <tr>
+      <th><input type="checkbox" ng-click="getAllSelectedSpreads()" ng-checked="selectedRules.length===spreads.length&&spreads.length!==0" ng-disabled="isEditing||submitting"></th>
+      <th>{{messages.rule.series}}</th>
+      <th>{{messages.rule.ruleName}}
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th>包含关键字
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.rule.limitation('30')}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th>包含ID
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.rule.limitation('30')}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th>{{messages.rule.operate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="spread in spreads | orderBy:['createDate.time']" ng-include="getTemplate(spread,addRule)"></tr>
+    </tbody>
+  </table>
+</div>
+<script type="text/ng-template" id="display">
+  <td>
+    <input type="checkbox" ng-click="getSelectedSpreads(spread)" ng-checked="checkSelectedSpread(spread)" ng-disabled="isEditing||submitting">
+  </td>
+  <td ng-bind="$index+1"></td>
+  <td ng-bind="spread.ruleName"></td>
+  <td>
+		<!--<span ng-show="spread.includeKeywords.length>0" ng-repeat="keyword in spread.includeKeywords track by $index">
+			<span>{{keyword}};</span>
+		</span>-->
+    <ul>
+      <li ng-repeat="keyword in spread.includeKeywords track by $index">{{keyword}}</li>
+    </ul>
+  </td>
+  <td>
+    <ul>
+      <li ng-repeat="spreadId in spread.spreadIds track by $index">{{spreadId}}</li>
+    </ul>
+  </td>
+  <td>
+    <button class="btn btn90 blank-btn" ng-click="editSpread(spread)" ng-disabled="addRule.isAddRule||submitting">{{messages.edit}}</button>
+    <span class="line"></span>
+    <button class="btn btn90 blank-btn" ng-click="deleteSpread(spread)" ng-disabled="addRule.isAddRule||submitting">{{messages.delete}}</button>
+  </td>
+</script>
+<script type="text/ng-template" id="edit">
+  <td></td>
+  <td ng-bind="$index+1"></td>
+  <td>
+    <input type="text" ng-model="addRule.ruleName" ng-blur="checkRuleName(addRule, spreads)" maxlength="30" ng-disabled="!addRule.isAddRule" inputvalid>
+  </td>
+  <td>
+    <textarea rows="5" ng-model="addRule.includeKeywords" ng-list="&#10;"  maxlines="30" maxlines-prevent-enter="true" ng-trim="false" maxcharts="20" ></textarea>
+  </td>
+  <td>
+    <textarea rows="5" ng-model="addRule.spreadIds" ng-list="&#10;" maxlines="30" maxlines-prevent-enter="true" ng-trim="false" ></textarea>
+  </td>
+  <td>
+    <button class="btn btn90 blank-btn" ng-click="saveSpread(addRule)" ng-disabled="!addRule.ruleName||submitting">{{messages.save}}</button>
+    <span class="line"></span>
+    <button class="btn btn90 blank-btn" ng-click="cancelSpread(addRule)" ng-disabled="submitting">{{messages.cancel}}</button>
+  </td>
+</script>

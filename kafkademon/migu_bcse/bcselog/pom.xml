@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <!-- <parent>
+    <groupId>com.chinamobile.cmss</groupId>
+    <artifactId>bc_se</artifactId>
+    <version>1.0.7</version>
+  </parent>-->
+  <groupId>com.chinamobile.cmss</groupId>
+  <artifactId>migu-bcselog</artifactId>
+  <version>1.0.7</version>
+  <packaging>jar</packaging>
+  <name>migu-bcselog</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+	<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <jedis.version>2.4.2</jedis.version>
+  </properties>
+  <dependencies>
+  <!-- 操作redis -->
+  	<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    
+	<dependency>
+		<groupId>org.apache.hadoop</groupId>
+		<artifactId>hadoop-common</artifactId>
+		<version>2.6.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.hadoop</groupId>
+		<artifactId>hadoop-mapreduce-client-core</artifactId>
+		<version>2.6.0</version>
+	</dependency>
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.22</version>
+	</dependency>
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>3.8.1</version>
+		<scope>test</scope>
+	</dependency>
+	<dependency>
+   		<groupId>jdk.tools</groupId>
+   		<artifactId>jdk.tools</artifactId>
+   		<version>1.7</version>
+   		<scope>system</scope>
+   		<systemPath>${JAVA_HOME}/lib/tools.jar</systemPath>
+	</dependency>
+	<!-- 日志文件管理包 -->
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.17</version>
+	 </dependency>
+	<!-- 文件操作 -->
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io</artifactId>
+		<version>2.4</version>
+	</dependency>
+ 
+	 <!-- quartz任务调度 -->
+	<dependency>
+		<groupId>org.quartz-scheduler</groupId>
+		<artifactId>quartz</artifactId>
+		<version>2.2.1</version>
+	</dependency>
+  </dependencies>
+  	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profile.path>env/dev</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<profile.path>env/test</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>pre</id>
+			<properties>
+				<profile.path>env/pre</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id>
+			<properties>
+				<profile.path>env/product</profile.path>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>home</id>
+			<properties>
+				<profile.path>env/home</profile.path>
+			</properties>
+		</profile>
+	</profiles>
+	<build>  
+        <finalName>${project.name}-${project.version}-${maven.build.timestamp}</finalName>  
+        <!-- 源文件夹配置，默认只能配置一个 -->
+        <sourceDirectory>cmcc/bcselog/src/java</sourceDirectory>  
+        <!-- 资源文件夹配置，可以配置多个 -->  
+        <resources>  
+            <resource>  
+                <directory>cmcc/bcselog/resources</directory> 
+                <includes>  
+              		<include> log4j.properties</include>  
+              		<include> bcselog.properties</include>
+          		</includes>   
+            </resource>  
+        </resources>  
+        <plugins>  
+            <!-- 设置源文件编码方式 -->  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>3.1</version>
+                <configuration>  
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>  
+                    <source>1.7</source>  
+                    <target>1.7</target>  
+                    <encoding>UTF-8</encoding>  
+                </configuration>  
+            </plugin> 
+             <!-- 将项目及所依赖的所有jar包打包成一个jar，并指定main --> 
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.chinamobile.cmss.bcselogAnalyse.main.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+        </plugins>  
+    </build> 
+</project>

@@ -1,0 +1,3 @@
+com\ws\controller\HelloWorld.class
+com\ws\ownInterface\OperationLogger.class
+com\ws\aop\aspect\LogAspect.class

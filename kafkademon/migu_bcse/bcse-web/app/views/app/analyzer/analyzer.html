@@ -1,0 +1,46 @@
+<div class="analyzer">
+  <h3>分词体验</h3>
+  <button class="btn-nocolor-lg" ngf-select="uploadFile($file, $invalidFiles)" accept=".txt" ngf-max-height="1000" type="file" ng-disabled="file.uploading">上传词典</button>
+  <p class="text-tip">（{{messages.file.tip2}}）</p>
+  <table class="table">
+    <tbody ng-show="file">
+      <tr>
+        <td class="col-xs-4"><small><span>{{file.name}}</span></small></td>
+        <td class="col-xs-2"><small><span>{{file.size/1024|number:4}}</span><span>KB</span></small></td>
+        <td class="col-xs-2">
+          <progressbar ng-show="file.progress" animate="false" value="file.progress" type="success"><b>{{file.progress}}%</b></progressbar>
+        </td>
+        <td>
+          <small>
+            <span class="alert-info" ng-show="file.uploading">{{messages.file.process}}</span>
+            <span class="alert-success" ng-show="file.uploaded">{{messages.file.processed}}</span>
+            <span class="alert-danger" ng-hide="file.uploaded">{{file.fileErrorMsg}}</span>
+          </small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-md-5">
+      <select class="form-control" ng-model="segField" ng-options="field for field in segFields">
+        <option value="">--请选择分词类型--</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <h5 class="analysis-heading">请输入一段想分析的文本：</h5>
+      <textarea rows="10" name="segText" ng-model="segText"  class="form-control" char-max="100" ng-trim="false"></textarea>
+      <span class="text-tip">{{segText.length||0}}/100</span>
+    </div>
+    <div class="col-md-2 analysis-box text-center">
+      <button class="btn btn90 confirm" ng-click="getAnalyzer()" ng-disabled="!segField||!segText||segText.length>300||submitting">{{submitting?"正在分析...":"分析"}}</button>
+    </div>
+    <div class="col-md-5">
+      <span class="analysis-heading">分析结果：</span>
+      <div class="analysis-result">
+        <span class="analysis-word" ng-repeat="word in analysisResult track by $index">{{word}}</span>
+      </div>
+    </div>
+  </div>
+</div>

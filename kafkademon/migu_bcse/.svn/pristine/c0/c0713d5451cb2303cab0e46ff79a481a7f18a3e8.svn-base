@@ -1,0 +1,15 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.24 获取搜索推广规则</h3>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+        BCSEElevate elevate=new BCSEElevate (client);
+        String result= elevate. get();
+        </xmp>
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

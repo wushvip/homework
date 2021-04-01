@@ -1,0 +1,100 @@
+<div class="app-java-sdk-client col-xs-12">
+  <article>
+    <h3>1.4 BCSEClient客户端</h3>
+    <section>
+      BCSEClient线程安全。
+    </section>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>appId</td>
+        <td>string</td>
+        <td>应用ID</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>userId</td>
+        <td>string</td>
+        <td>用户ID</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>url</td>
+        <td>string</td>
+        <td>BCSE平台ip地址</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>port</td>
+        <td>int</td>
+        <td>请求端口</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>secretAccessKey</td>
+        <td>String</td>
+        <td>系统分配给用户的唯一私钥</td>
+        <td>是</td>
+        <td>鉴权时使用</td>
+      </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表2. 指定连接池的最大连接数</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>maxConnections</td>
+        <td>int</td>
+        <td>连接池的最大连接数</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      <ul>
+        <li>接口定义：
+          <pre>
+            <xmp>
+            void setMaxConnections(int maxConnections)
+            </xmp>
+				  </pre>
+        </li>
+        <li>
+          调用方式：
+          <p>client(下面的操作将继续使用如下的client)</p>
+          <pre>
+            <xmp>
+            BCSEClient client = new BCSEClient(“appId”,"userId","ip", port,”secretAccessKey”);
+            </xmp>
+					</pre>
+        </li>
+      </ul>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

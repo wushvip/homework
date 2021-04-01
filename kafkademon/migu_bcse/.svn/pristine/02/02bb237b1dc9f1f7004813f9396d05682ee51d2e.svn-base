@@ -1,0 +1,63 @@
+
+<div class="hot">
+  <h3>关键词热度</h3>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="pull-left">
+        <button class="btn btn90 btn-nocolor-sm" ng-class="{active: type=='1'}" ng-click="getHotWords('1')">昨天</button>
+        <button class="btn btn90 btn-nocolor-sm" ng-class="{active: type=='2'}" ng-click="getHotWords('2')">最近7天</button>
+        <button class="btn btn90 btn-nocolor-sm" ng-class="{active: type=='3'}" ng-click="getHotWords('3')">最近30天</button>
+      </div>
+      <form name="hotForm">
+        <label class="pull-left">选择时间范围: </label>
+        <div class="col-xs-3">
+          <p class="input-group">
+            <input type="text" name="startTime" class="form-control" uib-datepicker-popup ng-model="startTime" is-open="startPopupOpened" datepicker-options="startDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+            <span class="input-group-btn">
+              <button type="button" class="btn cancel" ng-click="startOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+        </div>
+        <label class="pull-left">至</label>
+        <div class="col-xs-3">
+          <p class="input-group">
+            <input type="text" name="endTime" class="form-control" uib-datepicker-popup ng-model="endTime" is-open="endPopupOpened" datepicker-options="endDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+            <span class="input-group-btn">
+              <button type="button" class="btn cancel" ng-click="endOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+          </p>
+        </div>
+        <button class="btn confirm" ng-click="getHotWords('4')" ng-disabled="hotForm.$invalid">{{messages.search}}</button>
+      </form>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered table-hover table-condensed table-fixed table-responsive">
+        <thead>
+          <tr>
+            <th class="col-md-2">排名</th>
+            <th class="col-md-8">关键词</th>
+            <th>搜索次数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="hotWord in hotWords">
+            <td>{{$index+1+(page.currentPage-1)*page.numPerPage}}</td>
+            <td ng-bind="hotWord.keywords"></td>
+            <td ng-bind="hotWord.searchCount"></td>
+          </tr>
+          <tr class="text-center" ng-show="!hotWords.length">
+            <td colspan="4">{{messages.noData}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <form class="pagination-define text-center" ng-show="page.totalItems">
+        <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+        <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+        <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.20 同义词功能</h3>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>fileName</td>
+        <td>String</td>
+        <td></td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+        String fileName;
+        BCSESynoDic dic=new BCSESynoDic(client);
+        dic.upload(fileName);
+        </xmp>
+			</pre>
+    </section>
+    <section>
+      同义词格式说明：比如用户想配置 “土豆”和”马铃薯”这两个词为一组同义词，格式如下，将”土豆”和“马铃薯”写在一行，用英文逗号隔开，每组同义词词占一行。字典文件的格式为utf-8 无BOM格式。
+    </section>
+    <section class="center">
+      <img src="images/doc/app/dic/7.jpg" animate-visible="true" animate-speed="0.5s" alt="同义词格式">
+      <footer>图1. 同义词格式</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

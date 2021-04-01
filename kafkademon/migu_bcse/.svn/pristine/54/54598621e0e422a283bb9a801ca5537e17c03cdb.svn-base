@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd    
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-3.0.xsd      
+                        http://www.springframework.org/schema/mvc  
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+	<!-- 自动扫描 -->
+	<!-- <context:component-scan base-package="com.chinamobile.cmss.bcse.web.service" 
+		/> -->
+	<!-- <context:component-scan base-package="com.chinamobile.cmss.bcse.web.redis" 
+		/> -->
+	<!-- 自动扫描校验 -->
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.validate" />
+	<!-- 自动扫描评测体系service -->
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.evaluate.service" />
+	<!-- 自动扫描用户service -->
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.user.dao" />
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.user.service" />
+	<!-- 自动扫描应用service -->
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.app.service" />
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.app.util" />
+	<!-- 自动扫描校验service -->
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.config.service" />
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.search.service" />
+	<context:component-scan base-package="com.chinamobile.cmss.bcse.index.service" />
+	<context:component-scan
+		base-package="com.chinamobile.cmss.bcse.datastatistics.service" />
+
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<!-- <property name="location" value="file:/home/bcse/bcse.properties" 
+			/> -->
+		<property name="location" value="classpath:bcse.properties" />
+	</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${DRIVER}" />
+		<property name="url" value="${MYSQL_URL}" />
+		<property name="username" value="${MYSQL_USERNAME}" />
+		<property name="password" value="${MYSQL_PASSWORD}" />
+		<!-- 初始化连接大小 -->
+		<property name="initialSize" value="${INITIAL_SIZE}"></property>
+		<!-- 连接池最大数量 -->
+		<property name="maxActive" value="${MAX_ACTIVE}"></property>
+		<!-- 连接池最大空闲 -->
+		<property name="maxIdle" value="${MAX_IDLE}"></property>
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="${MIN_IDLE}"></property>
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="${MAX_WAIT}"></property>
+		<property name="testOnBorrow" value="true"></property>
+		<property name="validationQuery" value="SELECT 1" />
+	</bean>
+
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="mapperLocations"
+			value="classpath:com/chinamobile/cmss/bcse/*/mapping/*.xml"></property>
+	</bean>
+
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage"
+			value="com.chinamobile.cmss.bcse.user.dao;com.chinamobile.cmss.bcse.app.dao;com.chinamobile.cmss.bcse.config.dao;
+				   com.chinamobile.cmss.bcse.index.dao;com.chinamobile.cmss.bcse.datastatistics.dao;
+				   com.chinamobile.cmss.bcse.evaluate.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<!-- 配置事务的传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="edit*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置AOP -->
+	<aop:config proxy-target-class="true" />
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.chinamobile.cmss.bcse.web.service.impl..*.*(..))"
+			id="pointcut" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+
+	</aop:config>
+
+	<!-- redis同步 -->
+	<!-- <aop:config> <aop:pointcut expression="(execution(* com.chinamobile.cmss.bcse.web.service.impl.rule.*.*show*(..)))" 
+		id="rule"/> <aop:aspect id="updateRule" ref="updateRedis"> <aop:before method="update" 
+		pointcut-ref="rule"/> </aop:aspect> </aop:config> <bean id="updateRedis" 
+		class="com.chinamobile.cmss.bcse.web.service.impl.rule.UpateRule" /> -->
+
+
+	<!-- 配置Spring与redis集成 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="1024"></property>
+		<property name="maxIdle" value="200"></property>
+		<property name="minIdle" value="10"></property>
+		<property name="maxWaitMillis" value="15000"></property>
+		<property name="minEvictableIdleTimeMillis" value="300000"></property>
+		<property name="numTestsPerEvictionRun" value="3"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="60000"></property>
+		<property name="testOnBorrow" value="true"></property>
+		<property name="testOnReturn" value="true"></property>
+		<property name="testWhileIdle" value="true"></property>
+	</bean>
+
+	<bean id="jedisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		destroy-method="destroy">
+		<property name="hostName" value="${REDIS_SERVER_IP}" />
+		<property name="port" value="${REDIS_SERVER_PORT}" />
+		<property name="timeout" value="15000" />
+		<property name="database" value="0" />
+		<property name="password" value="${REDIS_PASSWORD}" />
+		<property name="usePool" value="true" />
+		<property name="poolConfig" ref="jedisPoolConfig" />
+	</bean>
+
+	<!-- redis template definition p表示对该bean里面的属性进行注入，格式为p:属性名=注入的对象 效果与在bean里面使用<property>标签一样 -->
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connection-factory-ref="jedisConnectionFactory">
+		<!-- 序列化方式 建议key/hashKey采用StringRedisSerializer。 -->
+		<property name="keySerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="hashKeySerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+		</property>
+		<property name="valueSerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+		<property name="hashValueSerializer">
+			<bean
+				class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+		</property>
+
+	</bean>
+	<!-- 对string操作的封装 -->
+	<bean id="stringRedisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
+		p:connection-factory-ref="jedisConnectionFactory" />
+		
+	<!-- <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager" 
+		c:template-ref="redisTemplate"/> -->
+</beans>

@@ -1,0 +1,11 @@
+<div class="analysis">
+  <h3>数据分析</h3>
+
+  <div analysis-time info="searchInfo.timeAppList"></div>
+
+  <div analysis-cost info="searchInfo.costAppList"></div>
+
+  <div analysis-num info="searchInfo.numAppList"></div>
+
+</div>
+

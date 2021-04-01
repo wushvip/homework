@@ -1,0 +1,18 @@
+<h2>5.日志统计分析</h2>
+<div class="app-error col-xs-12">
+  <article>
+    <section>
+      日志统计分析为应用管理的二级页面，用户可在此实现查看错误日志、数据分析、关键词热度统计等操作。</section>
+  </article>
+  <article>
+    <h3>5.1 错误日志</h3>
+    <section>
+      用户可选择任一时间段，查看错误日志的时间、错误码、错误模块、错误详情。
+    </section>
+    <section class="center">
+      <img src="images/doc/app/error/1.jpg" animate-visible="true" animate-speed="0.5s" alt="错误日志信息">
+      <footer>图5.1.1 错误日志信息</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

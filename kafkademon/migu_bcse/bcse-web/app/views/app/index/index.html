@@ -1,0 +1,43 @@
+
+<div class="index">
+  <div class="clearfix subtitle">
+    <h3 class="pull-left">索引处理</h3>
+    <button class="btn btn90 confirm pull-right" ng-click="openHistory(appInfo.appName)">历史记录</button>
+  </div>
+
+  <table class="table table-bordered table-condensed table-responsive">
+    <tbody>
+    <tr>
+      <td class="col-md-2 col-xs-3 update text-center">
+        <p class="back-collect-img update-data"></p>
+        <p class="text">索引更新</p>
+      </td>
+      <td>
+        <button class="btn btn-nocolor-lg" ng-click="updateData()" ng-disabled="submitting">上传文件</button>
+        <span class="des-text">可以进行本地文件上传</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="col-md-2 col-xs-3 delete text-center">
+        <p class="back-collect-img delete-data"></p>
+        <p class="text">索引删除</p>
+      </td>
+      <td>
+        <button class="btn btn-nocolor-lg" ng-click="deleteData()" ng-disabled="submitting">删除文件</button>
+        <span class="des-text">文件上传后删除文件上传部分</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="ccol-md-2 col-xs-3 clear text-center">
+        <p class="back-collect-img clear-data"></p>
+        <p class="text">索引清空</p>
+      </td>
+      <td>
+        <button class="btn btn-nocolor-lg" ng-click="clearData()" ng-disabled="!appInfo.dataNum||submitting">清空文件</button>
+        <span ng-if="appInfo.dataNum" class="des-text">清空应用中的数据</span>
+        <span ng-if="!appInfo.dataNum" class="des-text">无数据</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

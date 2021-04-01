@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.datastatistics.dao.ErrorLogDao">
+	<resultMap id="errorLogMap" type="com.chinamobile.cmss.bcse.datastatistics.bean.ErrorLogBean">
+		<id column="LOG_ID" property="id" jdbcType="INTEGER" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+		<result column="LOG_TIME" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="MODULE" property="module" jdbcType="VARCHAR" />
+		<result column="ERROR_CODE" property="code" jdbcType="INTEGER" />
+		<result column="FLAG" property="flag" jdbcType="INTEGER" />
+		<result column="ERROR_DETAILS" property="detail"
+			jdbcType="LONGVARCHAR" />
+	</resultMap>
+
+	<!--若干天内错误信息 -->
+	<select id="selectErrorLogAsDays" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultMap="errorLogMap">
+		SELECT LOG_ID,date_format(LOG_TIME,'%Y-%m-%d %T') LOG_TIME,MODULE,ERROR_CODE,ERROR_DETAILS
+		FROM
+		ERRORLOG
+		WHERE
+		LOG_TIME between #{startDateStr} and
+		#{endDateStr}
+		AND
+		USER_ID=#{userId}
+		AND APP_ID=#{appId}
+		order by LOG_TIME desc
+		<if test="pageIndex != 0 and pageNum != 0">
+			limit #{startNum},#{pageNum}
+		</if>
+	</select>
+	
+	<select id="getTotalItemsErrorLog" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultType="java.lang.Integer">
+		SELECT count(1)
+		FROM
+		ERRORLOG
+		WHERE
+		LOG_TIME between #{startDateStr} and
+		#{endDateStr}
+		AND
+		USER_ID=#{userId}
+		AND APP_ID=#{appId}
+
+
+	</select>
+
+	<!-- 插入语句块 -->
+	<insert id="insertErrorLog" parameterType="String">
+		INSERT INTO
+		ERRORLOG(USER_ID,APP_ID,
+		LOG_TIME,MODULE,ERROR_CODE,ERROR_DETAILS,FLAG)
+		VALUES
+		(#{USER_ID},#{APP_ID},#{LOG_TIME},#{MODULE},#{ERROR_CODE},#{ERROR_DETAILS},#{FLAG})
+	</insert>
+
+	<!-- 删除应用：删除错误日志 -->
+	<delete id="DeleteErrorLog" parameterType="String">
+		DELETE
+		FROM ERRORLOG
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+	</delete>
+</mapper>

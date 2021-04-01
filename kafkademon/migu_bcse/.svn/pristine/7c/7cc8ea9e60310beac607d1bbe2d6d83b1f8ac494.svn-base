@@ -1,0 +1,36 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.16 删除索引</h3>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>filePath</td>
+        <td>String</td>
+        <td>文档路径</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+        BBCSEIndex index = new BCSEIndex(client);
+        index.deleteIndex(filePath);
+        </xmp>
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

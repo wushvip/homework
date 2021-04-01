@@ -1,0 +1,186 @@
+<div class="app-java-sdk-search col-xs-12">
+  <article>
+    <h3>1.6 搜索功能</h3>
+    <section>
+      通过bcse管理平台设置可以实现高度个性化的搜索需求，但基本通用的搜索需求只需通过简单设置即可实现。
+    </section>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>searchQuery</td>
+        <td>string</td>
+        <td>搜索文本</td>
+        <td>是</td>
+        <td>最大支持100个字符，当搜索文本长度大于100时，自动截取前100个字符</td>
+      </tr>
+      <tr>
+        <td>sortConfig</td>
+        <td>string</td>
+        <td>排序配置</td>
+        <td>否</td>
+        <td>规则名称</td>
+      </tr>
+      <tr>
+        <td>sortRule</td>
+        <td>string</td>
+        <td>字段排序</td>
+        <td>否</td>
+        <td>高级搜索：字段排序</td>
+      </tr>
+      <tr>
+        <td>facetRule</td>
+        <td>string</td>
+        <td>分组统计</td>
+        <td>否</td>
+        <td>规则名称</td>
+      </tr>
+      <tr>
+        <td>pageIndex</td>
+        <td>int</td>
+        <td>请求结果的页码</td>
+        <td>否</td>
+        <td>动态分页所需的页码数（默认从1开始）</td>
+      </tr>
+      <tr>
+        <td>pageNum</td>
+        <td>int</td>
+        <td>请求结果的每页数量</td>
+        <td>否</td>
+        <td>动态显示条数（默认10条）最多200条</td>
+      </tr>
+      <tr>
+        <td>highLightFields</td>
+        <td>String</td>
+        <td>高亮</td>
+        <td>否</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>filterJson</td>
+        <td>json</td>
+        <td>分类过滤</td>
+        <td>否</td>
+        <td>分类过滤信息，二维数组形式；根据搜索结果展示是否有分类筛选功能</td>
+      </tr>
+      <tr>
+        <td colspan="5" class="center"><label>字段说明</label></td>
+      </tr>
+      <tr>
+        <th>字段</th>
+        <th>来源</th>
+        <th colspan="3">规则描述</th>
+      </tr>
+      <tr>
+        <td>searchQuery</td>
+        <td>用户</td>
+        <td colspan="3">最大支持100个字符，当搜索文本长度大于100时，自动截取前100个字符</td>
+      </tr>
+      <tr>
+        <td>sortRule</td>
+        <td>可选</td>
+        <td colspan="3">
+          <div>1、排序字段+空格+排序规则（ASC/DESC）</div>
+          <div>2、多个排序使用英文逗号分隔</div>
+          <div>Example: Time DESC,Number ASC（按照Time降序，Time相同的情况下按照Number升序）</div>
+        </td>
+      </tr>
+      <tr>
+        <td>sortConfig</td>
+        <td>平台</td>
+        <td colspan="3">平台配置的排序配置规则名</td>
+      </tr>
+      <tr>
+        <td>facetRule</td>
+        <td>平台</td>
+        <td colspan="3">平台配置的分组统计规则名</td>
+      </tr>
+      <tr>
+        <td>highLightFields</td>
+        <td>可选</td>
+        <td colspan="3">
+          <div>1、多个高亮字段使用英文逗号分隔</div>
+          <div>Example: Name,Title（按照Name,Title高亮显示）</div>
+        </td>
+      </tr>
+      <tr>
+        <td>filterJson</td>
+        <td>可选</td>
+        <td colspan="3">
+          <div>1、每个key:value代表一个过滤条件</div>
+          <div>2、多个条件之间是交集</div>
+          <div>
+            Example:
+          </div>
+          <div>
+            {
+               "Number":" [10 TO 100] ",
+               "Number2": " [10 TO 100] "
+            }
+          </div>
+          <div>这个筛选条件表示取筛选字段Number的值属于Number&ge;10 && Number&le;100并且Number2&ge;10 && Number2&lt;100</div>
+          <div>
+            {
+              "Number":" {10 TO 100} ",
+              "Number2": " {10 TO 100} "
+            }
+          </div>
+          <div>这个筛选条件标识取筛选自带Number的值属于Number&gt;10 && Number&lt;100并且Number2&gt;10 && Number2&lt;100</div>
+          <div>
+            {
+              "Number":" {10 TO 100] ",
+              "Number2": " [10 TO 100} "
+            }
+          </div>
+          <div>这个筛选条件标识取筛选自带Number的值属于Number&gt;10 && Number&le;100并且Number2&ge;10 && Number2&lt;100</div>
+          <div>
+            {
+              "Number":" [10 TO *] "
+            }
+          </div>
+          <div>这个筛选条件表示取筛选字段Number的值属于Number>=10</div>
+          <div>
+            {
+              "Number":"10 "
+            }
+          </div>
+          <div>这个筛选条件表示取筛选字段Number的值属于Number=10</div>
+          <div>
+            {
+              "Number":"(!10) "
+            }
+          </div>
+          <div>这个筛选条件表示取筛选字段Number的值属于Number不等于10</div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+        BCSESearch search=new BCSESearch(client);
+        search.setSearchQuery("移动");
+        search.search();
+        </xmp>
+			</pre>
+      或者
+      <pre>
+        BCSESearch search=new BCSESearch(client);
+        HashMap&lt;String, Object&gt; opts=new HashMap&lt;&gt;();
+        opts.put("searchQuery", "移动");
+        search.search(opts);
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

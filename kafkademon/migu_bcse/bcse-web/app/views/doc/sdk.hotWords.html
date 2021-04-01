@@ -1,0 +1,77 @@
+<div class="app-java-sdk-hot-words col-xs-12">
+  <article>
+    <h3>1.9 热词功能</h3>
+    <section>
+      通过这个接口可以将搜索关键词的日志按照天，周，月统计出来。
+    </section>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>dateType</td>
+        <td>String</td>
+        <td>请求热词的周期</td>
+        <td>是</td>
+        <td>DAY/WEEK/MONTH</td>
+      </tr>
+      <tr>
+        <td>pageIndex</td>
+        <td>Int</td>
+        <td>请求当前页码</td>
+        <td>否</td>
+        <td>动态分页所需的页码数（默认从1开始）</td>
+      </tr>
+      <tr>
+        <td>pageNum</td>
+        <td>Int</td>
+        <td>展现需要显示条数</td>
+        <td>否</td>
+        <td>动态显示条数（默认10条）,最大200</td>
+      </tr>
+      <tr>
+        <td>ct</td>
+        <td>String</td>
+        <td>门户</td>
+        <td>否</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>bookType</td>
+        <td>String</td>
+        <td>渠道</td>
+        <td>否</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        BCSEHeatWord heatWord=new BCSEHeatWord(client);
+        heatWord.setDateType("DAY");
+        heatWord.setPageIndex(1);
+        heatWord.setPageNum(10);
+        String result= heatWord.heatWords();
+			</pre>
+      或者
+      <pre>
+        BCSEHeatWord heatWord=new BCSEHeatWord(client);
+        HashMap&lt;String Object&gt; opts=new HashMap&lt;&gt;();
+        opts.put("dateType" ,"DAY");
+        opts.put("pageIndex" ,1);
+        opts.put("pageNum" ,10);
+        String result= heatWord.heatWords(opts);
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

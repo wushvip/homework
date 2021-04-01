@@ -1,0 +1,9 @@
+<div class="app-protocol col-xs-12">
+  <article>
+    <h3>1.2 鉴权</h3>
+    <section>
+      由系统分配给用户一个秘钥secretAccessKey，用于加密签名字符串和服务器端验证签名字符串的密钥，必须严格保密，只有BCSE系统及用户知道。参考<a href="download/bcse用户认证设计文档.docx" download="bcse用户认证设计文档.docx">《bcse用户认证设计文档》</a>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

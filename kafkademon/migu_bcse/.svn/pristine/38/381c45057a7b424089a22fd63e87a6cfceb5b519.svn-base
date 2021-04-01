@@ -1,0 +1,46 @@
+<div class="result">
+  <div class="pn-res">
+    <p>前N条测评结果</p>
+    <table class="table table-bordered table-responsive">
+      <thead>
+      <tr>
+        <th>序号</th>
+        <th class="col-xs-2">输入词</th>
+        <th class="col-xs-4">实际搜索结果</th>
+        <th class="col-xs-1">P@N得分</th>
+        <th class="col-xs-1">S@N得分</th>
+        <th class="col-xs-1">MRR</th>
+        <th class="col-xs-1">MAP</th>
+        <th>操作</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="pointInfo in evalObj.pointInfo track by $index | limitTo:num">
+        <td>{{$index+1}}</td>
+        <td>{{pointInfo.searchWord}}</td>
+        <td><span ng-show="pointInfo.searchNameResults&&pointInfo.searchNameResults.length">{{pointInfo.searchNameResults[0]}}...</span></td>
+        <td>{{pointInfo.pPoint}}</td>
+        <td>{{pointInfo.rPoint}}</td>
+        <td>{{pointInfo.arPoint}}</td>
+        <td>{{pointInfo.apPoint}}</td>
+        <td>
+          <a href="javascript:void(0)" ng-click="openDetails(pointInfo)">详情</a>
+        </td>
+      </tr>
+      <tr ng-if="evalObj.pointInfo&&evalObj.pointInfo.length>num" class="text-tip">
+        <td colspan="8">....全量评测情况请下载excel查看....</td>
+      </tr>
+      <tr ng-if="evalObj.totalPoint" class="everyScore">
+        <td>平均得分</td>
+        <td> </td>
+        <td> </td>
+        <td>{{evalObj.totalPoint.pTotalPoint}}</td>
+        <td>{{evalObj.totalPoint.rTotalPoint}}</td>
+        <td>{{evalObj.totalPoint.arTotalPoint}}</td>
+        <td>{{evalObj.totalPoint.apTotalPoint}}</td>
+        <td> </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

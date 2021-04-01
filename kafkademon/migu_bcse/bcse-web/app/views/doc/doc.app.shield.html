@@ -1,0 +1,25 @@
+<div class="app-protect col-xs-12">
+  <article>
+    <h3>4.4 屏蔽配置</h3>
+    <section>
+      如果用户在屏蔽词中配置了”延安”，那么搜索结果会去除“延安”的记录。用户可配置多个屏蔽规则（目前最多支持5条，且名称不允许重复）。
+    </section>
+    <section>
+      屏蔽规则：基于词根进行屏蔽。如用户设置屏蔽词为“保卫延安”：
+    </section>
+    <section>
+      分词器将屏蔽词分为“保卫”和“延安”，那么包含“保卫”词根的内容会被屏蔽，包含“延安”词根的内容也都会被屏蔽。如：“保卫萝卜”在分词的时候被分为“保卫”和“萝卜”，导致条目中包含“保卫萝卜”的也被屏蔽。
+    </section>
+    <section>
+      所以用户在配置屏蔽词的时候一定要慎重。
+    </section>
+    <section>
+      屏蔽要求：屏蔽关键字配置限制为30个，每个关键字不超过20个字。
+    </section>
+    <section class="center">
+      <img src="images/doc/app/shield/1.jpg" animate-visible="true" animate-speed="0.5s" alt="屏蔽配置">
+      <footer>图4.4.1 屏蔽配置</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

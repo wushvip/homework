@@ -1,0 +1,22 @@
+<div class="left-sidebar">
+  <ul class="nav first-class">
+    <li ng-repeat="setting in settings" ui-sref-active="active" left-sidebar>
+      <a ng-if="!setting.subMenus" ui-sref="{{setting.surl}}"><span class="bg-icon {{setting.className}}"></span>{{setting.head}}</a>
+      <a ng-if="setting.subMenus" ng-hide="!isAdmin()&&setting.className==='basic-setting-icon'" href="javascript:void(0)" ng-click="openMenu(setting)"><span class="glyphicon" ng-class="{true:'glyphicon-menu-down',false:'glyphicon-menu-right'}[setting.isOpen]"></span>{{setting.head}}</a>
+      <ul ng-show="setting.subMenus" ng-hide="!isAdmin()&&setting.className==='basic-setting-icon'" class="nav second-class sidebar">
+        <li ng-repeat="subMenu1 in setting.subMenus" ui-sref-active="active" ng-show="setting.isOpen" head="{{setting.className}}">
+          <a ng-if="!subMenu1.subMenus" ui-sref="{{subMenu1.surl}}"><span class="bg-icon dot-icon"></span>{{subMenu1.head}}</a>
+          <a ng-if="subMenu1.subMenus" href="javascript:void(0)" ng-click="openMenu(setting,subMenu1)">
+            <span class="bg-icon dot-icon {{subMenu1.className}}"></span>{{subMenu1.head}}
+            <i class="glyphicon" ng-class="{true:'glyphicon-menu-down',false:'glyphicon-menu-right'}[subMenu1.isOpen]"></i>
+          </a>
+          <ul ng-show="subMenu1.subMenus" class="nav third-class sidebar">
+            <li ng-repeat="subMenu2 in subMenu1.subMenus" ui-sref-active="active" ng-show="subMenu1.isOpen">
+              <a ng-show="!subMenu2.subMenus" ui-sref="{{subMenu2.surl?subMenu2.surl:'.'}}"><span class="bg-icon indent-icon"></span>{{subMenu2.head}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

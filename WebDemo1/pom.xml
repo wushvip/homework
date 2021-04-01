@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<repositories>
+		<!-- <repository>
+			<id>central</id>
+			<url> http://repo1.maven.org/maven2</url>
+		</repository> -->
+		<repository>
+			<id>aliyun</id>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- spring版本号 -->
+		<spring.version>4.0.2.RELEASE</spring.version>
+		<!-- mybatis版本号 -->
+		<mybatis.version>3.2.6</mybatis.version>
+		<!-- log4j日志文件管理包版本 -->
+		<commons-dbcp.version>1.2.2</commons-dbcp.version>
+		<mybatis-spring.version>1.2.2</mybatis-spring.version>
+		<jedis.version>2.4.2</jedis.version>
+		<spring-data-redis.version>1.4.1.RELEASE</spring-data-redis.version>
+		<javaee-api.version>7.0</javaee-api.version>
+		<mysql-connector-java.version>5.1.30</mysql-connector-java.version>
+		<fastjson.version>1.2.3</fastjson.version>
+		<jackson.version>2.5.0</jackson.version>
+		<solr-core.version>5.3.1</solr-core.version>
+		<solr-solrj.version>5.3.1</solr-solrj.version>
+		<maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+	</properties>
+
+	<dependencies>
+		<dependency>
+         <groupId>org.apache.cxf</groupId>
+         <artifactId>cxf-rt-frontend-jaxws</artifactId>
+         <version>3.1.9</version>
+	     </dependency>
+	      <dependency>
+	         <groupId>org.apache.cxf</groupId>
+	        <artifactId>cxf-rt-transports-http-jetty</artifactId>
+	         <version>3.1.9</version>
+	     </dependency>
+	     <dependency>
+	         <groupId>org.apache.cxf</groupId>
+	        <artifactId>cxf-core</artifactId>
+	         <version>3.1.9</version>
+	     </dependency>
+	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<profile.path>env/dev</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<profile.path>env/test</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>pre</id>
+			<properties>
+				<profile.path>env/pre</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>product</id>
+			<properties>
+				<profile.path>env/product</profile.path>
+			</properties>
+		</profile>
+		<profile>
+			<id>home</id>
+			<properties>
+				<profile.path>env/home</profile.path>
+			</properties>
+		</profile>
+	</profiles>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>${profile.path}</directory>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.properties</include>
+					<include>**/*.tld</include>
+					<include>**/*.txt</include>
+				</includes>
+			</resource>
+		</resources>
+	<pluginManagement>
+		<plugins>
+			<plugin>
+			 	<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<webXml>WebContent\WEB-INF\web.xml</webXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>buildnumber-maven-plugin</artifactId>
+				<version>1.4</version>
+				<configuration>
+					<timestampFormat>yyyyMMddHHmmss</timestampFormat>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>create-timestamp</goal>
+						</goals>
+					</execution>
+				</executions>
+				<inherited>false</inherited>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+		<finalName>${project.name}-${project.version}-${timestamp}</finalName>
+	</build>
+</project>

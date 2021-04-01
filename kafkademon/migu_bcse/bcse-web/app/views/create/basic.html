@@ -1,0 +1,34 @@
+<div class="create-container">
+  <div class="create-body">
+    <form name="myForm" class="form-horizontal">
+      <div class="form-group">
+        <div class="col-xs-2 text-right">
+          <label class="">{{messages.appName}}<span class="red">*</span></label>
+        </div>
+        <div class="col-xs-10">
+          <input type="text" class="form-control" name="appName" ng-model="basicInfo.appName" required ng-pattern="/^[a-zA-Z0-9][a-zA-Z0-9_]{0,29}$/" ng-focus="nameError=false" maxlength="15">
+          <span class="text-tip">{{messages.create.appNameTip}}</span>
+					<span class="red" ng-show="myForm.appName.$dirty && myForm.appName.$invalid">
+						<span ng-show="myForm.appName.$error.required">{{messages.create.appNameRequired}}</span>
+						<span ng-show="myForm.appName.$error.pattern">{{messages.create.appNamePattern}}</span>
+					</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-2 text-right">
+          <label class="">{{messages.appDescription}}</label>
+        </div>
+        <div class="col-xs-10">
+          <textarea rows="5" name="appDesc" ng-model="basicInfo.appDescribe"  class="form-control" char-max="600"   ng-trim="false"></textarea>
+          <span class="text-tip">{{basicInfo.appDescribe.length||0}}/600</span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="create-footer">
+    <div class="pull-right">
+      <a ui-sref="manage.apps" class="btn btn90 cancel">{{messages.cancel}}</a>
+      <button class="btn btn90 confirm" ng-disabled="myForm.appName.$invalid||submitting" ng-click="saveBasicInfo()">{{submitting?messages.saving:messages.next}}</button>
+    </div>
+  </div>
+</div>

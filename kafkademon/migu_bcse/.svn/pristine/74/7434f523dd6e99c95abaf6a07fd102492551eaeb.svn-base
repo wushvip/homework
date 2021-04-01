@@ -1,0 +1,70 @@
+<div class="upload-file-modal" discard-modal>
+  <div class="modal-header">
+    <span>上传文件</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+  <div class="modal-body">
+    <p>说明：支持csv格式上传，大小不超过200M。<span ng-if="operateIndex !== 'delete'">数据格式请参考<a ui-sref="manage.app.sample({appId:appId,userId:appUserId})" target="_blank">数据样例</a>。</span></p>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-fixed" ng-repeat="table in tableStruct">
+          <thead>
+          <tr>
+            <th>文件名</th>
+            <th>字段分隔符</th>
+            <th>多值分隔符</th>
+            <th>上传进度</th>
+            <th class="col-xs-3">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="file in table.files|limitTo:5">
+            <td title="{{file.name}}">{{file.name}}</td>
+            <td>
+              <select ng-options="split for split in splitConfig" ng-model="file.fileSplit" ng-init="file.fileSplit = splitConfig[0]">
+              </select>
+            </td>
+            <td>
+              <select ng-options="split for split in splitConfig" ng-model="file.mutiValueSplit" ng-init="file.mutiValueSplit = splitConfig[2]">
+              </select>
+            </td>
+            <td>
+              <span ng-if="checkFileIsAvailable(file)" title="准备上传">准备上传</span>
+              <p class="alert-danger" ng-if="!checkFileName(file)" title="文件格式不符合">文件格式不符合</p>
+              <p class="alert-danger" ng-if="!checkFileSize(file)" title="文件大小不符合">文件大小不符合</p>
+              <p class="alert-danger" ng-if="!checkFileSplit(file)" title="字段分隔符和多值分隔符不能相同！">字段分隔符和多值分隔符不能相同！</p>
+              <uib-progressbar class="progress-striped active" value="file.progress" type="success" ng-if="file.progress>0" ng-class="{active: file.progress<100}" style="margin-bottom:0"><i ng-bind="file.progress + '%'"></i></uib-progressbar>
+              <span ng-if="file.errorMessage" class="alert-danger" title="{{file.errorMessage}}">{{file.errorMessage}}</span>
+            </td>
+            <td>
+              <button ng-click="removeFile(table.files,$index)" class="btn btn90 blank-btn" ng-disabled="submitting" ng-if="!file.success">删除
+              </button>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr ng-if="!table.files.length">
+            <td colspan="5">
+              <p class="mindTips">还未添加数据文件</p>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <button class="btn btn90 confirm" ng-if="!table.files||table.files.length<5" ng-model="table.files" ngf-multiple="true" ngf-keep="'distinct'" ngf-max-files="5" ngf-select="limitFileNum(table.files)" ng-disabled="submitting">+添加文件</button>
+              <button class="btn btn90 confirm" ng-if="table.files&&table.files.length>=5" ng-click="checkFileNum(table.files)" ng-disabled="submitting">+添加文件</button>
+            </td>
+            <td>
+              <button ng-click="uploadFile(table.tableId,table.files)" class="btn btn90 confirm" ng-disabled="!checkFilesIsAvailable(table.files)||submitting">上传</button>
+            </td>
+            <td>
+              <button class="btn btn90 cancel" ng-click="cancel()" ng-disabled="submitting">完成</button>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

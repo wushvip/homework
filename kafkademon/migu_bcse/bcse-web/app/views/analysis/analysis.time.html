@@ -1,0 +1,34 @@
+<p>搜索次数</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="pull-left">
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchTime(-1,-1,'1')" ng-class="{active: type==='1'}">昨天</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchTime(-7,-1,'2')" ng-class="{active: type==='2'}">最近7天</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchTime(-30,-1,'3')" ng-class="{active: type==='3'}">最近30天</button>
+    </div>
+    <form name="searchTimeForm">
+      <label class="pull-left">选择时间范围: </label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" name="startTime" class="form-control" uib-datepicker-popup ng-model="startTime" is-open="startPopupOpened" datepicker-options="startDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+              <span class="input-group-btn">
+                <button type="button" class="btn cancel" ng-click="startOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+      </div>
+      <label class="pull-left">至</label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" name="endTime" class="form-control" uib-datepicker-popup ng-model="endTime" is-open="endPopupOpened" datepicker-options="endDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+              <span class="input-group-btn">
+                <button type="button" class="btn cancel" ng-click="endOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+      </div>
+      <button class="btn confirm" ng-click="getSearchTime(startTime, endTime,'4')" ng-disabled="searchTimeForm.$invalid||!timeAppList.length">查询</button>
+    </form>
+  </div>
+  <div class="panel-body">
+    <div style="height:400px" id="echarts-times" ></div>
+   </div>
+</div>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.datastatistics.dao.HotWordsDao">
+  <resultMap id="hotSearchWordsMap" type="com.chinamobile.cmss.bcse.datastatistics.bean.HotWordsBean">
+    <result column="USER_ID" jdbcType="VARCHAR" property="userId" />
+    <result column="APP_ID" jdbcType="VARCHAR" property="appId" />
+    <result column="OPER_TIME" jdbcType="DATE" property="operTime" />
+    <result column="KEYWORDS" jdbcType="VARCHAR" property="keywords" />
+    <result column="SEARCH_COUNT" jdbcType="INTEGER" property="searchCount" />
+  </resultMap>
+  <!--昨天搜索热词 -->
+	<select id="selectHotSearchWordYesterday" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultMap="hotSearchWordsMap">
+		SELECT OPER_TIME,KEYWORDS,SEARCH_COUNT
+		FROM
+		HOTWORDS_DAY
+		WHERE
+		OPER_TIME =
+		(SELECT MAX(OPER_TIME)
+		FROM
+		HOTWORDS_DAY)
+		AND
+		USER_ID=#{userId}
+		AND
+		APP_ID=#{appId}
+		ORDER BY SEARCH_COUNT DESC 
+		<if test="pageIndex != 0 and pageNum != 0">
+			limit #{startNum},#{pageNum}
+		</if>
+	</select>
+
+	<!--最近一周搜索热词 -->
+	<select id="selectHotSearchWordAsWeek" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultMap="hotSearchWordsMap">
+		SELECT OPER_TIME,KEYWORDS,SEARCH_COUNT
+		FROM
+		HOTWORDS_WEEK
+		WHERE
+		OPER_TIME =
+		(SELECT MAX(OPER_TIME)
+		FROM
+		HOTWORDS_WEEK)
+		AND
+		USER_ID=#{userId}
+		AND
+		APP_ID=#{appId}
+		ORDER BY SEARCH_COUNT DESC
+		<if test="pageIndex != 0 and pageNum != 0">
+			limit #{startNum},#{pageNum}
+		</if> 
+	</select>
+
+	<!--最近一月搜索热词 -->
+	<select id="selectHotSearchWordAsMonth" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultMap="hotSearchWordsMap">
+		SELECT OPER_TIME,KEYWORDS,SEARCH_COUNT
+		FROM
+		HOTWORDS_MONTH
+		WHERE
+		OPER_TIME =
+		(SELECT MAX(OPER_TIME)
+		FROM
+		HOTWORDS_MONTH)
+		AND
+		USER_ID=#{userId}
+		AND
+		APP_ID=#{appId}
+		ORDER BY SEARCH_COUNT DESC
+		<if test="pageIndex != 0 and pageNum != 0">
+			limit #{startNum},#{pageNum}
+		</if>
+	</select>
+	
+	<insert id="insertHotWord" parameterType="String">
+		INSERT INTO HOTWORDS_DAY 
+		VALUES(#{id},#{USER_ID},#{APP_ID},#{CREATE_DATE},#{KEYWORD},#{KEYNUM},#{FLAG});
+	
+	</insert>
+
+	<!--最近一段时间内搜索热词 -->
+		<select id="selectHotSearchWordAsDays" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultMap="hotSearchWordsMap">
+		SELECT
+		OPER_TIME,KEYWORDS,SUM(SEARCH_COUNT) AS SEARCH_COUNT
+		from HOTWORDS_DAY
+		where 
+		APP_ID=#{appId}
+		AND
+		USER_ID=#{userId}
+		AND
+		OPER_TIME between #{startDateStr} and
+		#{endDateStr}
+		GROUP BY KEYWORDS
+		order by SEARCH_COUNT DESC
+		<if test="pageIndex != 0 and pageNum != 0">
+			limit #{startNum},#{pageNum}
+		</if>
+	</select>
+	
+	
+	<select id="getTotalItemsHotWord" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultType="java.lang.Integer">
+		select 
+			count(1)
+		from
+		(
+			SELECT
+			KEYWORDS
+			from HOTWORDS_DAY
+			where 
+			APP_ID=#{appId}
+			AND
+			USER_ID=#{userId}
+			AND
+			OPER_TIME between #{startDateStr} and
+			#{endDateStr}
+			GROUP BY KEYWORDS
+
+		) tab1
+	</select>
+	<!--ADD_zhuxiang 2017.02.23 Start-->
+	<select id="getTotalItemsHotWordAsWeek" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultType="java.lang.Integer">
+		select 
+			count(1)
+		from
+		(
+			SELECT
+			KEYWORDS
+			from HOTWORDS_WEEK
+			where 
+			APP_ID=#{appId}
+			AND
+			USER_ID=#{userId}
+			AND
+			OPER_TIME=
+			(	
+				SELECT MAX(OPER_TIME)
+				FROM
+				HOTWORDS_WEEK
+			)
+			GROUP BY KEYWORDS
+
+		) tab1
+	</select>
+	
+	<select id="getTotalItemsHotWordAsMonth" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultType="java.lang.Integer">
+		select 
+			count(1)
+		from
+		(
+			SELECT
+			KEYWORDS
+			from HOTWORDS_MONTH
+			where 
+			APP_ID=#{appId}
+			AND
+			USER_ID=#{userId}
+			AND
+			OPER_TIME=
+			(	
+				SELECT MAX(OPER_TIME)
+				FROM
+				HOTWORDS_MONTH
+			)
+			GROUP BY KEYWORDS
+
+		) tab1
+	</select>
+	
+	
+	<select id="getTotalItemsHotWordYesterday" parameterType="com.chinamobile.cmss.bcse.datastatistics.bean.LogReqBean"
+		resultType="java.lang.Integer">
+		select 
+			count(1)
+		from
+		(
+			SELECT
+			KEYWORDS
+			from HOTWORDS_DAY
+			where 
+			APP_ID=#{appId}
+			AND
+			USER_ID=#{userId}
+			AND
+			OPER_TIME=
+			(	
+				SELECT MAX(OPER_TIME)
+				FROM
+				HOTWORDS_DAY
+			)
+			GROUP BY KEYWORDS
+
+		) tab1
+	</select>
+	<!--ADD_zhuxiang 2017.02.23 End-->
+	
+	<!-- 删除应用：删除热词-->
+	<delete id="DeleteHotWord" parameterType="String">
+		DELETE
+		FROM HOTWORDS_DAY
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+</mapper>

@@ -1,0 +1,40 @@
+<div class ="create-container">
+  <div class="confirm-info">
+
+      <p class="subtitle">
+        <span >基本信息</span>
+      </p>
+
+      <div class="row">
+        <div class="col-md-2 col-xs-3 text-right">
+          <label class="control-label">应用名称</label>
+        </div>
+        <div class="col-md-8 col-xs-9">
+          <span class="name">{{basicInfo.appName?basicInfo.appName:messages.none}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 col-xs-3 text-right">
+          <label class="control-label">应用描述</label>
+        </div>
+        <div class="col-md-8 col-xs-9">
+          <span class="description">{{basicInfo.appDescribe?basicInfo.appDescribe:messages.noDescription}}</span>
+        </div>
+      </div>
+
+      <p class="subtitle">
+        <span >应用结构</span>
+      </p>
+
+    <div ng-include="'views/templates/struct.review.html'"></div>
+
+  </div>
+  <div class="create-footer">
+    <div class="pull-right">
+      <a ui-sref="manage.apps" class="btn btn90 cancel">{{messages.cancel}}</a>
+      <!--<a ui-sref="manage.create.struct" class="btn btn90 cancel">{{messages.previous}}</a>-->
+      <button class="btn btn90 cancel" ng-click="previous()" ng-disabled="submitting">{{messages.previous}}</button>
+      <button class="btn btn90 confirm" ng-click="finish()" ng-disabled="submitting">{{messages.establish}}</button>
+    </div>
+  </div>
+</div>

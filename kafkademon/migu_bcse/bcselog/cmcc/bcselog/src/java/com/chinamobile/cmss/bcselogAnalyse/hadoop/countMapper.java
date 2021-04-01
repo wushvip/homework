@@ -1,0 +1,59 @@
+package com.chinamobile.cmss.bcselogAnalyse.hadoop;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+/**
+ * @ClassName: countMapper
+ * @Description: 解析日志文件，提取搜索次数信息，进行mapper计算
+ * @author: yangjing
+ * @date: 2016年2月1日 上午10:00:56
+ */
+public class countMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+	private final static IntWritable one = new IntWritable(1);
+	private Text word = new Text();
+
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+		String line = value.toString();
+
+		String str = "GET /jf.gif?log_type=searchlog";
+		if (line.contains(str)) {
+			String[] arr = line.split("&");
+			Map<String, String> fields = new HashMap<String, String>();
+			for (int j = 0; j < arr.length; j++) {
+				String[] field = null;
+				try {
+					field = java.net.URLDecoder.decode(arr[j].trim(), "UTF-8").split("=");
+					if (field.length == 2) {
+						// 将数据转换成小时
+						if (field[0].equals("oper_time")) {
+							String hour = field[1];
+							hour = hour.substring(0, hour.indexOf(":"));
+							fields.put(field[0], hour);
+						} else {
+							fields.put(field[0], field[1]);
+						}
+					}
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
+			}
+			if (fields.containsKey("keywords")) {
+				String sk = fields.get("oper_time") + " " + fields.get("user_id") + " " + fields.get("app_id") + " "
+						+ fields.get("flag");
+				word.set(sk);
+				context.write(word, one);
+			}
+
+		}
+
+	}
+
+}

@@ -1,0 +1,136 @@
+<?xml version="1.0" ?>  
+<project default="api.war" name="api" xmlns:artifact="urn:maven-artifact-ant" basedir=".">  
+	<!-- 注意:下载pom文件里的jar时,依赖 maven-ant-tasks-2.1.3.jar-->  
+	<property name="target.dir" value="target" />  
+	<property name="project.name" value="api" />
+    <property name="downlib.dir" value="target/${project.name}/lib" />  
+    <property name="src.dir" value="cmcc" /> 
+	<property name="resource.dir" value="cmcc/bcse/resources" />
+	<property name="main.dir" value="src/main" />
+	
+	<property name="datastatistics.dir" value="cmcc/bcse/datastatistics/src/java" />
+	<property name="datastatistics.mapping" value="com/chinamobile/cmss/bcse/datastatistics/mapping" />
+	<property name="config.dir" value="cmcc/bcse/config/src/java" />
+	<property name="config.mapping" value="com/chinamobile/cmss/bcse/config/mapping" />
+	<property name="evaluate.dir" value="cmcc/bcse/evaluate/src/java" />
+	<property name="evaluate.mapping" value="com/chinamobile/cmss/bcse/evaluate/mapping" />
+	<property name="index.dir" value="cmcc/bcse/index/src/java" />
+	<property name="index.mapping" value="com/chinamobile/cmss/bcse/index/mapping" />
+	<property name="app.dir" value="cmcc/bcse/app/src/java" />
+	<property name="app.mapping" value="com/chinamobile/cmss/bcse/app/mapping" />
+	<property name="users.dir" value="cmcc/bcse/user/src/java" />
+	<property name="users.mapping" value="com/chinamobile/cmss/bcse/user/mapping" />
+    <!-- 定义：maven-bcse-tasks工具路径 -->  
+    <path id="maven-ant-tasks.classpath" path="maven-ant-tasks-2.1.3.jar" />  
+    <!-- 定义使用bcselib -->  
+    <typedef resource="org/apache/maven/artifact/ant/antlib.xml" uri="urn:maven-artifact-ant" classpathref="maven-ant-tasks.classpath" />  
+    <!-- 定义jar库：maven-ant-tasks 会自动下载pom.xml定义好的jar包 -->  
+    <artifact:dependencies filesetId="deps.fileset.compile" useScope="compile">  
+        <pom file="pom.xml" />  
+    </artifact:dependencies>  
+    <!-- 定义编译路径 -->  
+    <path id="lib-classpath">  
+        <fileset dir="${downlib.dir}">  
+            <include name="**/*.jar" />  
+        </fileset>   
+    </path>  
+  
+    <!-- 1. 初始化工作，如创建目录等 -->  
+    <target name="init">  
+        <delete dir="${target.dir}" includeemptydirs="false" />  
+        <mkdir dir="${target.dir}/${project.name}/WEB-INF/classes"/> 
+    	<mkdir dir="${target.dir}/${project.name}/WEB-INF/lib"/> 
+    	<mkdir dir="${downlib.dir}"/> 
+    	
+    	<mkdir dir="${datastatistics.dir}/${datastatistics.mapping}"/> 
+    	<mkdir dir="${config.dir}/${config.mapping}"/> 
+    	<mkdir dir="${evaluate.dir}/${evaluate.mapping}"/> 
+    	<mkdir dir="${index.dir}/${index.mapping}"/> 
+    	<mkdir dir="${app.dir}/${app.mapping}"/> 
+    	<mkdir dir="${users.dir}/${users.mapping}"/> 
+		
+    </target>  
+  
+    <!-- 2.下载所需jar包 -->  
+    <target name="download-libs" depends="init">  
+        <copy todir="${downlib.dir}">  
+            <fileset refid="deps.fileset.compile" />  
+        </copy>  
+    </target>  
+  
+    <!-- 3.编译 -->  
+    <target name="compile" depends="download-libs">  
+        <!-- 编译java文件 -->  
+        <javac srcdir="${src.dir}" destdir="${target.dir}/${project.name}/WEB-INF/classes" source="1.7" target="1.7" includeantruntime="false" encoding="utf-8" debug="on">  
+            <compilerarg line="-encoding UTF-8" />  
+            <classpath refid="lib-classpath" />  
+        </javac>  
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes">  
+            <fileset dir="${resource.dir}">  
+                <include name="**/*.*" />  
+            </fileset>  
+        </copy>  
+    	
+    	
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${datastatistics.mapping}">  
+            <fileset dir="${datastatistics.dir}/${datastatistics.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${config.mapping}">  
+            <fileset dir="${config.dir}/${config.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${evaluate.mapping}">  
+            <fileset dir="${evaluate.dir}/${evaluate.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${index.mapping}">  
+            <fileset dir="${index.dir}/${index.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${app.mapping}">  
+            <fileset dir="${app.dir}/${app.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+        <!-- copy resources 文件 -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/classes/${users.mapping}">  
+            <fileset dir="${users.dir}/${users.mapping}">  
+                <include name="**/*.xml" />  
+            </fileset>  
+        </copy>
+    	
+    	
+    	
+        <!-- copy webapp 文件 -->  
+        <copy todir="${target.dir}/${project.name}">  
+            <fileset dir="${main.dir}/webapp">  
+                <include name="**/*" />  
+            </fileset>  
+        </copy>  
+        <!-- copy libs -->  
+        <copy todir="${target.dir}/${project.name}/WEB-INF/lib" flatten="true">  
+            <fileset dir="${downlib.dir}">  
+                <include name="**/*.jar" />  
+            </fileset>  
+        </copy>  
+    	<delete dir="${downlib.dir}" includeemptydirs="false" />  
+    </target> 
+	
+    <target name="api.war"  depends="compile">
+        <!-- war为打包web项目压缩文件， destfile为目标输出文件，basedir为需要打包的web项目目录  -->
+        <war destfile="${target.dir}/api.war" basedir="${target.dir}/${project.name}"></war>
+    </target>
+	
+  
+</project>  

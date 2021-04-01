@@ -1,0 +1,15 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.29 获取敏感词规则</h3>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+          BCSEShield shield=new BCSEShield (client);
+          String result= shield. get();
+        </xmp>
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

@@ -1,0 +1,71 @@
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <label for="appname" class="col-xs-2 col-md-2 col-lg-2 text-right">当前应用<span class="red">*</span></label>
+      <div class="col-xs-10 col-md-10 col-lg-10">
+        <input type="text" ng-model="evalObj.selectedApp" placeholder="请输入关键词查询" uib-typeahead="app as app.appName for app in getAllApps($viewValue)" class="form-control" maxlength="100" autocomplete="off" typeahead-show-hint="true" typeahead-min-length="0" typeahead-no-results="noResults" typeahead-select-on-blur="true" typeahead-on-select="changeApp()" >
+        <div ng-show="noResults">
+          <i class="glyphicon glyphicon-remove"></i> {{messages.public.noResult}}
+        </div>
+        <p class="text-tip">需要评测的当前应用</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="appname" class="col-xs-2 col-md-2 col-lg-2 text-right">排序配置<span class="red">*</span></label>
+      <div class="col-xs-10 col-md-10 col-lg-10">
+        <select class="form-control" ng-options="config.ruleName as config.ruleName for config in evalObj.configRules" ng-model="evalObj.sortConfig" required>
+          <option value="">--请选择--</option>
+        </select>
+        <p class="text-tip">选择排序配置</p>
+      </div>
+    </div>
+    <!-- 增加in class展示元素，增加collapsing动画效果 -->
+    <div id="thirdPart" class="collapse" ng-class="{true:'in',false:''}[evalObj.isThirdPart]">
+      <div class="form-group">
+        <label for="http-address" class="col-xs-2 col-md-2 col-lg-2 text-right">第三方的http地址</label>
+        <div class="col-xs-10 col-md-10 col-lg-10">
+          <input class="form-control" type="text" name="http-address" ng-model="evalObj.httpAddress">
+        </div>
+      </div>
+      <div class="col-xs-offset-2">
+        <p class="text-tip">需要评测的第三方搜索应用，搜索的REST API</p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="eval-fields" class="col-xs-2 col-md-2 col-lg-2 text-right">填写解析字段<span class="red">*</span></label>
+      <div class="col-xs-10 col-md-10 col-lg-10">
+        <div class="btn-group" uib-dropdown is-open="status.isopen">
+          <button ng-disabled="!evalObj.appFieldsForSelect||evalObj.appFieldsForSelect.length===0" class="btn cancel dropdown-toggle" id="dropdownAppFileds" data-toggle="dropdown" uib-dropdown-toggle>添加搜索字段
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="dropdownAppFileds">
+            <li ng-repeat="field in evalObj.appFieldsForSelect">
+              <label>
+                <input type="checkbox" ng-model="field.isselected" ng-click="addEvalFields(field)" name="evalFields" ng-disabled="checkFieldIsPk(field)">
+                <span>{{field.fieldName}}</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+				<span ng-repeat="field in evalObj.evalFields" class="analysis-word">{{field}}
+					<span class="element-remove" ng-click="removeField(field)">
+					</span>
+				</span>
+        <p class="text-tip">{{messages.evaluation.unFitField}}</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="eval-data-type" class="col-xs-2 col-md-2 col-lg-2 text-right">选择返回格式<span class="red">*</span></label>
+      <div class="col-xs-10 col-md-10 col-lg-10">
+        <select class="form-control" ng-options="dataType for dataType in dataTypeOptions" ng-model="evalObj.dataType" ng-disabled="true"></select>
+      </div>
+    </div>
+  </form>
+  <div class="row eval-footer">
+    <div class="col-xs-11">
+      <div class="pull-right">
+        <a ui-sref="manage.apps" class="btn btn90 cancel">{{messages.cancel}}</a>
+        <button class="btn btn90 confirm" ng-disabled="basicForm.appName.$invalid||submitting" ng-click="next()">{{submitting?messages.saving:messages.next}}</button>
+      </div>
+    </div>
+  </div>

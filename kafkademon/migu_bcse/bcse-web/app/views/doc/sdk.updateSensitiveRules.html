@@ -1,0 +1,25 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.31 更新敏感词规则</h3>
+    <section>
+      调用方式：
+      <pre>
+        BCSEShield shield=new BCSEShield (client);
+        String ruleName;
+        List&lt;String&gt; includeKeywords;
+        shield.setRuleName(ruleName);
+        shield.setIncludeKeywords(includeKeywords);
+        String result= shield.update();
+			</pre>
+      或者
+      <pre>
+        BCSEShield shield=new BCSEShield (client);
+        HashMap&lt;String, Object&gt; opts=new HashMap&lt;&gt;();
+        opts.put("ruleName", ruleName);
+        opts.put("includeKeywords",includeKeywords);
+        String result= shield. update(opts);
+      </pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

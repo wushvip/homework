@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.datastatistics.dao.SearchCostDao">
+
+	<resultMap type="com.chinamobile.cmss.bcse.datastatistics.bean.LogSearchCostTimeBean" id="searchCostMap">
+		<result property="oper_date" column="OPER_DATE" />
+		<result property="oper_hour" column="OPER_HOUR" />
+		<result property="max_cost" column="MAX_COST" />
+		<result property="min_cost" column="MIN_COST" />
+		<result property="avg_cost" column="AVG_COST" />
+	</resultMap>
+
+	<!--昨天每小时的搜索时间耗费 -->
+	<select id="selectSearchCostPerHour" parameterType="String"
+		resultMap="searchCostMap">
+		SELECT OPER_HOUR,MAX_COST,MIN_COST,AVG_COST
+		FROM
+		SEARCH_COST_HOUR
+		WHERE
+		OPER_DATE = #{OPER_DATE}
+		
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+		<!-- GROUP by OPER_HOUR -->
+		order by OPER_HOUR asc
+	</select>
+
+
+	<!--若干天之间搜索时间耗费 （按天） -->
+	<select id="selectSearchCostPerDay" parameterType="String"
+		resultMap="searchCostMap">
+		SELECT OPER_DATE,MAX_COST,MIN_COST,AVG_COST
+		FROM
+		SEARCH_COST_DAY
+		WHERE
+		OPER_DATE between #{OPER_DATE_START} and
+		#{OPER_DATE_END}
+		
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+		order by OPER_DATE asc
+	</select>
+	
+	<!-- 删除应用：删除搜索耗时(按天)-->
+	<delete id="DeleteCostAsDay" parameterType="String">
+		DELETE
+		FROM SEARCH_COST_DAY
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+	
+	<!-- 删除应用：删除搜索耗时(按小时)-->
+	<delete id="DeleteCostAsHour" parameterType="String">
+		DELETE
+		FROM SEARCH_COST_HOUR
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+
+</mapper>

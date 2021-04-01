@@ -1,0 +1,28 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.26 更新搜索推广规则</h3>
+    <section>
+      调用方式：
+      <pre>
+        BCSEElevate elevate=new BCSEElevate (client);
+        String ruleName;
+        List&lt;String&gt; includeKeywords;
+        List&lt;String&gt; spreadIds;
+        elevate.setRuleName(ruleName);
+        elevate.setIncludeKeywords(includeKeywords);
+        elevate.setSpreadIds(spreadIds);
+        String result= elevate.update();
+			</pre>
+      或者
+      <pre>
+        BCSEElevate elevate=new BCSEElevate (client);
+        HashMap&lt;String, Object&gt; opts=new HashMap&lt;&gt;();
+        opts.put("ruleName", ruleName);
+        opts.put("includeKeywords",includeKeywords);
+        opts.put("spreadIds",spreadIds);
+        String result= elevate. update(opts);
+      </pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

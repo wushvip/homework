@@ -1,0 +1,45 @@
+<div class="app-java-sdk-clear-index col-xs-12">
+  <article>
+    <h3>1.18 Json删除索引</h3>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表1. 参数描述</caption>
+      <thead>
+      <tr>
+        <th>参数</th>
+        <th>参数类型</th>
+        <th>说明</th>
+        <th>是否必填</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>datas</td>
+        <td>JsonArray</td>
+        <td>用户的多条数据以json数组的形式提供</td>
+        <td>是</td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      调用方式：
+      <pre>
+        <xmp>
+        BCSEIndex index = new BCSEIndex(client);
+        JSONArray array = new JSONArray();
+        JSONObject obj = new JSONObject ();
+        obj .put(“name”,”移动”);
+        obj .put(“age”,”20”);
+        JSONObject obj2 = new JSONObject ();
+        Obj2 .put(“name”,”中国”);
+        Obj2 .put(“age”,”30”);
+        array.add(obj );
+        array.add(obj2 );
+        index.deleteIndexs(array);
+        </xmp>
+			</pre>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

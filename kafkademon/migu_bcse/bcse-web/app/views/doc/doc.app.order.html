@@ -1,0 +1,45 @@
+<h2>4.高级配置</h2>
+<div class="app-order col-xs-12">
+  <article>
+    <section>
+      高级配置为应用管理的二级页面，用户可在此实现排序配置、词库上传、智能联想、屏蔽配置、搜索推广、分组统计、分词体验、纠错展示等操作。</section>
+  </article>
+  <article>
+    <h3>4.1 排序配置</h3>
+    <section>
+      用户可实现对排序权重的配置，可配置多条规则（目前最多支持5条规则）。
+    </section>
+    <article>
+      <h4>1. 排序权重配置</h4>
+      <section>
+        点击排序权重的添加规则按钮，在弹出的配置框中设置规则名称，配置排序表达式。
+      </section>
+      <section>
+        <label>要求：</label>
+        <ul>
+          <li>一条规则中可配置多个字段。</li>
+          <li>可配置多条排序规则，规则名不允许重复。</li>
+          <li>字段权重取值范围为1-9999。</li>
+        </ul>
+      </section>
+      <section>
+        用户可以点击添加规则进行排序设置。如添加一个排序规则名为“select01”。设置NAME,name_qp,name_jp字段权重为5，DESCRIPTION字段权重为2。
+      </section>
+      <section class="center">
+        <img src="images/doc/app/order/1.jpg" animate-visible="true" animate-speed="0.5s" alt="添加排序权重配置">
+        <footer>图4.1.1 排序权重配置</footer>
+      </section>
+      <section>
+        排序的效果可以通过搜索测试进行查看。用户可以点击搜索测试按钮进入搜索测试界面，选择相应的排序规则，在查询框中输入关键词后，点击查询按钮。从排序展示结果中可以看到，名称和简介中带有“保卫”和“延安”的条目都能被搜索出来，其中受排序的权重影响名称中带有“保卫”和“延安”的相对靠前，简介中带有“保卫”和“延安”的排名靠后。
+      </section>
+      <section class="center">
+        <img src="images/doc/app/order/2.jpg" animate-visible="true" animate-speed="0.5s" alt="排序效果图">
+      </section>
+      <section class="center">
+        <img src="images/doc/app/order/3.jpg" animate-visible="true" animate-speed="0.5s" alt="排序效果图">
+        <footer>图4.1.2 排序效果图</footer>
+      </section>
+    </article>
+  </article>
+  <back-to-top></back-to-top>
+</div>

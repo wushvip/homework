@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="pull clearfix">
+    <h1 class="pull-left">搜索测试</h1>
+  </div>
+  <div class="search-test">
+    <form name="searchForm">
+      <label class="pull-left">应用</label>
+      <div class="col-xs-2">
+        <input type="text" ng-model="searchQuery.appInfo" placeholder="请输入关键词查询" uib-typeahead="app as app.appName for app in getAllApps($viewValue)" class="form-control" autocomplete="off" typeahead-show-hint="true" typeahead-min-length="0" typeahead-no-results="noResults" typeahead-select-on-blur="true" typeahead-on-select="changeApp()" >
+      </div>
+      <label class="pull-left">排序配置</label>
+      <div class="col-xs-2">
+        <select ng-options="configRule as configRule.ruleName for configRule in configRules" ng-model="searchQuery.configRule" class="form-control">
+          <option value="">--请选择--</option>
+        </select>
+      </div>
+      <label class="pull-left">分组统计</label>
+      <div class="col-xs-2">
+        <select ng-options="facetRule as facetRule.ruleName for facetRule in facetRules" ng-model="searchQuery.facetRule" class="form-control">
+          <option value="">--请选择--</option>
+        </select>
+      </div>
+      <div class="col-xs-3">
+        <input class="form-control" type="text" ng-model="searchQuery.text" maxlength="100" >
+      </div>
+      <div>
+        <button class="btn confirm" ng-click="executeSearch(searchQuery)" ng-disabled="!searchQuery.appInfo||submitting">搜索</button>
+        <button class="btn cancel" ng-click="toggleAdvance()">高级搜索</button>
+      </div>
+    </form>
+    <div ng-show="isOpen" class="row advance">
+      <h5 class="col-xs-12">高级搜索</h5>
+      <div class="col-xs-10 body">
+        <div class="col-xs-6">
+          <div class="col-xs-6 text-right">
+            <label>包含以下全部的关键词</label>
+          </div>
+          <div class="col-xs-6">
+            <input type="text" ng-model="advance.allKeys" class="form-control">
+          </div>
+        </div>
+        <!--<div class="col-xs-6">
+          <div class="col-xs-6 text-right">
+            <label>包含以下的完整关键词</label>
+          </div>
+          <div class="col-xs-6">
+            <input type="text" ng-model="advance.wholeKeys" class="form-control">
+          </div>
+        </div>-->
+        <div class="col-xs-6">
+          <div class="col-xs-6 text-right">
+            <label>包含以下任意一个关键词</label>
+          </div>
+          <div class="col-xs-6">
+            <input type="text" ng-model="advance.anyKey" class="form-control">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="col-xs-6 text-right">
+            <label>不包括以下任意一个关键词</label>
+          </div>
+          <div class="col-xs-6">
+            <input type="text" ng-model="advance.noAnyKey" class="form-control">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="result">
+      <div class="header">
+        <h6 class="col-xs-12">搜索结果</h6>
+        <p class="text-tip">检索耗时<span>{{results.costTime||0}}</span>毫秒，共<span>{{results.resultNum||0}}</span>个结果。</p>
+      </div>
+      <div class="facet" ng-show="facetFields.length&&results.resultNum">
+        <ul class="outter">
+          <li>分组<span class="line"></span></li>
+          <li ng-repeat="faceFields in facetFields">
+            <ul class="inner clearfix" ng-repeat="(facetFieldKey,facetFieldVal) in faceFields" ng-if="facetFieldVal.length">
+              <li class="field-name">{{facetFieldKey}}: </li>
+              <li ng-repeat="fieldVal in facetFieldVal">
+                <label ng-repeat="(fieldKey, fieldVal) in fieldVal">
+                  <input type="checkbox" ng-model="curClassify" ng-click="getClassify(facetFieldKey,fieldKey)" name="{{fieldKey}}" ng-checked="clFilterChecked(facetFieldKey,fieldKey)">
+                  <span>{{fieldKey}}({{fieldVal}})</span>
+                </label>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <table class="table table-bordered">
+        <tbody>
+          <tr ng-repeat="resultsValue in results.contents">
+            <td class="col-xs-1" ng-bind="($index+1)+(page.currentPage-1)*page.numPerPage"></td>
+            <td>
+              <p ng-repeat="(key, value) in resultsValue">
+                {{key}}:
+                <span ng-if="!isStr(value)">{{value}}</span>
+                <span ng-if="isStr(value)" ng-bind-html="value | to_trusted"></span>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <form class="pagination-define text-center" ng-show="page.totalItems">
+        <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+        <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+        <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+      </form>
+    </div>
+  </div>
+</div>

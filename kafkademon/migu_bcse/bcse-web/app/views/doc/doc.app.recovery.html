@@ -1,0 +1,54 @@
+<div class="app-correct col-xs-12">
+  <article>
+    <h3>4.8 纠错展示</h3>
+    <section>
+      纠错展示需要用户首先上传词典，再输入纠错字符，点击加载词典和提交，即可查看纠错结果。其中词典分为基础词典和自定义词典两种，区别见表4.7.1。
+    </section>
+    <section>
+      如果纠错词典里面含有”肯德基”,那么当用户输入”肯的基”，”kdj”，“肯德ji”，“kengdeji”的时候都可以被纠出来。
+    </section>
+    <section>
+      基础字典的格式如下：
+    </section>
+    <section class="center">
+      <img src="images/doc/app/recovery/2.jpg" animate-visible="true" animate-speed="0.5s" alt="基础字典格式">
+      <footer>图4.8.1 基础字典格式</footer>
+    </section>
+    <section>
+      自定义字典的格式如下：（冒号为英文格式）
+    </section>
+    <section class="center">
+      <img src="images/doc/app/recovery/3.jpg" animate-visible="true" animate-speed="0.5s" alt="自定义字典格式">
+      <footer>图4.8.2 自定义字典格式</footer>
+    </section>
+    <section>其中“10”表示频次，在纠错命中的前提下，频次越高，排序越靠前。</section>
+    <section class="center">
+      <img src="images/doc/app/recovery/1.jpg" animate-visible="true" animate-speed="0.5s" alt="纠错展示">
+      <footer>图4.8.3 纠错展示</footer>
+    </section>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表4.8.1. 字典说明</caption>
+      <thead>
+      <tr>
+        <th>字典</th>
+        <th>使用说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>基础词典</td>
+        <td>支持必须含有汉字且不超过1000K的txt文件，建议采用UTF-8无BOM中文编码</td>
+      </tr>
+      <tr>
+        <td>自定义词典</td>
+        <td>
+          <p>支持不超过1000K的txt文件，建议采用UTF-8无BOM中文编码</p>
+          <p>格式为keyword:weight，其中keyword采用UTF-8无BOM的中文编码</p>
+          <p>weight的取值范围为-2147483648到2147483647</p>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+  <back-to-top></back-to-top>
+</div>

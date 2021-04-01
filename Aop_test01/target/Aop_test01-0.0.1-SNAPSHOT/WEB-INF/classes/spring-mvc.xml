@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+       ">
+   <!-- <import resource="spring.xml"/>-->
+    <alias name="helloWorld" alias="world"/>
+       
+       <!-- aopaAspect -->
+    <!--<bean id="logAspect" class="com.ws.aop.aspect.LogAspect"/>-->
+
+    <!--Spring MVC使用ViewResolver来根据controller中返回的view名关联到具体的View对象。使用View对象来渲染返回值以生成最终的视图，如html,json或pdf等-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/WEB-INF/pages/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    <!-- 启动对@AspectJ注解的支持  -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 启用MVC注解 -->
+    <mvc:annotation-driven/>
+
+    <!-- 指定Sping组件扫描的基本包路径 -->
+    <context:component-scan base-package="com.ws.controller">
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+    </context:component-scan>
+    <context:annotation-config/>
+    <!--<context:property-placeholder location=""/>-->
+    <!--静态文件处理-->
+    <mvc:resources location="/resources/" mapping="/resources/**"/>
+       
+</beans>

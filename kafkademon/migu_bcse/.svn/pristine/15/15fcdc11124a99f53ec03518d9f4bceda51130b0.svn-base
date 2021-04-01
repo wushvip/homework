@@ -1,0 +1,53 @@
+<div class="error">
+  <h3>错误日志</h3>
+  <form class="col-xs-12" name="errorLogForm">
+    <label class="pull-left">选择时间范围: </label>
+    <div class="col-xs-3">
+      <p class="input-group">
+        <input type="text" name="startTime" class="form-control" uib-datepicker-popup ng-model="startTime" is-open="startPopupOpened" datepicker-options="startDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+        <span class="input-group-btn">
+          <button type="button" class="btn cancel" ng-click="startOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <label class="pull-left">至</label>
+    <div class="col-xs-3">
+      <p class="input-group">
+        <input type="text" name="endTime" class="form-control" uib-datepicker-popup ng-model="endTime" is-open="endPopupOpened" datepicker-options="endDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+        <span class="input-group-btn">
+          <button type="button" class="btn cancel" ng-click="endOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+    <button class="btn confirm" ng-click="getLogs()" ng-disabled="errorLogForm.$invalid||submitting">{{messages.search}}</button>
+  </form>
+  <table class="table table-bordered table-hover table-condensed table-fixed table-responsive">
+    <thead>
+    <tr>
+      <th>时间</td>
+      <th>错误码</td>
+      <th>错误模块</td>
+      <th class="col-xs-7">错误详情</td>
+    </tr>
+    </thead>
+    <tbody >
+    <tr ng-repeat="errorLog in errorLogs">
+      <td ng-bind="errorLog.createDate"></td>
+      <td ng-bind="errorLog.code"></td>
+      <td ng-bind="errorLog.module"></td>
+      <td ng-bind="errorLog.detail"></td>
+    </tr>
+    <tr class="text-center" ng-show="!errorLogs.length">
+      <td colspan="4">{{messages.noData}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <form class="pagination-define text-center" ng-show="page.totalItems">
+    <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+    <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+    <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+    <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+  </form>
+
+</div>

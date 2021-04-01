@@ -1,0 +1,13 @@
+<div class="app-struct col-xs-12">
+  <article>
+    <h3>3.3 应用结构</h3>
+    <section>
+      用户可在应用结构页面查看应用的数据字段，如下图所示：
+    </section>
+    <section class="center">
+      <img src="images/doc/app/struct/1.jpg" animate-visible="true" animate-speed="0.5s" alt="应用结构">
+      <footer>图3.3.1 应用结构</footer>
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

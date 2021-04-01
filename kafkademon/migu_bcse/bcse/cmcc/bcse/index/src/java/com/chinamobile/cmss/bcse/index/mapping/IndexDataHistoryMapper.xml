@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.index.dao.IndexDataHistoryDao">
+	<resultMap id="BaseResultMap" type="com.chinamobile.cmss.bcse.index.bean.AppDataHistoryBean">
+		<id column="HISTORY_ID" property="historyId" jdbcType="INTEGER" />
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="OPERA_OBJECT" property="operaObject" jdbcType="VARCHAR" />
+		<result column="OPERA_TYPE" property="operaType" jdbcType="VARCHAR" />
+		<result column="OPERA_DATE" property="operaDate" jdbcType="TIMESTAMP" />
+		<result column="OPERA_STATUS" property="operaStatus" jdbcType="VARCHAR" />
+		<result column="DETAIL" property="detail" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		HISTORY_ID, APP_ID, USER_ID, OPERA_OBJECT, OPERA_TYPE,date_format(OPERA_DATE,'%Y-%m-%d
+		%T') OPERA_DATE , OPERA_STATUS,
+		DETAIL
+	</sql>
+	<insert id="saveOperaHistroy" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		insert into APPLICATION_DATA_HISTORY (APP_ID, USER_ID,
+		OPERA_OBJECT, OPERA_TYPE, OPERA_DATE,
+		OPERA_STATUS, DETAIL)
+		values (#{appId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
+		#{appId,jdbcType=VARCHAR}, #{operaType,jdbcType=VARCHAR},
+		#{createDate,jdbcType=TIMESTAMP},
+		#{operaStatus,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR})
+	</insert>
+	
+
+	<select id="getOperaHistroy" resultMap="BaseResultMap"
+		parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_DATA_HISTORY
+		<where>
+			APP_ID = #{appId}
+			AND
+			OPERA_DATE BETWEEN #{startDate} AND #{endDate}
+			<if test="operaType != null">
+				AND OPERA_TYPE = #{operaType}
+			</if>
+			ORDER BY OPERA_DATE DESC
+			<if test="pageIndex != 0 and pageNum != 0">
+				limit #{startNum},#{pageNum}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="getTotalItemsHistory" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultType="java.lang.Integer">
+	
+		select
+			count(1)
+		from APPLICATION_DATA_HISTORY
+		<where>
+			APP_ID = #{appId}
+			AND
+			OPERA_DATE BETWEEN #{startDate} AND #{endDate}
+			<if test="operaType != null">
+				AND OPERA_TYPE = #{operaType}
+			</if>
+			ORDER BY OPERA_DATE DESC
+		</where>
+	
+	</select>
+
+</mapper>

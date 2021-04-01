@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.app.dao.AppFieldBeanDao">
+	<resultMap id="BaseResultMap"
+		type="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+		<result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+		<result column="IS_SEARCH" property="isSearch" jdbcType="VARCHAR" />
+		<result column="IS_FILTER" property="isFilter" jdbcType="VARCHAR" />
+		<result column="IS_SHOW" property="isShow" jdbcType="VARCHAR" />
+		<result column="IS_PK" property="isPk" jdbcType="VARCHAR" />
+		<result column="FOREIGN_KEY" property="foreignKey" jdbcType="VARCHAR" />
+		<result column="IS_MUTIVALUE" property="isMutivalue" jdbcType="VARCHAR" />
+		<result column="SRC_FIELD" property="srcField" jdbcType="VARCHAR" />
+		<result column="DYNAMIC_FIELD" property="dynamicField"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="FieldInfoMap"
+		type="com.chinamobile.cmss.bcse.app.bean.FieldInfoBean">
+		<id column="ID" property="id" jdbcType="VARCHAR" />
+		<result column="FIELD_NAME" property="fieldName" jdbcType="VARCHAR" />
+		<result column="FIELD_TYPE" property="fieldType" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 高级配置模块获取字段基本信息，如获取建立索引的字段，可展示字段等的基本信息 -->
+	<sql id="Simple_Column_List">
+		ID,FIELD_NAME,FIELD_TYPE
+	</sql>
+	<sql id="Base_Column_List">
+		ID, TABLE_ID, CREATE_DATE, FIELD_NAME, FIELD_TYPE,
+		IS_SEARCH, IS_FILTER,
+		IS_SHOW,
+		IS_PK,
+		FOREIGN_KEY,IS_MUTIVALUE,SRC_FIELD,DYNAMIC_FIELD
+	</sql>
+
+	<!-- 获取所有非数值及日期的字段 -->
+	<select id="selectStringFields" resultMap="FieldInfoMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Simple_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		and
+		FIELD_TYPE NOT IN('INT','DOUBLE','FLOAT','DATE','LONG')
+		and IS_SEARCH= 1
+		and DYNAMIC_FIELD = 0
+	</select>
+	<!-- 获取建立索引的字段 -->
+	<select id="selectIndexedFields" resultMap="FieldInfoMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Simple_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		and
+		IS_SEARCH= 1
+		and DYNAMIC_FIELD = 0
+	</select>
+
+	<!-- 获取指定应用 的主键字段 -->
+	<select id="selectApplicationPK" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		and
+		IS_PK = 1
+	</select>
+	<!-- 获取建立schema的字段 -->
+	<select id="selectFields" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+	</select>
+	<!-- 获取一张表的所有字段 -->
+	<select id="selectByTableId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID = #{0}
+	</select>
+
+	<!-- 获取可展示的字段 -->
+	<select id="selectShownableFields" resultMap="FieldInfoMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Simple_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where TABLE_ID IN
+		(select TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		and
+		IS_SHOW= 1
+		and DYNAMIC_FIELD = 0
+	</select>
+
+	<!-- 获取搜索测试页面筛选的数字字段，包括数据类型为数值及日期的字段 -->
+	<select id="selectNumericalFields" parameterType="java.lang.String"
+		resultMap="FieldInfoMap">
+		SELECT
+		<include refid="Simple_Column_List"></include>
+		FROM
+		APPLICATION_STRUCTURE_FIELD_INFO
+		WHERE
+		TABLE_ID IN
+		(SELECT TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		AND
+		FIELD_TYPE IN('INT','DOUBLE','FLOAT','DATE','LONG')
+		and DYNAMIC_FIELD = 0
+	</select>
+
+	<!-- 获取搜索测试页面字段排序信息，包括数据类型为数值的字段 -->
+	<select id="selectSortedFields" parameterType="java.lang.String"
+		resultMap="FieldInfoMap">
+		SELECT
+		<include refid="Simple_Column_List"></include>
+		FROM
+		APPLICATION_STRUCTURE_FIELD_INFO
+		WHERE
+		TABLE_ID IN
+		(SELECT TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		AND
+		FIELD_TYPE IN('INT','DOUBLE','FLOAT','LONG')
+		AND DYNAMIC_FIELD = 0
+	</select>
+
+	<!-- 获取建立索引且未分词的字段，分组统计时使用 -->
+	<select id="selectGroupStatisticsFields" parameterType="java.lang.String"
+		resultMap="FieldInfoMap">
+		SELECT
+		<include refid="Simple_Column_List"></include>
+		FROM
+		APPLICATION_STRUCTURE_FIELD_INFO
+		WHERE
+		TABLE_ID IN
+		(SELECT TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		AND
+		IS_SEARCH = '1'
+		AND
+		FIELD_TYPE NOT IN('ANSJ','ANSJ_JP','ANSJ_PY','ANSJ_QP')
+		AND
+		DYNAMIC_FIELD = 0
+	</select>
+
+	<!-- 获取建立索引且分词的字段 -->
+	<select id="selectTokenizedFields" parameterType="java.lang.String"
+		resultMap="FieldInfoMap">
+		SELECT
+		<include refid="Simple_Column_List"></include>
+		FROM
+		APPLICATION_STRUCTURE_FIELD_INFO
+		WHERE
+		TABLE_ID IN
+		(SELECT TABLE_ID
+		from APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+		AND
+		IS_SEARCH = '1'
+		AND
+		FIELD_TYPE IN ('ANSJ','ANSJ_JP','ANSJ_PY','ANSJ_QP')
+		AND DYNAMIC_FIELD = '0'
+	</select>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APPLICATION_STRUCTURE_FIELD_INFO
+		where ID = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		APPLICATION_STRUCTURE_FIELD_INFO
+		where ID = #{id,jdbcType=VARCHAR}
+	</delete>
+	<!-- 删除指定应用的所有规则 -->
+	<delete id="deleleAllAppRules" parameterType="java.lang.String">
+		delete from
+		APPLICATION_STRUCTURE_FIELD_INFO
+		WHERE
+		TABLE_ID IN
+		(SELECT TABLE_ID from
+		APP_TABLE_MAPPING where APP_ID
+		=#{appId,jdbcType=VARCHAR})
+	</delete>
+
+	<insert id="insert" parameterType="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		insert into
+		APPLICATION_STRUCTURE_FIELD_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="tableId != null">
+				TABLE_ID,
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE,
+			</if>
+			<if test="fieldName != null">
+				FIELD_NAME,
+			</if>
+			<if test="fieldType != null">
+				FIELD_TYPE,
+			</if>
+			<if test="isSearch != null">
+				IS_SEARCH,
+			</if>
+			<if test="isFilter != null">
+				IS_FILTER,
+			</if>
+			<if test="isShow != null">
+				IS_SHOW,
+			</if>
+			<if test="isPk != null">
+				IS_PK,
+			</if>
+			<if test="foreignKey != ''">
+				FOREIGN_KEY,
+			</if>
+			<if test="isMutivalue != null">
+				IS_MUTIVALUE,
+			</if>
+			<if test="srcField != null">
+				SRC_FIELD,
+			</if>
+			<if test="dynamicField != null">
+				DYNAMIC_FIELD,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="tableId != null">
+				#{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="fieldName != null">
+				#{fieldName,jdbcType=VARCHAR},
+			</if>
+			<if test="fieldType != null">
+				#{fieldType,jdbcType=VARCHAR},
+			</if>
+			<if test="isSearch != null">
+				#{isSearch,jdbcType=VARCHAR},
+			</if>
+			<if test="isFilter != null">
+				#{isFilter,jdbcType=VARCHAR},
+			</if>
+			<if test="isShow != null">
+				#{isShow,jdbcType=VARCHAR},
+			</if>
+			<if test="isPk != null">
+				#{isPk,jdbcType=VARCHAR},
+			</if>
+			<if test="foreignKey != ''">
+				#{foreignKey,jdbcType=VARCHAR},
+			</if>
+			<if test="isMutivalue != null">
+				#{isMutivalue,jdbcType=VARCHAR},
+			</if>
+			<if test="srcField != null">
+				#{srcField,jdbcType=VARCHAR},
+			</if>
+			<if test="dynamicField != null">
+				#{dynamicField,jdbcType=VARCHAR},
+			</if>
+		</trim>
+
+		<!-- (ID, TABLE_ID, CREATE_DATE, FIELD_NAME, FIELD_TYPE, IS_SEARCH, IS_FILTER, 
+			IS_SHOW, IS_PK, FOREIGN_KEY,IS_MUTIVALUE,SRC_FIELD,DYNAMIC_FIELD) values 
+			(#{id,jdbcType=VARCHAR}, #{tableId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+			#{fieldName,jdbcType=VARCHAR}, #{fieldType,jdbcType=VARCHAR}, #{isSearch,jdbcType=VARCHAR}, 
+			#{isFilter,jdbcType=VARCHAR}, #{isShow,jdbcType=VARCHAR}, #{isPk,jdbcType=VARCHAR}, 
+			#{foreignKey,jdbcType=VARCHAR}, #{isMutivalue,jdbcType=VARCHAR}, #{srcField,jdbcType=VARCHAR}, 
+			#{dynamicField,jdbcType=VARCHAR}) -->
+	</insert>
+	<insert id="insertSelective" parameterType="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		insert into APPLICATION_STRUCTURE_FIELD_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="tableId != null">
+				TABLE_ID,
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE,
+			</if>
+			<if test="fieldName != null">
+				FIELD_NAME,
+			</if>
+			<if test="fieldType != null">
+				FIELD_TYPE,
+			</if>
+			<if test="isSearch != null">
+				IS_SEARCH,
+			</if>
+			<if test="isFilter != null">
+				IS_FILTER,
+			</if>
+			<if test="isShow != null">
+				IS_SHOW,
+			</if>
+			<if test="isPk != null">
+				IS_PK,
+			</if>
+			<if test="foreignKey != null">
+				FOREIGN_KEY,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="tableId != null">
+				#{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				#{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="fieldName != null">
+				#{fieldName,jdbcType=VARCHAR},
+			</if>
+			<if test="fieldType != null">
+				#{fieldType,jdbcType=VARCHAR},
+			</if>
+			<if test="isSearch != null">
+				#{isSearch,jdbcType=VARCHAR},
+			</if>
+			<if test="isFilter != null">
+				#{isFilter,jdbcType=VARCHAR},
+			</if>
+			<if test="isShow != null">
+				#{isShow,jdbcType=VARCHAR},
+			</if>
+			<if test="isPk != null">
+				#{isPk,jdbcType=VARCHAR},
+			</if>
+			<if test="foreignKey != null">
+				#{foreignKey,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateVersion">
+		UPDATE
+		APPLICATION_STRUCTURE_FIELD_INFO
+		<set>
+			VERSION = VERSION+1
+		</set>
+	</update>
+	<update id="updateByFieldId" parameterType="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		update APPLICATION_STRUCTURE_FIELD_INFO
+		<set>
+			<if test="tableId != null">
+				TABLE_ID = #{tableId,jdbcType=VARCHAR},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="fieldName != null">
+				FIELD_NAME = #{fieldName,jdbcType=VARCHAR},
+			</if>
+			<if test="fieldType != null">
+				FIELD_TYPE = #{fieldType,jdbcType=VARCHAR},
+			</if>
+			<if test="isSearch != null">
+				IS_SEARCH = #{isSearch,jdbcType=VARCHAR},
+			</if>
+			<if test="isFilter != null">
+				IS_FILTER = #{isFilter,jdbcType=VARCHAR},
+			</if>
+			<if test="isShow != null">
+				IS_SHOW = #{isShow,jdbcType=VARCHAR},
+			</if>
+			<if test="isPk != null">
+				IS_PK = #{isPk,jdbcType=VARCHAR},
+			</if>
+			<if test="foreignKey != null">
+				FOREIGN_KEY = #{foreignKey,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.chinamobile.cmss.bcse.app.bean.AppFieldBean">
+		update
+		APPLICATION_STRUCTURE_FIELD_INFO
+		set TABLE_ID =
+		#{tableId,jdbcType=VARCHAR},
+		CREATE_DATE =
+		#{createDate,jdbcType=TIMESTAMP},
+		FIELD_NAME =
+		#{fieldName,jdbcType=VARCHAR},
+		FIELD_TYPE =
+		#{fieldType,jdbcType=VARCHAR},
+		IS_SEARCH =
+		#{isSearch,jdbcType=VARCHAR},
+		IS_FILTER = #{isFilter,jdbcType=VARCHAR},
+		IS_SHOW = #{isShow,jdbcType=VARCHAR},
+		IS_PK = #{isPk,jdbcType=VARCHAR},
+		FOREIGN_KEY = #{foreignKey,jdbcType=VARCHAR}
+		where ID =
+		#{id,jdbcType=VARCHAR}
+	</update>
+</mapper>

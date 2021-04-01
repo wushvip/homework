@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ws.exmple.axis</groupId>
+    <artifactId>axis-ws</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <axis1.version>1.4</axis1.version>
+       <!-- <axis2.version>1.6.2</axis2.version>-->
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>${axis1.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-discovery</groupId>
+            <artifactId>commons-discovery</artifactId>
+            <version>0.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis-jaxrpc</artifactId>
+            <version>${axis1.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis</groupId>
+            <artifactId>axis-saaj</artifactId>
+            <version>${axis1.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-remoting</artifactId>
+            <version>2.0.8</version>
+        </dependency>
+
+
+        <!--axis2 beigin-->
+      <!--  <dependency>
+
+            <groupId>org.apache.axis2</groupId>
+
+            <artifactId>axis2</artifactId>
+
+            <version>${axis2.version}</version>
+
+            <type>pom</type>
+
+            <scope>compile</scope>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.axis2</groupId>
+
+            <artifactId>axis2-adb</artifactId>
+
+            <version>${axis2.version}</version>
+
+            <type>jar</type>
+
+            <scope>compile</scope>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.axis2</groupId>
+
+            <artifactId>axis2-kernel</artifactId>
+
+            <version>${axis2.version}</version>
+
+            <type>jar</type>
+
+            <scope>compile</scope>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.axis2</groupId>
+
+            <artifactId>axis2-transport-http</artifactId>
+
+            <version>${axis2.version}</version>
+
+        </dependency>
+
+        <dependency>
+
+            <groupId>org.apache.axis2</groupId>
+
+            <artifactId>axis2-transport-local</artifactId>
+
+            <version>${axis2.version}</version>
+
+        </dependency>-->
+        <!--axis2 beigin-->
+    </dependencies>
+</project>

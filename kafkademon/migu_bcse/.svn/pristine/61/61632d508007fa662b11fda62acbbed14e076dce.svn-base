@@ -1,0 +1,20 @@
+<div class="app">
+  <div class="second-header">
+    <div class="clearfix">
+      <div class="pull-left">
+        <span class="title">{{appInfo.appName}}</span>
+        <a ui-sref="manage.apps" class="back-title back-collect-img">返回应用列表</a>
+      </div>
+      <div class="pull-right">
+        <a ui-sref="manage.create" class="btn btn90 btn-nocolor-sm" >创建应用</a>
+        <a ui-sref="manage.test({appId:appInfo.appId})" class="btn btn90 btn-nocolor-sm">搜索测试</a>
+        <button class="btn btn90 btn-nocolor-sm" ng-click="openUploadModal('update')" ng-disabled="submitting" ng-if="isAdmin()">上传文件</button>
+        <button class="btn btn90 btn-nocolor-sm" ng-click="deleteApp()" ng-disabled="submitting" ng-if="isAdmin()">删除应用</button>
+
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div ui-view="left-bar"></div>
+  <div class="container wrapper" ui-view="right-content"></div>
+</div>

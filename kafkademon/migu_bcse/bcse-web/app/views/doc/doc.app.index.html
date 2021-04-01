@@ -1,0 +1,49 @@
+<div class="app-dataHandle col-xs-12">
+  <article>
+    <h3>3.4 索引处理</h3>
+    <section>
+      索引处理包括索引更新、索引删除和索引清空。其中索引更新支持本地csv文件上传后更新全量索引。索引删除支持本地csv文件上传后，删除上传部分的索引。索引清空则为清除全部索引。如下图所示：
+    </section>
+    <section class="center">
+      <img src="images/doc/app/index/1.jpg" animate-visible="true" animate-speed="0.5s" alt="索引处理">
+      <footer>图3.4.1 索引处理</footer>
+    </section>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表3.4.1. 索引处理说明</caption>
+      <thead>
+      <tr>
+        <th>功能</th>
+        <th>使用说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>索引更新</td>
+        <td>
+          <p>实现索引增量更新：</p>
+          <p>支持本地上传</p>
+          <p>文件格式：utf-8无bom编码的csv格式</p>
+          <p>备注：当文件上传成功至50%的时候，索引已经开始更新，此时无法取消索引的更新。</p>
+        </td>
+      </tr>
+      <tr>
+        <td>索引删除</td>
+        <td>
+          <p>实现索引部分删除：</p>
+          <p>支持本地上传</p>
+          <p>文件格式：utf-8无bom编码的csv格式</p>
+        </td>
+      </tr>
+      <tr>
+        <td>索引清空</td>
+        <td>清空全量索引数据</td>
+      </tr>
+      <tr>
+        <td>历史记录</td>
+        <td>历史记录可查看任一时间段内的索引更新、索引删除和索引清空操作</td>
+      </tr>
+      </tbody>
+    </table>
+  </article>
+  <back-to-top></back-to-top>
+</div>

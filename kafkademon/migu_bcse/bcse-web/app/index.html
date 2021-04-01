@@ -1,0 +1,143 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>中移BC-SE管理平台</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href="favicon.ico" rel="shortcut icon">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="seApp" class="back-gray">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+      <div ui-view="main" class="all-wrapper"></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/oldieshim.js -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
+    <![endif]-->
+    <!-- endbuild -->
+    <script src="bower_components/echarts/dist/echarts.min.js"></script>
+    <script src="bower_components/js-md5/build/md5.min.js"></script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/AngularJS-Toaster/toaster.js"></script>
+    <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+    <script src="bower_components/js-md5/src/md5.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="scripts/app.js"></script>
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!--<script src="concat/scripts/scripts.js"></script>-->
+
+    <script src="scripts/routes/main.route.js"></script>
+    <script src="scripts/routes/portal.route.js"></script>
+    <script src="scripts/routes/users.route.js"></script>
+    <script src="scripts/routes/user.route.js"></script>
+    <script src="scripts/routes/apps.route.js"></script>
+    <script src="scripts/routes/create.route.js"></script>
+    <script src="scripts/routes/app.route.js"></script>
+    <script src="scripts/routes/test.route.js"></script>
+    <script src="scripts/routes/eval.route.js"></script>
+    <script src="scripts/routes/analysis.route.js"></script>
+    <script src="scripts/routes/doc.route.js"></script>
+
+    <script src="scripts/util/messages.js"></script>
+    <script src="scripts/util/angular-locale_zh.js"></script>
+
+    <script src="scripts/controllers/main.controller.js"></script>
+    <script src="scripts/controllers/portal.controller.js"></script>
+    <script src="scripts/controllers/user.controller.js"></script>
+    <script src="scripts/controllers/users.controller.js"></script>
+    <script src="scripts/controllers/apps.controller.js"></script>
+    <script src="scripts/controllers/create.controller.js"></script>
+    <script src="scripts/controllers/create.struct.controller.js"></script>
+    <script src="scripts/controllers/create.confirm.controller.js"></script>
+    <script src="scripts/controllers/create.finish.controller.js"></script>
+    <script src="scripts/controllers/upload.file.js"></script>
+    <script src="scripts/controllers/index.sample.js"></script>
+    <script src="scripts/controllers/app.controller.js"></script>
+    <script src="scripts/controllers/app.index.controller.js"></script>
+    <script src="scripts/controllers/app.config.order.js"></script>
+    <script src="scripts/controllers/app.config.dic.js"></script>
+    <script src="scripts/controllers/app.config.suggestion.js"></script>
+    <script src="scripts/controllers/app.config.shield.js"></script>
+    <script src="scripts/controllers/app.config.spread.js"></script>
+    <script src="scripts/controllers/app.config.facet.js"></script>
+    <script src="scripts/controllers/app.analyzer.js"></script>
+    <script src="scripts/controllers/app.recovery.js"></script>
+    <script src="scripts/controllers/app.error.js"></script>
+    <script src="scripts/controllers/app.hot.js"></script>
+    <script src="scripts/controllers/app.analysis.js"></script>
+    <script src="scripts/controllers/test.controller.js"></script>
+    <script src="scripts/controllers/eval.controller.js"></script>
+    <script src="scripts/controllers/eval.corpus.controller.js"></script>
+    <script src="scripts/controllers/eval.result.controller.js"></script>
+    <script src="scripts/controllers/analysis.controller.js"></script>
+    <script src="scripts/controllers/doc.controller.js"></script>
+
+    <script src="scripts/services/signature.js"></script>
+    <script src="scripts/services/rsa.oa.js"></script>
+    <script src="scripts/services/tip.modal.js"></script>
+    <script src="scripts/services/struct.limitation.js"></script>
+    <script src="scripts/services/handle.method.js"></script>
+    <script src="scripts/services/locals.js"></script>
+    <script src="scripts/services/menu.data.js"></script>
+    <script src="scripts/services/rest.service.js"></script>
+
+    <script src="scripts/directives/discard.modal.js"></script>
+    <script src="scripts/directives/password.match.js"></script>
+    <script src="scripts/directives/password.verify.js"></script>
+    <script src="scripts/directives/char.filter.js"></script>
+    <script src="scripts/directives/login.js"></script>
+    <script src="scripts/directives/char.max.js"></script>
+    <script src="scripts/directives/input.valid.js"></script>
+    <script src="scripts/directives/int.format.js"></script>
+    <script src="scripts/directives/max.charts.js"></script>
+    <script src="scripts/directives/max.lines.js"></script>
+    <script src="scripts/directives/sheet.data.js"></script>
+    <script src="scripts/directives/my.max.number.js"></script>
+    <script src="scripts/directives/analysis.time.js"></script>
+    <script src="scripts/directives/analysis.cost.js"></script>
+    <script src="scripts/directives/analysis.num.js"></script>
+    <script src="scripts/directives/back-to-top.js"></script>
+    <script src="scripts/directives/left.sidebar.js"></script>
+
+    <script src="scripts/filters/filter.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

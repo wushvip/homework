@@ -1,0 +1,19 @@
+<div class="application-list">
+  <div class="container evaluation-container">
+    <div class="pull clearfix">
+      <h1 class="pull-left">评测分析</h1>
+    </div>
+    <div class="row">
+      <ul class="col-md-offset-2 col-md-10 col-xs-offset-1 col-xs-11 steps-nav">
+        <li ng-repeat="step in nav.steps" ng-class="{actived: step.actived, passed: step.passed}" ng-click="clickGoStatus(step.passed, step.state)">
+          <span ng-bind="step.label"></span>
+        </li>
+      </ul>
+    </div>
+    <hr />
+    <div class="evaluation-body row">
+      <div class="wrapper" ui-view="content"></div>
+      <!--<div class="col-md-10 col-xs-offset-1 col-xs-11" ui-view="content"></div>-->
+    </div>
+  </div>
+</div>

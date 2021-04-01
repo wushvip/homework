@@ -1,0 +1,107 @@
+<div class="dic">
+  <h3>词库上传</h3>
+  <uib-tabset justified="true" class="content">
+    <uib-tab heading="停用词">
+      <div class="tabset-border">
+        <div class="clearfix">
+          <div class="col-xs-offset-2 col-xs-4">
+            <button class="btn btn-nocolor-xlg" ngf-select="stopFileChange($file)" accept=".txt" ngf-max-height="1000" type="file" ng-disabled="stopFile.uploading"><i class="glyphicon glyphicon-arrow-up"></i>选择上传文件</button>
+            <p class="text-tip">
+              （{{messages.file.tip2}}）
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <p>根据停用词典过滤查询中无意义的词（一般是使用频度过高的但不影响查询结果的词，比如标点符号、语气助词等）。</p>
+            <p>例如：查询词“奔跑吧 ! 兄弟”，经过停用词处理后标点符号“!”不参与召回。</p>
+          </div>
+        </div>
+        <table class="table text-center">
+          <tbody ng-show="stopFile">
+          <tr>
+            <td class="col-xs-3"><small><span>{{stopFile.name}}</span></small></td>
+            <td class="col-xs-2"><small><span>{{stopFile.size/1024|number:4}}KB</span></small></td>
+            <td class="col-xs-2">
+              <progressbar ng-show="stopFile.progress" animate="false" value="stopFile.progress" type="success"><b>{{stopFile.progress}}%</b></progressbar>
+            </td>
+            <td>
+              <small>
+                <span class="alert-info" ng-show="stopFile.uploading">{{messages.file.process}}</span>
+                <span class="alert-success" ng-show="stopFile.uploaded">{{messages.file.processed}}</span>
+                <span class="alert-danger" ng-hide="stopFile.uploaded">{{stopFile.fileErrorMsg}}</span>
+              </small>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="同义词">
+      <div class="tabset-border">
+        <div class="clearfix">
+          <div class="col-xs-offset-2 col-xs-4">
+            <button class="btn btn-nocolor-xlg" ngf-select="synonymSubmit($file)" accept=".txt" ngf-max-height="1000" name="file" ng-disabled="synFile.uploading"><i class="glyphicon glyphicon-arrow-up"></i>选择上传文件</button>
+            <p class="text-tip">
+              （{{messages.file.tip2}}）
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <p>根据同义词库和语义模型，对查询串进行同义词扩展，以便扩大召回。</p>
+            <p>例如：查询原词为“<span class="red">KFC</span>”，经过同义词处理后，包含“<span class="red">肯德基</span>”或者“<span class="red">KFC</span>”的文档都会被召回（配合词权重功能使用效果更佳）。</p>
+          </div>
+        </div>
+        <table class="table text-center">
+          <tbody ng-show="synFile">
+          <tr>
+            <td class="col-xs-3"><small><span>{{synFile.name}}</span></small></td>
+            <td class="col-xs-2"><small><span>{{synFile.size/1024|number:4}}KB</span></small></td>
+            <td class="col-xs-2">
+              <progressbar ng-show="synFile.progress" animate="false" value="synFile.progress" type="success"><b>{{synFile.progress}}%</b></progressbar>
+            </td>
+            <td>
+              <small>
+                <span class="alert-info" ng-show="synFile.uploading">{{messages.file.process}}</span>
+                <span class="alert-success" ng-show="synFile.uploaded">{{messages.file.processed}}</span>
+                <span class="alert-danger" ng-hide="synFile.uploaded">{{synFile.fileErrorMsg}}</span>
+              </small>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+    <uib-tab heading="扩展词">
+      <div class="tabset-border">
+        <div class="clearfix">
+          <div class="col-xs-offset-2 col-xs-4">
+            <button class="btn btn-nocolor-xlg" ngf-select="extentionSubmit($file)" accept=".txt" ngf-max-height="1000" name="file" ng-disabled="extFile.uploading"><i class="glyphicon glyphicon-arrow-up"></i>选择上传文件</button>
+            <p class="text-tip">
+              （{{messages.file.tip2}}）
+            </p>
+          </div>
+          <div class="col-xs-4">
+            <p>根据提供的扩展词库，对被分词处理后的词语扩展，提高准确率。</p>
+            <p>例如：原词“<span class="red">清华大学</span>”分为“<span class="red">清华</span>”和“<span class="red">大学</span>”，如果扩展词库中包含“<span class="red">清华大学</span>”，那么经过扩展词处理后，只召回“<span class="red">清华大学</span>”相关文档，提高准确率。</p>
+          </div>
+        </div>
+        <table class="table text-center">
+          <tbody ng-show="extFile">
+          <tr>
+            <td class="col-xs-3"><small><span>{{extFile.name}}</span></small></td>
+            <td class="col-xs-2"><small><span>{{extFile.size/1024|number:4}}KB</span></small></td>
+            <td class="col-xs-2">
+              <progressbar ng-show="extFile.progress" animate="false" value="extFile.progress" type="success"><b>{{extFile.progress}}%</b></progressbar>
+            </td>
+            <td>
+              <small>
+                <span class="alert-info" ng-show="extFile.uploading">{{messages.file.process}}</span>
+                <span class="alert-success" ng-show="extFile.uploaded">{{messages.file.processed}}</span>
+                <span class="alert-danger" ng-hide="extFile.uploaded">{{extFile.fileErrorMsg}}</span>
+              </small>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </uib-tab>
+  </uib-tabset>
+</div>

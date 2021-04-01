@@ -1,0 +1,190 @@
+<div id="portal">
+    <div ui-view="header"></div>
+    <div class="wrapper">
+      <div class="banner">
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+          <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+            <img ng-src="{{slide.image}}">
+            <!--<div class="carousel-caption">
+              <h4>Slide {{slide.id}}</h4>
+              <p>{{slide.text}}</p>
+            </div>-->
+          </div>
+          <login></login>
+        </div>
+      </div>
+
+		<div class="product-advantage text-center">
+			<div class="title">
+				<h2>产品优势</h2>
+				<p>Product advantage</p>
+			</div>
+			<div class="list clearfix">
+				<div class="col-sm-6 col-md-4 col-md-4 col-lg-3">
+					<div class="extend">
+						<img src="images/portal/extend.png" alt="节点弹性扩展">
+						<div class="caption">
+							<h3>节点弹性扩展</h3>
+							<p>运营过程数据变化时</p>
+							<p>节点支持动态扩展</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-md-4 col-lg-3">
+					<div class="reliable">
+						<img src="images/portal/reliable.png" alt="数据高可靠性">
+						<div class="caption">
+							<h3>数据高可靠</h3>
+							<p>集群节点数据3个备份保证数据稳定</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-md-4 col-lg-3">
+					<div class="excellent">
+						<img src="images/portal/excellent.png" alt="性能优异">
+						<div class="caption">
+							<h3>性能优异</h3>
+							<p>用户并发数量：1000+</p>
+							<p>请求响应时间：100MS以内</p>
+							<p>运行稳定性：7*24H</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-md-4 col-lg-3">
+					<div class="deploy">
+						<img src="images/portal/deploy.png" alt="自动化部署">
+						<div class="caption">
+							<h3>自动化部署</h3>
+							<p>搜索服务全部自动化部署，</p>
+							<p>并对服务实时监控、告警</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="core-competence text-center">
+			<div class="title">
+				<h2>核心能力</h2>
+				<p>Core competence</p>
+			</div>
+			<div class="list clearfix">
+				<div class="col-sm-6 col-md-4 col-lg-2 col-lg-offset-1">
+					<div class="panel panel-define index">
+						<div class="panel-heading">
+							<h3 class="panel-title">分布式索引管理</h3>
+						</div>
+						<div class="panel-body">
+							<p class="">
+								<img src="images/portal/index.png" alt="分布式索引管理">
+							</p>
+							<p class="describe">实现海量数据分布式倒排索引，</p>
+							<p class="describe">支持数据实时及定期索引更新</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-2">
+					<div class="panel panel-define segment">
+						<div class="panel-heading">
+							<h3 class="panel-title">分词纠错</h3>
+						</div>
+						<div class="panel-body">
+							<p class="">
+								<img src="images/portal/segment.png" alt="分词纠错">
+							</p>
+							<p class="describe">基于新词发现技术提供扩展词库，实现精准可运营的中文分词能力，基于纠错改善用户模糊检索效果，提高用户体验</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-2">
+					<div class="panel panel-define order">
+						<div class="panel-heading">
+							<h3 class="panel-title">自定义排序</h3>
+						</div>
+						<div class="panel-body">
+							<p class="">
+								<img src="images/portal/order.png" alt="自定义排序">
+							</p>
+							<p class="describe">客户可根据业务需求进行个性化排序配置，从而优化搜索效果</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-2">
+					<div class="panel panel-define query">
+						<div class="panel-heading">
+							<h3 class="panel-title">查询功能丰富</h3>
+						</div>
+						<div class="panel-body">
+							<p class="">
+								<img src="images/portal/query.png" alt="查询功能丰富">
+							</p>
+							<p class="describe">提供智能提示、按域检索、屏蔽推广、查询分析等定制化查询功能</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6 col-md-4 col-lg-2">
+					<div class="panel panel-define search">
+						<div class="panel-heading">
+							<h3 class="panel-title">智能语义搜索</h3>
+						</div>
+						<div class="panel-body">
+							<p class="">
+								<img src="images/portal/search.png" alt="智能语义搜索">
+							</p>
+							<p class="describe">基于多年积累的知识库，提供垂直领域智能语义搜索</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="application-cases">
+			<div class="title text-center">
+				<h2>应用案例</h2>
+				<p>Application Cases</p>
+			</div>
+			<div class="list img">
+				<p class="poi-describe">
+					<label>辽宁POI搜索：</label>
+					<span>为辽宁位置基地和地图业务和12585语音热线提供搜索服务，和地图业务访问量每天达60万次。语音热线拥有300坐席，全部使用大云搜索引擎，涉及服务器<span class="red">16台</span>。</span>
+				</p>
+				<p class="oa-describe">
+					<label>移动公司OA搜索：</label>
+					<span>为移动集团和各个省公司替代原有OA搜索系统，全面兼容现网OA底层的<span class="red">Lotus Notes</span>数据库，在OA搜索领域应用前景广阔。</span>
+				</p>
+				<p class="music-describe">
+					<label>咪咕：</label>
+					<span>为咪咕互娱、咪咕一级货架提供个性化搜索服务，并发量超过<span class="red">1000次/秒</span>，涉及服务器<span class="red">10台</span>。为咪咕总部建立统一搜索服务，实现咪咕子公司全业务搜索能力，17年预计将搜索与用户画像相结合，由传统的知识搜索转变为推荐搜索，最终形成从搜索到订单的闭环。</span>
+				</p>
+				<p class="finacial-describe">
+					<label>江苏经分搜索：</label>
+					<span>大云搜索引擎突破了传统经分系统在数据库查询性能方面的瓶颈，为江苏省公司提供优质的搜索服务，并且<span class="red">支持附件内容搜索</span>（ppt、pdf、word），支持索引和日志分析功能。</span>
+				</p>
+			</div>
+		</div>
+		<table class="footer">
+			<tbody>
+				<tr>
+					<td class="col-xs-2"></td>
+					<td class="col-xs-2">
+						<div class="vx-block text-center">
+							<div class="vx-content">
+								<p>关注我们</p>
+								<p><img src="images/portal/vx-logo.png"></p>
+								<p>扫描关注中移软件</p>
+							</div>
+						</div>
+					</td>
+					<td class="col-xs-4">
+						<div class="right-info text-center">
+							<p>@2016 COPYRIGHT BY CHINA MOBILE (SUZHOU) SOFTWARE TECHNOLOGY CO.LTD</p>
+							<p>版权申明</p>
+						</div>
+					</td>
+					<td class="col-xs-4"></td>
+				</tr>
+			</tbody>
+		</table>
+
+    </div>
+</div>
+<toaster-container></toaster-container>
+

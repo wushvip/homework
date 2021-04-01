@@ -1,0 +1,69 @@
+  <div class="container">
+    <div class="pull clearfix">
+      <h1 class="pull-left">应用列表</h1>
+    </div>
+
+    <div class="apps">
+      <form class="clearfix">
+        <div class="col-md-2 col-xs-3">
+          <div class="input-group">
+            <input type="text" ng-model="searchText" class="form-control" placeholder="输入应用名称">
+            <div class="input-group-addon">
+              <button type="submit" class="search" ng-click="getApps()" ng-disabled="submitting"></button>
+            </div>
+          </div>
+        </div>
+        <a ui-sref="manage.create" class="btn btn90 confirm pull-right">创建应用</a>
+      </form>
+      <table class="table table-condensed table-hover app-table">
+        <thead>
+        <tr>
+          <th>应用名称</th>
+          <th ng-if="isAdmin()">创建者</th>
+          <th>昨日搜索次数</th>
+          <th>昨日搜索请求量峰值（秒）</th>
+          <th ng-if="isAdmin()">索引处理</th>
+          <th>搜索测试</th>
+          <th>错误日志</th>
+          <th>状态</th>
+          <th ng-if="isAdmin()">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr ng-if="!apps.length" class="text-center">
+            <td ng-if="isAdmin()" colspan="9">暂无应用，可点击<a class="btn underline-btn" ui-sref="manage.create">创建应用</a>添加</td>
+            <td ng-if="!isAdmin()" colspan="8">暂无应用，可点击<a class="btn underline-btn" ui-sref="manage.create">创建应用</a>添加</td>
+          </tr>
+          <tr ng-if="apps.length" ng-repeat="app in apps" ng-class="{true:'gray-tr'}[app.appStatus=='2']" tr-forbidden>
+            <td>
+              <button ng-click = "app.appStatus=='2'||appDetail(app, '0')" class="btn underline-btn" ng-bind="app.appName" ng-disabled="app.operaDisabled"></button>
+            </td>
+            <td ng-if="isAdmin()" ng-bind="app.userName"></td>
+            <td ng-bind="app.searchNum"></td>
+            <td ng-bind="app.maxSearchPerSec"></td>
+            <td ng-if="isAdmin()">
+              <button class="btn underline-btn" ng-click="app.appStatus=='2'||appDetail(app,'1')" ng-disabled="app.operaDisabled">处理</button>
+            </td>
+            <td>
+              <button ng-click="app.appStatus=='2'||appDetail(app,'2')" class="btn underline-btn" ng-disabled="app.operaDisabled">测试</button>
+            </td>
+            <td>
+              <button ng-click="app.appStatus=='2'||appDetail(app, '3')" class="btn underline-btn" ng-disabled="app.operaDisabled">查看</button>
+            </td>
+            <td ng-bind="app.appStatus|displayStatus"></td>
+            <td ng-if="isAdmin()">
+              <button class="btn underline-btn" ng-bind="app.appStatus|appStatusFilter" ng-click="app.appStatus=='2'||updateApp(app)"  ng-disabled="app.operaDisabled"></button>
+              <span class="line"></span>
+              <button class="btn underline-btn" ng-click="app.appStatus=='2'||deleteApp(app)" ng-disabled="app.operaDisabled">删除</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <form class="pagination-define text-center" ng-show="page.totalItems">
+        <select ng-model="page.numPerPage" ng-options="item as item for item in page.itemsOptions" ng-change="getData(page.currentPage)"> </select>
+        <ul uib-pagination boundary-links="true" total-items="page.totalItems" ng-model="page.currentPage" ng-change="getData(page.currentPage)" max-size="page.maxSize" items-per-page="page.numPerPage" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></ul>
+        <input type="text" ng-model="page.inputCurPage" min=1 my-max-number ="{{page.maxPages}}" current-page="{{page.currentPage}}">
+        <button class="btn btn-info btn-30h" ng-click="getData(page.inputCurPage)" ng-disabled="!page.inputCurPage||page.inputCurPage==''">Go</button>
+      </form>
+    </div>
+  </div>

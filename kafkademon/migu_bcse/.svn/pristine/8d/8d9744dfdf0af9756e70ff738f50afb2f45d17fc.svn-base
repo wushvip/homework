@@ -1,0 +1,19 @@
+<div class="app-intel col-xs-12">
+  <article>
+    <h3>4.3 智能联想</h3>
+    <section>
+      用户可实现配置智能联想规则，支持配置多个规则(目前最多支持5条规则,规则名不允许重复）。
+    </section>
+    <section>
+      点击智能联想的添加规则按钮，在弹出的配置框中添加搜索字段（可以是多个）,和展示字段（只能是1个）
+    </section>
+    <section class="center">
+      <img src="images/doc/app/suggestion/1.jpg" animate-visible="true" animate-speed="0.5s" alt="智能联想配置">
+      <footer>图4.3.1 智能联想配置</footer>
+    </section>
+    <section>
+      智能联想的效果可以通过页面下方的展示框进行查看。用户选择相应的智能联想规则，在查询框中输入关键词“保卫”后，名称中带有“保卫”的条目都能被联想出来。
+    </section>
+  </article>
+  <back-to-top></back-to-top>
+</div>

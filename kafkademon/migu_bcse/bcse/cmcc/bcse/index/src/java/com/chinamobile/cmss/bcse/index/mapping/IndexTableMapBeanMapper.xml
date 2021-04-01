@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.index.dao.IndexTableMapBeanDao">
+	<resultMap id="BaseResultMap" type="com.chinamobile.cmss.bcse.app.bean.AppTableMapBean">
+		<id column="TABLE_ID" property="tableId" jdbcType="VARCHAR" />
+		<result column="APP_ID" property="appId" jdbcType="VARCHAR" />
+		<result column="TABLE_NAME" property="tableName" jdbcType="VARCHAR" />
+		<result column="SOURCE_DIR" property="sourceDir" jdbcType="VARCHAR" />
+		<result column="IS_MAIN_TABLE" property="isMainTable" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		TABLE_ID, APP_ID, TABLE_NAME, SOURCE_DIR, IS_MAIN_TABLE
+	</sql>
+	<select id="selectByAppId" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from APP_TABLE_MAPPING
+		where APP_ID = #{0}
+	</select>
+	
+	
+	
+	<update id="updateFile" parameterType="String">
+		update APP_TABLE_MAPPING
+		set SOURCE_DIR = #{1,jdbcType=VARCHAR}
+		where TABLE_ID = #{0,jdbcType=VARCHAR}
+	</update>
+</mapper>

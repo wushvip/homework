@@ -1,0 +1,35 @@
+<p>数据量</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="pull-left">
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchNum(0,0,'0')" ng-class="{active: type==='0'}">今天</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchNum(-1,-1,'1')" ng-class="{active: type==='1'}">昨天</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchNum(-6,0,'2')" ng-class="{active: type==='2'}">最近7天</button>
+      <button class="btn btn90 btn-nocolor-sm" ng-click="getSearchNum(-29,0,'3')" ng-class="{active: type==='3'}">最近30天</button>
+    </div>
+    <form name="searchNumForm">
+      <label class="pull-left">选择时间范围: </label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" name="startTime" class="form-control" uib-datepicker-popup ng-model="startTime" is-open="startPopupOpened" datepicker-options="startDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+              <span class="input-group-btn">
+                <button type="button" class="btn cancel" ng-click="startOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+      </div>
+      <label class="pull-left">至</label>
+      <div class="col-xs-3">
+        <p class="input-group">
+          <input type="text" name="endTime" class="form-control" uib-datepicker-popup ng-model="endTime" is-open="endPopupOpened" datepicker-options="endDateOptions" ng-required="true" close-text="关闭" current-text="今天" readonly />
+              <span class="input-group-btn">
+                <button type="button" class="btn cancel" ng-click="endOpen()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+      </div>
+      <button class="btn confirm" ng-click="getSearchNum(startTime, endTime,'4')" ng-disabled="searchNumForm.$invalid||!numAppList.length">查询</button>
+    </form>
+  </div>
+  <div class="panel-body">
+    <div style="height:400px" id="echarts-num"></div>
+  </div>
+</div>

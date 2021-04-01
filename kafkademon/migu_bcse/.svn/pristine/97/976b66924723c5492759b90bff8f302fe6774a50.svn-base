@@ -1,0 +1,95 @@
+<div class="recovery">
+  <h3>纠错展示</h3>
+        <uib-tabset justified="true">
+          <uib-tab>
+            <uib-tab-heading> 基础词典
+              <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="无需特定格式，分词器将以此进行分词训练" tooltip-class="customClass">
+                <i class="glyphicon glyphicon-question-sign question-tips"></i>
+              </a>
+            </uib-tab-heading>
+            <div class="clearfix">
+              <div class="col-md-offset-1 col-md-6">
+                <button class="btn btn-nocolor-lg" ngf-select="commonFileChange($file)" accept=".txt" ngf-max-height="1000" name="file" ng-disabled="commonFile.uploading">选择基础词典文件</button>
+                <p class="text-tip">
+                  （{{messages.file.tip1}}）
+                </p>
+              </div>
+              <table class="table text-center">
+                <tbody ng-show="commonFile">
+                <tr>
+                  <td class="col-xs-3"><small><span>{{commonFile.name}}</span></small></td>
+                  <td class="col-xs-2"><small><span>{{commonFile.size/1024|number:4}}KB</span></small></td>
+                  <td class="col-xs-2">
+                    <progressbar ng-show="commonFile.progress" animate="false" value="commonFile.progress" type="success"><b>{{commonFile.progress}}%</b></progressbar>
+                  </td>
+                  <td>
+                    <small>
+                      <span class="alert-info" ng-show="commonFile.uploading">{{messages.file.process}}</span>
+                      <span class="alert-success" ng-show="commonFile.uploaded">{{messages.file.processed}}</span>
+                      <span class="alert-danger" ng-hide="commonFile.uploaded">{{commonFile.fileErrorMsg}}</span>
+                    </small>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </uib-tab>
+          <uib-tab>
+            <uib-tab-heading>
+              自定义词典
+              <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="格式为keyword:weight，其中keyword采用UTF-8无BOM的中文编码，Weight的取值范围为-2147483648到2147483647" tooltip-class="customClass">
+                <i class="glyphicon glyphicon-question-sign question-tips"></i>
+              </a>
+            </uib-tab-heading>
+            <div class="clearfix">
+              <div class="col-md-offset-1 col-md-6">
+                <button class="btn btn-nocolor-lg" ngf-select="standardFileChange($file)" accept=".txt" ngf-max-height="1000" type="file" ng-disabled="standardFile.uploading">选择自定义词典文件</button>
+                <p class="text-tip">
+                  （{{messages.file.tip}}）
+                </p>
+              </div>
+              <table class="table text-center">
+                <tbody ng-show="standardFile">
+                <tr>
+                  <td class="col-xs-3"><small><span>{{standardFile.name}}</span></small></td>
+                  <td class="col-xs-2"><small><span>{{standardFile.size/1024|number:4}}KB</span></small></td>
+                  <td class="col-xs-2">
+                    <progressbar ng-show="standardFile.progress" animate="false" value="standardFile.progress" type="success"><b>{{standardFile.progress}}%</b></progressbar>
+                  </td>
+                  <td>
+                    <small>
+                      <span class="alert-info" ng-show="standardFile.uploading">{{messages.file.process}}</span>
+                      <span class="alert-success" ng-show="standardFile.uploaded">{{messages.file.processed}}</span>
+                      <span class="alert-danger" ng-hide="standardFile.uploaded">{{standardFile.fileErrorMsg}}</span>
+                    </small>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </uib-tab>
+        </uib-tabset>
+      <form class="row">
+        <div class="col-md-6">
+          <h5 for="stringInput"><span class="red">*</span>纠错字符：</h5>
+          <input type="text" class="form-control" id="stringInput" placeholder="请输入纠错字符" ng-model="recoveryText">
+        </div>
+        <div class="col-md-12">
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-checked="isLoadDic" ng-model="isLoadDic"> 加载词典
+            </label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <button class="btn btn90 confirm" ng-disabled="submitting" ng-click="getRecovery()">{{messages.submit}}</button>
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-xs-12">
+          <label>纠错结果：</label>
+          <span class="analysis-word" ng-show="correctResult">{{correctResult}}</span>
+        </div>
+      </div>
+</div>

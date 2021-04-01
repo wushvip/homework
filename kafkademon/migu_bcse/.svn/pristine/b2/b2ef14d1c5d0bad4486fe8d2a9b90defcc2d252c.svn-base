@@ -1,0 +1,54 @@
+<div class="basic">
+    <h3>基本信息</h3>
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <th colspan="4" class="text-left">
+            <p>
+              <span>{{appInfo.appName}}(ID:{{appInfo.appId}})</span>
+              <span class="pl40">(创建时间:{{appInfo.createDate}})</span>
+            </p>
+            <p>
+              <span>应用描述：</span>
+              <span class="break-word">{{appInfo.appDescribe}}</span>
+            </p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="thumbnail text-center">
+              <p>状态</p>
+              <p><i class="glyphicon glyphicon-ok-circle" ng-class="{'0':'glyphicon-ok-circle', '1':'glyphicon-exclamation-sign'}[appInfo.appStatus]"></i></p>
+              <button class="btn btn90 btn-nocolor-sm" ng-model="appInfo.appStatus" ng-click="statuChange(appInfo)" ng-disabled="appInfo.operaDisabled">{{appInfo.appStatus|appStatusFilter}}</button>
+            </div>
+          </td>
+          <td>
+            <div class="thumbnail text-center">
+              <p>数据量</p>
+              <p class="outer">
+                <span class="inner">{{appInfo.dataNum|number}}</span>
+              </p>
+            </div>
+          </td>
+          <td>
+            <div class="thumbnail text-center">
+              <p>昨日搜索次数</p>
+              <p class="outer">
+                <span class="inner">{{appInfo.searchNum|number}}</span>
+              </p>
+            </div>
+          </td>
+          <td>
+            <div class="thumbnail tex-center">
+              <p>每秒搜索请求峰值</p>
+              <p class="outer">
+                <span class="inner">{{appInfo.maxSearchPerSec|number}}</span>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

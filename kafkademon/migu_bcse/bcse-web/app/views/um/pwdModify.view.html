@@ -1,0 +1,70 @@
+<div class="user-password-update-modal" personalcenter>
+	<div class="modal-header">
+		<span>修改密码</span>
+		<button type="button" class="close" ng-click="cancel()">&times;</button>
+	</div>
+  <div class="modal-body">
+    <div class="row clearfix">
+      <div class="col-xs-12">
+        <form class="form-horizontal" name="modifyPwdForm">
+          <div class="form-group">
+            <div class="col-xs-2 text-right">
+              <label class="form-label" for="inputOldPwd">{{messages.oPwd}}</label>
+            </div>
+            <div class="col-xs-8">
+              <input type="password" name="oldPassword" class="hidden">
+              <input class="form-control" id="inputOldPwd" ng-model="user.oldPwd" placeholder="{{messages.oPwd}}" name="oldPassword" type="password" ng-focus="passwordChecked=errorShow=false;" maxlength="16" autocomplete="off" required />
+
+              <span class="alert-danger" ng-if="errorShow" >{{messages.um.pwdError}}</span>
+
+            </div>
+
+            <span class="red" ng-if="modifyPwdForm.oldPassword.$error.required">*</span>
+            <img src="images/right.png" ng-if="passwordChecked">
+
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2 text-right">
+              <label class="form-label" for="inputNewPwd">{{messages.nPwd}}</label>
+            </div>
+            <div class="col-xs-8">
+              <input class="form-control" id="inputNewPwd" ng-model="user.newPwd" placeholder="{{messages.nPwd}}" name="newPassword" type="password" maxlength="16" password-verify autocomplete="off" required />
+              <div class="text-tip">{{messages.um.pwdTextTip}}</div>
+            </div>
+
+            <span class="red" ng-if="modifyPwdForm.newPassword.$error.required">*</span>
+            <img ng-if="modifyPwdForm.newPassword.$valid" src="images/right.png">
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-2 text-right">
+              <label class="form-label" for="confirmPwd">{{messages.verifyPwd}}</label>
+            </div>
+            <div class="col-xs-8">
+              <input class="form-control" id="confirmPwd" ng-model="user.matchPwd" placeholder="{{messages.verifyPwd}}" name="verifyPassword" type="password" maxlength="16" autocomplete="off" required password-match="user.newPwd" />
+            </div>
+
+            <span class="red" ng-if="modifyPwdForm.verifyPassword.$error.required">*</span>
+            <img ng-if="modifyPwdForm.newPassword.$valid && modifyPwdForm.verifyPassword.$valid" src="images/right.png">
+          </div>
+          <div class="col-xs-offset-2 col-xs-8">
+            <span ng-show="modifyPwdForm.newPassword.$error.verify" class="alert-warning">{{messages.um.pwdUnstrength}}</span>
+            <span ng-show="modifyPwdForm.verifyPassword.$error.match" class="alert-warning">{{messages.um.pwdAsyn}}</span>
+          </div>
+
+          <div class="form-group">
+            <div class="col-xs-10">
+              <div class="pull-right">
+                <button class="btn btn-info" type="submit"  ng-click="modifyPwd(cancel)" ng-disabled="modifyPwdForm.$invalid" >{{messages.confirm}}</button>
+                <button type="reset" class="btn btn-default" ng-click="cancel()" ng-disabled="submitting">{{messages.cancel}}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+</div>

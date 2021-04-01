@@ -1,0 +1,81 @@
+<div class="suggestion">
+  <h3>智能联想</h3>
+  <span class="btn-group pull-right">
+    <button class="btn btn90 confirm" ng-click="addSuggestion()" ng-disabled="suggestions.length>=50||isEditing||submitting">添加规则</button>
+    <button class="btn btn90 confirm" ng-click="deleteSuggestions()" ng-disabled="suggestions.length>=50||!selectedRules.length||isEditing||submitting">删除</button>
+  </span>
+  <table class="table table-bordered table-condensed table-responsive">
+    <thead>
+      <tr>
+        <th><input type="checkbox" ng-click="getAllSelectedSuggestions()" ng-checked="selectedRules.length===suggestions.length&&suggestions.length!==0" ng-disabled="isEditing||submitting"></th>
+        <th>{{messages.rule.series}}</th>
+        <th>{{messages.rule.ruleName}}
+          <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+            <i class="glyphicon glyphicon-question-sign question-tips"></i>
+          </a>
+        </th>
+        <th class="col-xs-5">搜索字段</th>
+        <th>展示字段</th>
+        <th>{{messages.rule.operate}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="suggestion in suggestions | orderBy:['createDate.time']" ng-include="getTemplate(suggestion,addRule)"></tr>
+    </tbody>
+  </table>
+  <div class="clearfix execute">
+    <div class="col-md-2 col-xs-3">
+      <select ng-model="suggestRule" class="form-control" ng-options="suggestion as suggestion.ruleName for suggestion in suggestions| filter:{ruleName: '!!'}" >
+        <option value="">--请选择--</option>
+      </select>
+    </div>
+    <div class="col-md-8 col-xs-9">
+      <input type="text" ng-model="search" placeholder="请输入关键词查询" uib-typeahead="suggestionRes for suggestionRes in executeSuggest($viewValue)" typeahead-input-formatter="intelFormatter(search)" class="form-control" maxlength="100" autocomplete="off" ng-disabled="!suggestRule.ruleName" >
+      <div ng-show="noResults">
+        <i class="glyphicon glyphicon-remove"></i> {{messages.public.noResult}}
+      </div>
+    </div>
+    <!--<div class="col-md-offset-2 col-xs-offset-3 col-md-8 col-xs-9 text-tip" ng-if="inpuLimitMsg">
+      提示：<span ng-bind-html="inpuLimitMsg|to_trusted"></span>
+    </div>-->
+  </div>
+</div>
+<script type="text/ng-template" id="display">
+  <td>
+    <input type="checkbox" ng-click="getSelectedSuggestions(suggestion)" ng-checked="checkSelectedSuggestion(suggestion)" ng-disabled="isEditing||submitting">
+  </td>
+  <td ng-bind="$index+1"></td>
+  <td ng-bind="suggestion.ruleName"></td>
+  <td>
+		<span ng-show="suggestion.includeFields.length>0" ng-repeat="includeField in suggestion.includeFields">
+			<span>{{includeField}};</span>
+		</span>
+  </td>
+  <td ng-bind="suggestion.showField"></td>
+  <td>
+    <button class="btn btn90 blank-btn" ng-click="editSuggestion(suggestion)" ng-disabled="addRule.isAddRule||submitting">{{messages.edit}}</button>
+    <span class="line"></span>
+    <button class="btn btn90 blank-btn" ng-click="deleteSuggestion(suggestion)" ng-disabled="addRule.isAddRule||submitting">{{messages.delete}}</button>
+  </td>
+</script>
+<script type="text/ng-template" id="edit">
+  <td></td>
+  <td ng-bind="$index+1"></td>
+  <td>
+    <input type="text" ng-model="addRule.ruleName" maxlength="30" inputvalid ng-blur="checkRuleName(addRule, suggestions)" ng-disabled="!addRule.isAddRule">
+  </td>
+  <td>
+		<span ng-show="addRule.includeFields.length>0" ng-repeat="selectedField in addRule.includeFields">
+			<span>{{selectedField.id}};</span>
+		</span>
+    <span ng-dropdown-multiselect options="fields" selected-model="addRule.includeFields" extra-settings="selectSettings" ng-dropdown-multiselect-disabled="addRule.includeFields.length>=100"></span>
+  </td>
+  <td>
+    <select ng-model="addRule.showField" ng-options="showField as showField for showField in showFields"></select>
+  </td>
+  <td>
+    <button class="btn btn90 blank-btn" ng-click="saveSuggestion(addRule)" ng-disabled="!addRule.ruleName||!addRule.includeFields.length||submitting">{{messages.save}}</button>
+    <span class="line"></span>
+    <button type="reset" class="btn btn90 blank-btn" ng-click="cancelSuggestion(addRule)" ng-disabled="submitting">{{messages.cancel}}</button>
+  </td>
+</script>

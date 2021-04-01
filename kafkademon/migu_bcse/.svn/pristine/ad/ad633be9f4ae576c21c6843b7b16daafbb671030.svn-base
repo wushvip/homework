@@ -1,0 +1,41 @@
+<div class="shield">
+  <h3>
+    屏蔽配置
+  </h3>
+  <span class="btn-group pull-right">
+    <button class="btn btn90 confirm" ng-click="addShield()" ng-disabled="shields.length>=50||submitting">添加规则</button>
+    <button class="btn btn90 confirm" ng-click="deleteShields()" ng-disabled="shields.length>=50||!selectedRules.length||submitting">删除</button>
+  </span>
+  <table class="table table-bordered table-condensed table-responsive">
+    <thead>
+    <tr>
+      <th><input type="checkbox" ng-click="getAllSelectedShields()" ng-checked="shields.length!==0&&selectedRules.length===shields.length" ng-disabled="submitting"></th>
+      <th>{{messages.rule.series}}</th>
+      <th>{{messages.rule.ruleName}}
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th>包含关键字</th>
+      <th>{{messages.rule.operate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="shield in shields | orderBy:['createDate.time']" >
+        <td><input type="checkbox" ng-click="getSelectedShields(shield)" ng-checked="checkSelectedShield(shield)" ng-disabled="shield.operaDisabled||submitting"></td>
+        <td ng-bind="$index+1"></td>
+        <td ng-bind="shield.ruleName"></td>
+        <td>
+          <ul>
+            <li ng-repeat="keyWord in shield.includeKeywords track by $index" ng-bind="keyWord"></li>
+          </ul>
+        </td>
+        <td>
+          <button class="btn btn90 blank-btn" ng-click="editShield(shield)" ng-disabled="submitting">{{messages.edit}}</button>
+          <span class="line"></span>
+          <button class="btn btn90 blank-btn" ng-click="deleteShield(shield)" ng-disabled="submitting">{{messages.delete}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

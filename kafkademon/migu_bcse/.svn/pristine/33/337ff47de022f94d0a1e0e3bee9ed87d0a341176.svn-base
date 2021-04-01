@@ -1,0 +1,90 @@
+
+<div class="table-list"  >
+  <!--<div class="hidden" ng-model="mainTable"></div>-->
+  <div ng-repeat="table in tableList" class="table-item" ng-init="tableIndex = $index;">
+    <div class="title clearfix">
+      <a  class="pull-right" ng-click="deleteTable(tableIndex)" href="javascript:void(0)"><i class="glyphicon glyphicon-remove"></i></a>
+      <div class="col-xs-3" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+        <input type="text" class="form-control " ng-model="table.tableName" readonly>
+      </div>
+      <label >主表<input type="radio" ng-model="table.isMainTable" ng-value="'1'" ng-click="checkMasterTable(tableIndex)" ></label>
+    </div>
+    <table  class="table table-hover table-bordered table-fixed">
+      <thead>
+      <th></th>
+      <th>字段名称
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.fieldNameTip}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </th>
+      <th class="col-xs-1">主键</th>
+      <th>类型</th>
+      <th class="col-xs-1">可搜索</th>
+      <th class="col-xs-1">可展示</th>
+      <th class="col-xs-1">多值</th>
+      <th>源字段</th>
+      <th class="col-xs-1">动态字段</th>
+      <th class="col-xs-1">操作</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="column in table.fields">
+        <td >{{$index+1}}</td>
+
+        <td>
+          <input type="text" ng-model="column.fieldName" class="form-control" ng-blur="checkColumnName(table,column,$index)" inputvalid maxlength="30">
+        </td>
+        <td><input type="checkbox"  ng-model="column.isPk" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="checkColumnKey(table,column,$index)" ng-click="setMutiple(column)">{{column.isPK}}</td>
+        <td>
+          <select class="form-control" ng-model="column.fieldType" ng-options="option as option for option in struct.typeOptions" ng-change="changeType(table,$index,column.fieldType)"></select>
+        </td>
+        <td>
+          <input type="checkbox"  ng-model="column.isSearch" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="column.isPk==='1'">
+        </td>
+        <td>
+          <input type="checkbox"  ng-model="column.isShow" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="column.isPk==='1'">
+        </td>
+        <td>
+          <input type="checkbox"  ng-model="column.isMutivalue" ng-true-value="'1'" ng-false-value="'0'" ng-disabled="column.srcField.length>=1||mutiValAndSrcFieldIsDisabled(column)">
+
+        </td>
+        <td>
+						<div uib-dropdown is-open="status.isopen">
+							<button ng-disabled="!infactSourceOptions.length||mutiValAndSrcFieldIsDisabled(column)" class="btn cancel dropdown-toggle" id="sourceFileds" data-toggle="dropdown" uib-dropdown-toggle>添加源字段
+                <span class="caret"></span>
+              </button>
+							<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="sourceFileds" ng-show="infactSourceOptions.length">
+                <li ng-repeat="source in table.sourceOptions|filter:'!'+column.fieldName:true|filter:'!':true as infactSourceOptions">
+                  <label>
+                    <input type="checkbox"  ng-checked="checkSourceSelect(source,column)"  ng-click="addSourceField(source,column)" name="sourceFileds" >
+                    <span>{{source.field}}</span>
+                  </label>
+                </li>
+              </ul>
+						</div>
+						<div ng-show="column.srcField.length>0" ng-repeat="sourceField in column.srcField track by $index">
+							<span class="selected-field">{{sourceField}};</span>
+						</div>
+        </td>
+        <td>
+          <select class="form-control" ng-model="column.dynamicField" ng-options="key as value for (key,value) in struct.boolOptions" ng-change="srcFieldChange(table,column,$index)" ng-disabled="column.isPk==='1'||column.srcField.length"></select>
+        </td>
+        <td>
+          <a href="" ng-click="deleteColumn(table,column,$index)">删除</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="10" class="text-center">
+          <a class="add" href="javascript:void(0)" ng-click="addColumn(tableIndex)">
+            <i class="glyphicon glyphicon-plus"></i>
+          </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="add-table" ng-hide="tableList.length">
+  <a class="add" href="javascript:void(0)" ng-click="addTable()">
+    <i class="glyphicon glyphicon-plus"></i>添加表{{test.a}}
+  </a>
+</div>

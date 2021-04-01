@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.chinamobile.cmss.bcse.datastatistics.dao.SearchTimesDao">
+
+	<resultMap type="com.chinamobile.cmss.bcse.datastatistics.bean.LogSearchTimesBean" id="searchTimesMap">
+		<result property="oper_date" column="OPER_DATE" />
+		<result property="search_count" column="SEARCH_COUNT" />
+	</resultMap>
+
+		<select id="selectSearchTimes" parameterType="String" resultMap="searchTimesMap">
+		SELECT SEARCH_COUNT
+		FROM
+		SEARCH_COUNT_DAY
+		WHERE
+		OPER_DATE = #{OPER_DATE}
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+		
+		
+	</select>
+
+	<select id="selectSearchTimesAsDay" parameterType="String"
+		resultMap="searchTimesMap">
+		SELECT OPER_DATE,SEARCH_COUNT
+		FROM
+		SEARCH_COUNT_DAY
+		WHERE
+		OPER_DATE between #{OPER_DATE_START} and #{OPER_DATE_END}
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+		order by OPER_DATE asc
+	</select>
+	
+	<!-- 删除应用：删除搜索次数(按天)-->
+	<delete id="DeleteTimeAsDay" parameterType="String">
+		DELETE
+		FROM SEARCH_COUNT_DAY
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+	
+	<!-- 删除应用：删除搜索次数(按小时)-->
+	<delete id="DeleteTimeAsHour" parameterType="String">
+		DELETE
+		FROM SEARCH_COUNT_HOUR
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+		
+	<!-- 删除应用：删除搜索次数(按秒)-->
+	<delete id="DeleteTimeAsSecond" parameterType="String">
+		DELETE
+		FROM SEARCH_COUNT_SECOND
+		WHERE
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+
+	</delete>
+	
+	<resultMap type="com.chinamobile.cmss.bcse.datastatistics.bean.LogMaxSearchTimesBean" id="maxSearchTimesMap">
+		<result property="oper_date" column="OPER_DATE" />
+		<result property="oper_hour" column="OPER_HOUR" />
+		<result property="oper_time" column="OPER_TIME" />
+		<result property="search_count" column="SEARCH_COUNT" />
+	</resultMap>
+
+	<select id="selectMaxSearchTimes" parameterType="String"
+		resultMap="maxSearchTimesMap">
+		SELECT SEARCH_COUNT
+		FROM
+		SEARCH_COUNT_SECOND
+		WHERE
+		APP_ID=#{APP_ID}
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		OPER_TIME BETWEEN
+		#{OPER_DATE_START} AND
+		#{OPER_DATE_END}
+		ORDER BY SEARCH_COUNT desc LIMIT
+		0,1
+	</select>
+
+	<select id="selectSearchTimesPerHour" parameterType="String"
+		resultMap="maxSearchTimesMap">
+		SELECT OPER_HOUR,SEARCH_COUNT
+		FROM
+		SEARCH_COUNT_HOUR
+		WHERE
+		OPER_DATE = #{OPER_DATE}
+		AND
+		USER_ID=#{USER_ID}
+		AND
+		APP_ID=#{APP_ID}
+		<!-- GROUP by OPER_HOUR -->
+		ORDER by OPER_HOUR asc
+	</select>
+
+</mapper>

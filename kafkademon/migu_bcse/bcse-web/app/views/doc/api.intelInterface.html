@@ -1,0 +1,178 @@
+<h2>2.API接口</h2>
+<div class="app-intel-interface col-xs-12">
+  <article>
+    <h3>2.1 智能联想接口</h3>
+    <article>
+      <h4>1. 基本描述</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.1.1.1. 基本描述</caption>
+        <tr>
+          <th>接口名称</th>
+          <td>智能联想接口</td>
+        </tr>
+        <tr>
+          <th>接口描述</th>
+          <td>根据用户的输入词，自动提示与输入词相关的数据</td>
+        </tr>
+      </table>
+    </article>
+    <article>
+      <h4>2. 请求信息</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.1.2.1. 请求信息</caption>
+        <tr>
+          <th>前提要求</th>
+          <td>无</td>
+        </tr>
+        <tr>
+          <th>请求类型</th>
+          <td>HTTP</td>
+        </tr>
+        <tr>
+          <th>请求地址</th>
+          <td>/suggestion</td>
+        </tr>
+        <tr>
+          <th>请求方式</th>
+          <td>POST</td>
+        </tr>
+        <tr>
+          <th>报文格式</th>
+          <td>
+            <div>
+              content-type：application/json
+            </div>
+            <div>
+              accept：application/json
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>接口参数</th>
+          <td>?userId=xxx&sortConfig=xxx &appId=xxx&searchQuery=xxx& filterJson={}</td>
+        </tr>
+      </table>
+    </article>
+    <article>
+    <h4>3. 参数说明</h4>
+    <table class="table table-bordered table-responsive w80">
+      <caption>表2.1.3.1. 请求参数描述</caption>
+      <thead>
+      <tr>
+        <th>字段</th>
+        <th>约束</th>
+        <th>类型</th>
+        <th>长度</th>
+        <th>描述</th>
+        <th>说明</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>appId</td>
+        <td>必填</td>
+        <td>String</td>
+        <td>50</td>
+        <td>应用ID</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>userId</td>
+        <td>必填</td>
+        <td>String</td>
+        <td>50</td>
+        <td>用户ID</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>searchQuery</td>
+        <td>必填</td>
+        <td>String</td>
+        <td>100</td>
+        <td>搜索文本</td>
+        <td>最大支持100个字符，当搜索文本长度大于100时，自动截取前100个字符</td>
+      </tr>
+      <tr>
+        <td>sortConfig</td>
+        <td>可选</td>
+        <td>String</td>
+        <td>50</td>
+        <td>智能提示配置</td>
+        <td>规则名称</td>
+      </tr>
+      <tr>
+        <td>filterJson</td>
+        <td>可选</td>
+        <td>Json</td>
+        <td></td>
+        <td>过滤条件筛选</td>
+        <td>参照搜索接口的filterJson字段规则描述</td>
+      </tr>
+      </tbody>
+    </table>
+    <section>
+      <label>样例：</label>
+      <pre>
+        <xmp>
+          URL:http://ip:port/bcse/suggestion?
+          userId=chenmin@mcss.chinamobile.com&sortConfig=xxx &appId=1& searchQuery=a&filterJson={}
+        </xmp>
+      </pre>
+    </section>
+    </article>
+    <article>
+      <h4>4. 响应消息</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.1.4.1. 返回参数描述</caption>
+        <thead>
+        <tr>
+          <th>字段</th>
+          <th>父节点</th>
+          <th>约束</th>
+          <th>类型</th>
+          <th>长度</th>
+          <th>描述</th>
+          <th>说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>suggestions</td>
+          <td>result</td>
+          <td>必填</td>
+          <td>Array</td>
+          <td></td>
+          <td>智能提示数据</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>costTime</td>
+          <td>result</td>
+          <td>必填</td>
+          <td>int</td>
+          <td></td>
+          <td>耗费时间</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+      <section>
+        <label>样例：</label>
+        <pre>
+        <xmp>
+          {
+              "message": "操作成功",
+              "code": "",
+              "status": "SUCCESS",
+              "result": {
+                  "costTime": 1272,
+                  "suggestions": []
+              }
+          }
+        </xmp>
+        </pre>
+      </section>
+    </article>
+  </article>
+  <back-to-top></back-to-top>
+</div>

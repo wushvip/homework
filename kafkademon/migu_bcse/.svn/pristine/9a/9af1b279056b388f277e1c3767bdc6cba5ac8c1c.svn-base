@@ -1,0 +1,37 @@
+<div class="application-list">
+  <div class="container evaluation-container">
+    <div class="pull clearfix">
+      <h1 class="pull-left">评测分析</h1>
+    </div>
+    <div class="evaluation-body row">
+      <div class="wrapper">
+        <div class="modal-header">
+          <span>样例数据</span>
+        </div>
+        <div class="modal-body">
+          <table class="table table-condensed">
+            <thead>
+            <tr>
+              <th>搜索词汇</th>
+              <th>id</th>
+              <th>标题</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>萌宠</td>
+              <td>160122034000|700147873000|160122058000</td>
+              <td>萌宠乐园|萌宠跳跃|萌宠乐园</td>
+            </tr>
+            <tr>
+              <td>三国</td>
+              <td>700017476000|700137462000|700128698000|700210679000|700019204000</td>
+              <td>指点三国|角斗三国|三国五子棋|爽三国|指点三国</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

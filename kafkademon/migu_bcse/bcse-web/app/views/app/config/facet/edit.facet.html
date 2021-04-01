@@ -1,0 +1,47 @@
+<div class="add-config-modal" discard-modal>
+  <div class="modal-header">
+    <span>{{messages.rule.editRule}}</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+
+  <form class="modal-body" name="addFacetForm">
+    <div class="row">
+      <div class="col-md-2 text-right">{{messages.rule.ruleName}}<span class="red">*</span></div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" maxlength="30" placeholder="请输入规则名称" ng-model="rule.ruleName" name="facetName" inputvalid required ng-blur="checkRuleName(rule, rules)" ng-focus="ruleNameChecked=false" ng-disabled="!rule.isAddRule">
+        <p class="text-tip">{{messages.fieldNameTip}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 text-right">词条配置<span class="red">*</span></div>
+      <div class="col-md-10">
+        <div class="">
+          <table class="table table-bordered table-hover tabel-condensed">
+            <thead>
+            <tr>
+              <th>包含字段</th>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span ng-repeat="field in rule.includeFields">
+                    <span>{{field.id}};</span>
+                  </span>
+                  <span ng-dropdown-multiselect options="facetFields" selected-model="rule.includeFields" extra-settings="selectSettings" ng-dropdown-multiselect-disabled="rule.includeFields.length>=100"></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn confirm" ng-click="saveFacet(rule,cancel)" ng-disabled="addFacetForm.$invalid||!rule.includeFields||!rule.includeFields.length||submitting">{{messages.save}}</button>
+      <button type="reset" class="btn cancel" ng-click="cancel()" ng-disabled="submitting">{{messages.cancel}}</button>
+    </div>
+  </form>
+
+</div>
+

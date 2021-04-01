@@ -1,0 +1,32 @@
+<!--<div class="wrapper">-->
+  <div class="corpus">
+    <button class="btn confirm" ngf-select="uploadFiles($file, $invalidFiles)" ng-disabled="uploading">+添加文件<span class="red">*</span></button>
+    <hr>
+    <p class="text-tip">说明：语料是评测的依据（标准答案），语料支持csv格式上传，每个查询词的语料数不超过20条，大小不超过10M。数据格式请参考<a ui-sref="manage.eval.sample" target="_blank">样例数据</a></p>
+    <table class="table text-center">
+      <thead>
+      <tr>
+        <th>文件名</th>
+        <th>上传进度</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td ng-bind="evalObj.file.name"></td>
+        <td>
+          <uib-progressbar animate="false" value="dynamic" type="success" ng-show="evalObj.file.progress>0"><b>{{evalObj.file.progress}}%</b></uib-progressbar>
+          <span ng-if="evalObj.file.errorMessage" ng-class="{'SUCCESS':'alert-success','FAIL':'alert-danger'}[evalObj.file.result.status]">{{evalObj.file.errorMessage}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+    <div class="clearfix">
+      <div class="pull-right">
+        <a ui-sref="manage.apps" class="btn btn90 cancel">取消</a>
+        <button class="btn btn90 cancel" ng-click="previous()" ng-disabled="uploading" >{{messages.previous}}</button>
+        <button class="btn btn90 confirm" ng-click="next()" ng-disabled="uploading">{{messages.next}}</button>
+      </div>
+    </div>
+  </div>
+<!--</div>-->

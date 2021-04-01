@@ -1,0 +1,162 @@
+<div class="app-intel-interface col-xs-12">
+  <article>
+    <h3>2.4 纠错接口</h3>
+    <article>
+      <h4>1. 基本描述</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.4.1.1. 基本描述</caption>
+        <tr>
+          <th>接口名称</th>
+          <td>纠错接口</td>
+        </tr>
+        <tr>
+          <th>接口描述</th>
+          <td>将用户输入的内容根据已有词典进行纠错处理</td>
+        </tr>
+      </table>
+    </article>
+    <article>
+      <h4>2. 请求信息</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.4.2.1. 请求信息</caption>
+        <tr>
+          <th>前提要求</th>
+          <td>无</td>
+        </tr>
+        <tr>
+          <th>请求类型</th>
+          <td>HTTP</td>
+        </tr>
+        <tr>
+          <th>请求地址</th>
+          <td>/recovery</td>
+        </tr>
+        <tr>
+          <th>请求方式</th>
+          <td>GET</td>
+        </tr>
+        <tr>
+          <th>报文格式</th>
+          <td>
+            <div>
+              content-type：application/json
+            </div>
+            <div>
+              accept：application/json
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>接口参数</th>
+          <td>?userId=xxx&appId=xxx&searchQuery=xxx&isloadDic=xxx</td>
+        </tr>
+      </table>
+    </article>
+    <article>
+      <h4>3. 参数说明</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.4.3.1. 请求参数描述</caption>
+        <thead>
+        <tr>
+          <th>字段</th>
+          <th>约束</th>
+          <th>类型</th>
+          <th>长度</th>
+          <th>描述</th>
+          <th>说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>appId</td>
+          <td>必填</td>
+          <td>String</td>
+          <td>50</td>
+          <td>应用ID</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>userId</td>
+          <td>必填</td>
+          <td>String</td>
+          <td>50</td>
+          <td>用户ID</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>searchQuery</td>
+          <td>必填</td>
+          <td>String</td>
+          <td>100</td>
+          <td>纠错输入</td>
+          <td>最大支持100个字符，当搜索文本长度大于100时，自动截取前100个字符</td>
+        </tr>
+        <tr>
+          <td>isLoadDic</td>
+          <td>可选</td>
+          <td>String</td>
+          <td></td>
+          <td>是否加载词典</td>
+          <td>
+            0：不加载，
+            1：加载，
+            默认为1
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <section>
+        <label>样例：</label>
+        <pre>
+        <xmp>
+        URL:http://ip:port/bcse/correct?userId=chenmin@mcss.chinamobile.com&appId=1&searchQuery=中过话&isLoadDic=1
+        </xmp>
+      </pre>
+      </section>
+    </article>
+    <article>
+      <h4>4. 响应消息</h4>
+      <table class="table table-bordered table-responsive w80">
+        <caption>表2.4.4.1. 返回参数描述</caption>
+        <thead>
+        <tr>
+          <th>字段</th>
+          <th>父节点</th>
+          <th>约束</th>
+          <th>类型</th>
+          <th>长度</th>
+          <th>描述</th>
+          <th>说明</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>recovery</td>
+          <td>result</td>
+          <td></td>
+          <td>Array</td>
+          <td></td>
+          <td>结果列表</td>
+          <td></td>
+        </tr>
+        </tbody>
+      </table>
+      <section>
+        <label>样例：</label>
+        <pre>
+        <xmp>
+          {
+              "message": "操作成功",
+              "code": "",
+              "status": "SUCCESS",
+              "result": {
+                  "recovery": ["中国话"]
+              }
+          }
+        </xmp>
+        </pre>
+      </section>
+    </article>
+  </article>
+  <back-to-top></back-to-top>
+</div>

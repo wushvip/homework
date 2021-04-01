@@ -1,0 +1,21 @@
+<div class="import-data">
+  <div class="row">
+    <form class="col-xs-8">
+      <label>请输入数据表字段名称。数据格式为：id,name,age
+        <a href="javascript:void(0)" tooltip-placement="top-right" uib-tooltip="{{messages.create.importStructTip+messages.fieldNameTip}}" tooltip-class="customClass">
+          <i class="glyphicon glyphicon-question-sign question-tips"></i>
+        </a>
+      </label>
+      <p>
+        <textarea class="col-xs-12 field-textarea" ng-model="struct.fieldString"></textarea>
+      </p>
+      <p class="pull-right">
+        <button class="btn90 confirm" type="submit" ng-click="generateTable()" ng-disabled="!struct.fieldString">生成数据表</button>
+        <button class="btn90 cancel" ng-click="clearFieldTable()" ng-disabled="submitting.status">{{messages.clear}}</button>
+      </p>
+    </form>
+  </div>
+  <sheet-data>
+    <div ng-include="'views/templates/data.sheet.html'"></div>
+  </sheet-data>
+</div>

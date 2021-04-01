@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="pull">
+    <h1>数据分析</h1>
+  </div>
+  <div class="analysis">
+
+    <div analysis-time info="searchInfo.timeAppList"></div>
+
+    <div class="row" ng-repeat="(user,apps) in users track by $index" >
+      <div class="col-md-2 col-xs-3">
+        <label>{{user}}</label>
+      </div>
+      <ul class="apps-show">
+        <li ng-repeat="app in apps track by $index" ng-click="checkApp('1',app)" >
+          <input type="checkbox" ng-checked="checkAppSelected(app,'0')" ng-disabled="searchTimeSelectedCheck(app)">{{app.appName}}
+        </li>
+      </ul>
+    </div>
+
+    <div analysis-cost info="searchInfo.costAppList"></div>
+
+    <div class="row" ng-repeat="(user,apps) in users track by $index" >
+      <div class="col-md-2 col-xs-3">
+        <label>{{user}}</label>
+      </div>
+      <ul class="apps-show">
+        <li ng-repeat="app in apps track by $index" ng-click="checkApp('2',app)" >
+          <input type="checkbox" ng-checked="checkAppSelected(app,'1')" ng-disabled="searchCostSelectedCheck(app)">{{app.appName}}
+        </li>
+      </ul>
+    </div>
+
+    <div analysis-num info="searchInfo.numAppList"></div>
+
+    <div class="row" ng-repeat="(user,apps) in users track by $index" >
+      <div class="col-md-2 col-xs-3">
+        <label>{{user}}</label>
+      </div>
+      <ul class="apps-show">
+        <li ng-repeat="app in apps track by $index" ng-click="checkApp('3',app)" >
+          <input type="checkbox" ng-checked="checkAppSelected(app,'2')" ng-disabled="searchNumSelectedCheck(app)">{{app.appName}}
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

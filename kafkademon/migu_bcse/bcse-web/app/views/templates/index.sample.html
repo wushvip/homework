@@ -1,0 +1,15 @@
+<div class="container sample" >
+  <div class="modal-header">
+    <span>样例数据</span>
+    <button type="button" class="pull-right btn confirm" ng-click="useSample()" ng-disabled="submitting">使用该样例</button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-responsive">
+      <tbody>
+      <tr ng-if="samples" ng-repeat="sample in samples track by $index">
+        <td>{{sample}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

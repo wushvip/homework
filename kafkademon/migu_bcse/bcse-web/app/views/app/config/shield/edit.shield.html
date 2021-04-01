@@ -1,0 +1,31 @@
+<div class="add-config-modal" discard-modal>
+  <div class="modal-header">
+    <span>{{messages.rule.editRule}}</span>
+    <button type="button" class="close" ng-click="cancel()">&times;</button>
+  </div>
+
+  <form class="modal-body" name="addShieldForm">
+    <div class="row">
+      <div class="col-md-2 text-right">{{messages.rule.ruleName}}<span class="red">*</span></div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" maxlength="30" ng-model="rule.ruleName" name="ruleName" placeholder="请输入规则名称" ng-blur="checkRuleName(rule, rules)" maxlength="30" inputvalid required ng-disabled="!rule.isAddRule">
+        <p class="text-tip">{{messages.fieldNameTip}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 text-right">关键字<span class="red">*</span></div>
+      <div class="col-md-10">
+
+        <textarea rows="10" class="form-control" ng-model="rule.includeKeywords" ng-list="&#10;" ng-trim="false" maxlines="30" maxlines-prevent-enter="true" maxcharts="20" required name="includeKeywords" char-filter ng-blur="checkIncludeWordsInvalidLine(rule.includeKeywords)" > </textarea>
+        <p class="text-tip">{{messages.rule.limitation('30')}}</p>
+
+      </div>
+    </div>
+  </form>
+
+  <div class="modal-footer">
+    <button class="btn confirm" ng-disabled="addShieldForm.ruleName.$invalid||addShieldForm.includeKeywords.$invalid||submitting"  ng-click="saveShield(rule,cancel)">确定</button>
+    <button type="reset" class="btn cancel" ng-click="cancel()" ng-disabled="submitting">取消</button>
+  </div>
+</div>
+

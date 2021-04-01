@@ -1,0 +1,33 @@
+<div class="app-analysis col-xs-12">
+  <article>
+    <h3>5.2 数据分析</h3>
+    <section>
+      用户可以选择昨天、最近7天、最近30天，或者任一时间段统计分析应用的搜索次数、搜索耗时、数据量进行查看。
+    </section>
+    <article>
+      <h4>1. 搜索次数</h4>
+      <section class="center">
+        <img src="images/doc/app/analysis/1.jpg" animate-visible="true" animate-speed="0.5s" alt="搜索次数分析">
+        <footer>图5.2.1 搜索次数分析</footer>
+      </section>
+    </article>
+    <article>
+      <h4>2. 搜索耗时</h4>
+      <section>
+        用户可选择任一时间段统计分析应用搜索耗时，可查询最大值、平均值、最小值。
+      </section>
+      <section class="center">
+        <img src="images/doc/app/analysis/2.jpg" animate-visible="true" animate-speed="0.5s" alt="搜索耗时分析">
+        <footer>图5.2.2 搜索耗时分析</footer>
+      </section>
+    </article>
+    <article>
+      <h4>3. 数据量</h4>
+      <section class="center">
+        <img src="images/doc/app/analysis/3.jpg" animate-visible="true" animate-speed="0.5s" alt="搜索数据量分析">
+        <footer>图5.2.3 搜索数据量分析</footer>
+      </section>
+    </article>
+  </article>
+  <back-to-top></back-to-top>
+</div>

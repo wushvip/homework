@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chinamobile.cmss.bcse.app.dao.AppInfoBeanDao">
+	<resultMap id="AppInfoMap"
+		type="com.chinamobile.cmss.bcse.app.bean.AppInfoBean">
+		<id column="APP_ID" property="appId" jdbcType="VARCHAR" />
+		<result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="APP_NAME" property="appName" jdbcType="VARCHAR" />
+		<result column="APP_DESCRIBE" property="appDescribe" jdbcType="LONGVARCHAR" />
+		<result column="APP_STATUS" property="appStatus" jdbcType="VARCHAR" />
+		<result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+		<result column="TEMP_ID" property="tempId" jdbcType="VARCHAR" />
+		<result column="APP_TEMP_FLAG" property="appTempFlag" jdbcType="VARCHAR" />
+		<result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Column_List">
+		APP_ID, APPLICATION_INFO.USER_ID,
+		APP_NAME,APP_DESCRIBE,APP_STATUS,
+		date_format(CREATE_DATE,'%Y-%m-%d
+		%T') CREATE_DATE, TEMP_ID, APP_TEMP_FLAG
+	</sql>
+
+	<select id="getAppInfoByAppId" parameterType="java.lang.String"
+		resultMap="AppInfoMap">
+		select
+		<include refid="Column_List" />
+		from APPLICATION_INFO
+		where APP_ID = #{appId,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 删除应用的基本信息 -->
+	<delete id="DeleteAppDetail" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		DELETE FROM
+		APPLICATION_INFO
+		WHERE
+		BINARY APP_ID = #{appId}
+	</delete>
+
+		<!-- 删除除appName其他的创建中的应用 -->
+	<delete id="DeleteCreating" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		DELETE FROM
+		APPLICATION_INFO
+		WHERE
+		BINARY USER_ID = #{userId}
+		AND APP_STATUS = 3
+	</delete>
+
+	<!-- 查询用户下是否有创建中的应用与指定应用名相同 -->
+	<select id="isExistApp" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		FROM
+		APPLICATION_INFO
+		WHERE
+		BINARY USER_ID = #{userId}
+		AND
+		BINARY APP_NAME = #{appName}
+		AND
+		APP_STATUS != 3
+	</select>
+
+	<!-- 获取所有的应用信息 -->
+	<select id="getAllAppInfos" resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		FROM
+		APPLICATION_INFO
+	</select>
+
+	<!-- 获取应用列表 -->
+	<select id="getAppList" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		,USER_INFO.USER_NAME
+		FROM
+		APPLICATION_INFO,USER_INFO
+		<where>
+			<if test="searchText != null">
+				BINARY APPLICATION_INFO.APP_NAME LIKE  CONCAT('%',#{searchText},'%')
+			</if>
+			<if test="role == 1">
+				AND APPLICATION_INFO.USER_ID = #{userId,jdbcType=VARCHAR}
+			</if>
+			AND APPLICATION_INFO.USER_ID=USER_INFO.USER_ID
+			AND APP_STATUS !=
+			#{appStatus}
+
+		</where>
+		ORDER BY APP_NAME
+		<if test="pageNum != -1">
+			limit #{startNum},#{pageNum}
+		</if>
+		
+	</select>
+
+
+	<!-- 获取应用总条数 -->
+	<select id="getTotalItemsNum" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultType="java.lang.Integer">
+		SELECT
+			count(1)
+		FROM
+			APPLICATION_INFO,USER_INFO
+		<where>
+			<if test="searchText != null">
+				BINARY APPLICATION_INFO.APP_NAME LIKE  CONCAT('%',#{searchText},'%')
+			</if>
+			<if test="role == 1">
+				AND APPLICATION_INFO.USER_ID = #{userId,jdbcType=VARCHAR}
+			</if>
+
+			AND APPLICATION_INFO.USER_ID=USER_INFO.USER_ID
+			AND APP_STATUS !=
+			#{appStatus}
+		</where>
+	</select>
+
+	<select id="getAllAppList" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		FROM
+		APPLICATION_INFO
+		<where>
+			APP_STATUS !=#{appStatus}
+		</where>
+		ORDER BY APP_NAME
+	</select>
+
+	<!-- 插入应用的基本信息 -->
+	<insert id="addAppInfoDetail" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		INSERT INTO
+		APPLICATION_INFO(APP_ID,USER_ID,
+		APP_NAME,APP_DESCRIBE,APP_STATUS,
+		CREATE_DATE, TEMP_ID, APP_TEMP_FLAG)
+		VALUES
+		(#{appId},#{userId},#{appName},
+		#{appDescribe},#{appStatus}, #{createDate},
+		#{tempId},0)
+	</insert>
+
+	<update id="updateVersion">
+		UPDATE
+		APPLICATION_INFO
+		<set>
+			VERSION = VERSION+1
+		</set>
+	</update>
+	<!-- 更新应用基本信息 -->
+	<update id="updateAppDetail" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		UPDATE
+		APPLICATION_INFO
+		<set>
+			<if test="userId != null">
+				USER_ID = #{userId},
+			</if>
+			<if test="appName != null">
+				APP_NAME = #{appName},
+			</if>
+			<if test="appDescribe != null">
+				APP_DESCRIBE = #{appDescribe},
+			</if>
+			<if test="appStatus != null">
+				APP_STATUS = #{appStatus},
+			</if>
+			<if test="createDate != null">
+				CREATE_DATE = #{createDate},
+			</if>
+			<if test="tempId != null">
+				TEMP_ID = #{tempId},
+			</if>
+			<if test="appTempFlag != null">
+				APP_TEMP_FLAG = #{appTempFlag}
+			</if>
+		</set>
+		WHERE
+		APP_ID = #{appId}
+	</update>
+
+
+
+	<!-- 修改应用状态：启动或者暂停 或者完成 -->
+	<update id="modifyAppStatus" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		UPDATE
+		APPLICATION_INFO
+		SET
+		APP_STATUS = #{appStatus}
+		WHERE
+		BINARY APP_ID = #{appId}
+
+	</update>
+
+
+
+	<!-- 修改应用状态：启动或者暂停 用户的所有应用 -->
+	<update id="StopOrOpenAppStatus" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean">
+		UPDATE
+		APPLICATION_INFO
+		SET
+		APP_STATUS = #{appStatus}
+		WHERE
+		APP_STATUS !=
+		#{operaStatus}
+		AND
+		USER_ID = #{userId}
+
+	</update>
+
+
+	<!-- 查询单个应用的基本信息 -->
+	<select id="showSignAppDetail" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		,USER_INFO.USER_NAME
+		FROM
+		APPLICATION_INFO,USER_INFO
+		WHERE
+		BINARY APP_ID = #{appId}
+		
+		AND BINARY APPLICATION_INFO.USER_ID=USER_INFO.USER_ID
+	</select>
+
+	<!-- 根据状态，获取相应的应用列表 -->
+	<select id="getAppListByStatus" parameterType="com.chinamobile.cmss.bcse.app.bean.AppReqBean"
+		resultMap="AppInfoMap">
+		SELECT
+		<include refid="Column_List"></include>
+		FROM
+		APPLICATION_INFO
+		WHERE
+		USER_ID = #{userId}
+		AND
+		APP_STATUS =
+		#{appStatus}
+	</select>
+</mapper>
