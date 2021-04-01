@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8bdd20cc-f634-4d8b-a1df-9536f069b251" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../dataStructrue/dataStructrue.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/ContainerRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/WorkOrderBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/service/WorkorderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/hydra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="93" column="130" selection-start-line="93" selection-start-column="130" selection-end-line="93" selection-end-column="130" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Master.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+              <folding>
+                <element signature="e#22#83#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/Props.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="154">
+              <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/ActorSystem.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1449">
+              <caret line="63" column="3" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/Actor.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rpc-server.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>scala.version</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/scala/Master.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/com/rpc/akka/Master.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="rpc-server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="rpc-server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="rpc-server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="com.typesafe.akka:akka-remote_2.10:2.3.14" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1920" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="Master.scala" type="6117b065:FileNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="Master.scala" type="6117b065:FileNode" />
+              <item name="Master" type="ce8f04f3:TypeDefinitionNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="Worker.scala" type="6117b065:FileNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="Worker.scala" type="6117b065:FileNode" />
+              <item name="Worker" type="ce8f04f3:TypeDefinitionNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rpc-server" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="scala" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="Worker.scala" type="6117b065:FileNode" />
+              <item name="Worker$" type="ce8f04f3:TypeDefinitionNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="actor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="actor" type="462c0819:PsiDirectoryNode" />
+              <item name="Actor.class" type="6117b065:FileNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="actor" type="462c0819:PsiDirectoryNode" />
+              <item name="Props.class" type="6117b065:FileNode" />
+            </path>
+            <path>
+              <item name="rpc-server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.typesafe.akka:akka-actor_2.10:2.3.14" type="70bed36:NamedLibraryElementNode" />
+              <item name="akka-actor_2.10-2.3.14.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="akka" type="462c0819:PsiDirectoryNode" />
+              <item name="actor" type="462c0819:PsiDirectoryNode" />
+              <item name="Props.class" type="6117b065:FileNode" />
+              <item name="Props$" type="ce8f04f3:TypeDefinitionNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1567514672060" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Worker">
+    <configuration name="Master" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="Master" />
+      <module name="rpc-server" />
+      <option name="PROGRAM_PARAMETERS" value="127.0.0.1 7000" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Worker" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.rpc.akka.Worker" />
+      <module name="rpc-server" />
+      <option name="PROGRAM_PARAMETERS" value="127.0.0.1 7000 127.0.0.1 7088" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rpc.akka.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Master" />
+      <item itemvalue="Application.Worker" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Worker" />
+        <item itemvalue="Application.Master" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8bdd20cc-f634-4d8b-a1df-9536f069b251" name="Default Changelist" comment="" />
+      <created>1567483965621</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1567483965621</updated>
+      <workItem from="1567483979342" duration="4107000" />
+      <workItem from="1567490171853" duration="6231000" />
+      <workItem from="1567497940488" duration="9933000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20271000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2531983" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" weight="0.32925472" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32925472" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32925472" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39933258" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" visible="true" weight="0.20735608" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Master.scala</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Master.scala</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="scala-line">
+          <url>file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala</url>
+          <line>25</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/akka/demo/RpcServer.java" />
+    <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-remote_2.10/2.3.14/akka-remote_2.10-2.3.14.jar!/akka/remote/Ack.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-remote_2.10/2.3.14/akka-remote_2.10-2.3.14.jar!/akka/remote/EndpointActor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="44" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/ActorSystem.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1449">
+          <caret line="63" column="3" selection-start-line="63" selection-start-column="3" selection-end-line="63" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rpc-server.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/Master.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="93" column="130" selection-start-line="93" selection-start-column="130" selection-end-line="93" selection-end-column="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/Props.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="23" column="6" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Master.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/typesafe/akka/akka-actor_2.10/2.3.14/akka-actor_2.10-2.3.14.jar!/akka/actor/Actor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/rpc/akka/Worker.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="14" column="35" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
+          <folding>
+            <element signature="e#22#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

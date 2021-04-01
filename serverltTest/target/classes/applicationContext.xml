@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+    <!--spring创建对象的几种方式-->
+    <!--1.通过构造器创建-->
+    <bean id="date" class="java.util.Date"></bean>
+
+    <!--2.通过静态工厂方式，调用静态方法-->
+    <bean id="shoresFactory" init-method="getInstance"
+          class="com.exmple.serverlt.bean.ShoesFactory" lazy-init="true"></bean>
+
+    <!--3.通过自定义实例方法-->
+    <bean id="foo" init-method="createInstance" class="com.exmple.serverlt.bean.Foo">
+    </bean>
+
+
+
+    <!--参数值注入 支持方式：构造器注入-->
+    <bean id= "user1" class="com.exmple.serverlt.bean.User">
+        <property name="id" value="12"></property>
+        <property name="name" value="wike"></property>
+        <constructor-arg index="0" ref="date"></constructor-arg>
+        <property name="score">
+            <map>
+                <entry key="math" value="98"/>
+                <entry key="english" value="95"/>
+            </map>
+        </property>
+    </bean>
+</beans>

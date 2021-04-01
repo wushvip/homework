@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9a5ff33d-0435-4924-af78-f5e951db9693" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dataStructrue.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/ContainerRes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/bean/WorkOrderBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/gongdan/service/WorkorderService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../rpc-server/.idea/hydra.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-prod.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao-test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao-test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../config/gupao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../config/gupao.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../gupaoExample/src/com/ws/desiginModel/strategy/PayPort/Payment.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/dataStructrue$ListTest.ic" NAME="ListTest Coverage Results" MODIFIED="1565852531071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.data.structure.list.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/dataStructrue$Shizhan.ic" NAME="Shizhan Coverage Results" MODIFIED="1566057180988" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.data.structure.list.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/dataStructrue$MergeList.ic" NAME="MergeList Coverage Results" MODIFIED="1566118274776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.data.structure.list.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/tree/AbstractTreeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1173">
+              <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="505">
+              <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="75" column="44" lean-forward="true" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/queue/MyQueue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="101" column="26" lean-forward="true" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/stack/MyStack.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="322">
+              <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/data/structure/tree/TreeNode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+              <folding>
+                <element signature="e#593#594#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+                <element signature="e#658#659#0" expanded="true" />
+                <element signature="e#692#693#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/NodeService.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/ListTest.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/LinkList.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/Node.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/Shizhan.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/Shizhan2.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/MergeList.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/list/Shizhan3.java" />
+        <option value="$PROJECT_DIR$/src/stack/MyStack.java" />
+        <option value="$PROJECT_DIR$/src/stack/MyStack2.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/tree/TreeNode.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/tree/AbstractTreeNode.java" />
+        <option value="$PROJECT_DIR$/src/com/data/structure/queue/MyQueue.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="structure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="structure" type="462c0819:PsiDirectoryNode" />
+              <item name="queue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="structure" type="462c0819:PsiDirectoryNode" />
+              <item name="stack" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dataStructrue" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="structure" type="462c0819:PsiDirectoryNode" />
+              <item name="tree" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="lang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dataStructrue" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 1.8 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="rt.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1589528740998" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.MyQueue">
+    <configuration name="AbstractTreeNode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.data.structure.tree.AbstractTreeNode" />
+      <module name="dataStructrue" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.data.structure.tree.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MergeList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.data.structure.list.MergeList" />
+      <module name="dataStructrue" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.data.structure.list.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyQueue" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.data.structure.queue.MyQueue" />
+      <module name="dataStructrue" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.data.structure.queue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyStack" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.data.structure.stack.MyStack" />
+      <module name="dataStructrue" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.data.structure.stack.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Shizhan3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.data.structure.list.Shizhan3" />
+      <module name="dataStructrue" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.data.structure.list.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MergeList" />
+      <item itemvalue="Application.Shizhan3" />
+      <item itemvalue="Application.MyQueue" />
+      <item itemvalue="Application.MyStack" />
+      <item itemvalue="Application.AbstractTreeNode" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MyQueue" />
+        <item itemvalue="Application.AbstractTreeNode" />
+        <item itemvalue="Application.MyStack" />
+        <item itemvalue="Application.Shizhan3" />
+        <item itemvalue="Application.MergeList" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a5ff33d-0435-4924-af78-f5e951db9693" name="Default Changelist" comment="" />
+      <created>1565845432109</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565845432109</updated>
+      <workItem from="1565845442877" duration="9378000" />
+      <workItem from="1566054611560" duration="29181000" />
+      <workItem from="1566265353327" duration="10400000" />
+      <workItem from="1566280129506" duration="1176000" />
+      <workItem from="1566291222992" duration="6456000" />
+      <workItem from="1566352973801" duration="2599000" />
+      <workItem from="1566374723682" duration="2959000" />
+      <workItem from="1566437754834" duration="8395000" />
+      <workItem from="1566573726627" duration="1210000" />
+      <workItem from="1566781892778" duration="1289000" />
+      <workItem from="1589523771511" duration="1234000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="74277000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6241535" visible="true" weight="0.27360514" />
+      <window_info id="Structure" order="1" sideWeight="0.3758465" side_tool="true" visible="true" weight="0.27360514" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32844242" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.28253615" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32925472" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" visible="true" weight="0.1748401" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java</url>
+          <line>64</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java</url>
+          <line>75</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/MergeList.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan2.java</url>
+          <line>94</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan2.java</url>
+          <line>82</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan3.java</url>
+          <line>102</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/queue/MyQueue.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/data/structure/queue/MyQueue.java</url>
+          <line>110</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/ListTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/MergeList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1679">
+          <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
+          <folding>
+            <element signature="e#304#321#1" expanded="true" />
+            <element signature="e#342#359#1" expanded="true" />
+            <element signature="e#400#416#0" expanded="true" />
+            <element signature="e#435#451#0" expanded="true" />
+            <element signature="e#520#535#0" expanded="true" />
+            <element signature="e#548#566#0" expanded="true" />
+            <element signature="e#548#566#0" expanded="true" />
+            <element signature="e#635#650#0" expanded="true" />
+            <element signature="e#680#698#0" expanded="true" />
+            <element signature="e#680#698#0" expanded="true" />
+            <element signature="e#937#1049#1" expanded="true" />
+            <element signature="e#383#399#0" expanded="true" />
+            <element signature="e#383#399#0" expanded="true" />
+            <element signature="e#1075#1111#0" expanded="true" />
+            <element signature="e#1135#1171#0" expanded="true" />
+            <element signature="e#1195#1211#1" expanded="true" />
+            <element signature="e#1232#1249#0" expanded="true" />
+            <element signature="e#717#732#1" expanded="true" />
+            <element signature="e#750#765#0" expanded="true" />
+            <element signature="e#1391#1405#0" expanded="true" />
+            <element signature="e#859#873#0" expanded="true" />
+            <element signature="e#1541#1558#0" expanded="true" />
+            <element signature="e#1541#1558#0" expanded="true" />
+            <element signature="e#1576#1594#0" expanded="true" />
+            <element signature="e#1576#1594#0" expanded="true" />
+            <element signature="e#1685#1718#0" expanded="true" />
+            <element signature="e#1685#1718#0" expanded="true" />
+            <element signature="e#1661#1688#1" expanded="true" />
+            <element signature="e#1697#1724#1" expanded="true" />
+            <element signature="e#1733#1760#1" expanded="true" />
+            <element signature="e#1769#1796#1" expanded="true" />
+            <element signature="e#1755#1782#1" expanded="true" />
+            <element signature="e#1791#1818#1" expanded="true" />
+            <element signature="e#2019#2046#1" expanded="true" />
+            <element signature="e#2055#2075#0" expanded="true" />
+            <element signature="e#2055#2075#0" expanded="true" />
+            <element signature="e#2085#2105#0" expanded="true" />
+            <element signature="e#2085#2105#0" expanded="true" />
+            <element signature="e#2115#2135#0" expanded="true" />
+            <element signature="e#2115#2135#0" expanded="true" />
+            <element signature="e#2145#2165#0" expanded="true" />
+            <element signature="e#2145#2165#0" expanded="true" />
+            <element signature="e#2175#2195#0" expanded="true" />
+            <element signature="e#2175#2195#0" expanded="true" />
+            <element signature="e#1863#1903#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/stack/MyStack2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="989">
+          <caret line="43" column="7" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2001">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/ArrayList.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/util/Arrays.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_171/src.zip!/java/lang/System.java" />
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/tree/AbstractTreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="35" column="46" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/tree/TreeNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+            <element signature="e#692#693#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/LinkList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1173">
+          <caret line="12" column="7" lean-forward="true" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/list/Shizhan2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="75" column="44" lean-forward="true" selection-start-line="75" selection-start-column="44" selection-end-line="75" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/queue/MyQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="101" column="26" lean-forward="true" selection-start-line="101" selection-start-column="26" selection-end-line="101" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/data/structure/stack/MyStack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
