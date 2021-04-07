@@ -7,6 +7,9 @@ package com.chinamobile.rt.ws.bdoc_demo.bean;/**
  */
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+import java.io.Serializable;
 
 /**
  * @Title
@@ -16,10 +19,14 @@ import io.swagger.annotations.ApiModel;
  * @Since V1.0
  */
 @ApiModel(value = "ClusterBean",description = "集群配置bean")
-public class ClusterBean {
+public class ClusterBean implements Serializable {
 
+    private static final long serialVersionUID = -4411960087532797009L;
+
+    @ApiModelProperty(value = "用户名")
     private String userName;
 
+    @ApiModelProperty(value = "密码")
     private String password;
 
     public String getUserName() {
