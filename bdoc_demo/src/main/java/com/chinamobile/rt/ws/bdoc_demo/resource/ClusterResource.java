@@ -6,6 +6,7 @@ package com.chinamobile.rt.ws.bdoc_demo.resource;/**
  * @Since V1.0
  */
 
+import com.chinamobile.rt.ws.bdoc_demo.annotation.DataForm;
 import com.chinamobile.rt.ws.bdoc_demo.bean.ClusterBean;
 import io.swagger.annotations.*;
 import javafx.scene.media.Media;
@@ -43,14 +44,11 @@ public class ClusterResource {
     @ApiOperation(value = "文件上传")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "keytab",value = "keytab文件", dataType = "file", paramType = "form"),
-            @ApiImplicitParam(name = "krb5",value = "krb5文件", dataType = "file", paramType = "form"),
-            @ApiImplicitParam(name = "clusterBean",value = "集群配置信息", dataType = "ClusterBean",paramType = "body"
-            )
+            @ApiImplicitParam(name = "krb5",value = "krb5文件", dataType = "file", paramType = "form")
     })
     public String upLoadFile(
             @ApiParam(name = "request",value = "当前servletrequest",required = true) HttpServletRequest request,
-            @ApiParam(name = "clusterBean",value = "clusterBean",required = true,allowMultiple = true) ClusterBean clusterBean
-//            @ApiParam(name = "clusterBean",value = "集群配置信息",required = true) ClusterBean clusterBean
+            @ApiParam(name = "clusterBean",value = "clusterBean",required = true,allowMultiple = true)ClusterBean clusterBean
             ){
 
         System.out.println("clusterBean info :" + clusterBean.toString());
@@ -71,6 +69,7 @@ public class ClusterResource {
             File destPath = new File(filepath + originalFilename);
             try {
                 file.transferTo(destPath);
+//                destPath.delete();
                 LOGGER.info("upload " + originalFilename + " file succesed");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -112,15 +111,30 @@ public class ClusterResource {
         return "server receive sucess!";
     }
 
+    /***
+    * @Titile update
+    * @Author Administrator
+    * @Date 2021/4/9 9:43
+    * @Description 集群修改
+    * @Param [clusterBean] [request]
+    * @Return java.lang.String
+    * @Since V1.0
+    */
 
     @PostMapping(value = "/update",consumes = {MediaType.MULTIPART_FORM_DATA_VALUE,MediaType.APPLICATION_JSON_VALUE})
     @ApiOperation(value = "updateCluster")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "clusterBean",value = "clusterBean", dataType = "ClusterBean", paramType = "body")
+            @ApiImplicitParam(name = "keytab",value = "keytab文件", dataType = "file", paramType = "form"),
+            @ApiImplicitParam(name = "krb5",value = "krb5文件", dataType = "file", paramType = "form")
     })
     public String update(
-            @ApiParam(name = "clusterBean",value = "集群配置")@RequestBody ClusterBean clusterBean){
-        System.out.println(clusterBean.toString());
+            @ApiParam(name = "request",value = "当前servletrequest",required = true) HttpServletRequest request,
+            @ApiParam(name = "clusterBean",value = "集群配置",required = true) ClusterBean clusterBean){
+
+
+
+
+
 
         return "server receive sucess!";
     }
