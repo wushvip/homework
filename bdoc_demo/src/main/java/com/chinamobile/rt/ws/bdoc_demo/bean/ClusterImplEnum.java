@@ -32,10 +32,6 @@ public enum ClusterImplEnum {
         this.supplier = supplier;
     }
 
-//    public Supplier< Cluster > getConstruct(String type){
-//        return this.supplier;
-//    }
-
     public static Supplier< Cluster > getConstruct(String type){
         for (ClusterImplEnum clusterType : ClusterImplEnum.values()) {
             if(clusterType.type.equals(type)){

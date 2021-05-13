@@ -8,10 +8,15 @@ package com.chinamobile.rt.ws.bdoc_demo.resource;/**
 
 import com.chinamobile.rt.ws.bdoc_demo.annotation.DataForm;
 import com.chinamobile.rt.ws.bdoc_demo.bean.ClusterBean;
+import com.chinamobile.rt.ws.bdoc_demo.service.cluster.Cluster;
+import com.chinamobile.rt.ws.bdoc_demo.service.cluster.ConnectVerifyService;
+import com.chinamobile.rt.ws.bdoc_demo.utils.ClusterManagerFactory;
 import io.swagger.annotations.*;
 import javafx.scene.media.Media;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,7 +43,17 @@ import java.util.Set;
 public class ClusterResource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClusterBean.class);
-    
+
+//    @Autowired
+//    private Cluster cluster;
+
+    @Autowired
+    private ConnectVerifyService connectVerifyService;
+
+    @Autowired
+    @Qualifier(value = "cmhCluster")
+    private Cluster cluster;
+
     @PostMapping(value = "/keytab/upload",
             consumes = {"multipart/form-data"},produces = {"application/json"} )
     @ApiOperation(value = "文件上传")
@@ -79,7 +94,6 @@ public class ClusterResource {
        return "success!";
     }
 
-
     /**
     * @Titile create
     * @Author Administrator
@@ -100,6 +114,10 @@ public class ClusterResource {
             @ApiParam(name = "userName",value = "userName")@RequestParam String userName,
             @ApiParam(name = "password",value = "password")@RequestParam String password){
         System.out.println("userName: " + userName + "password: " + password);
+//        connectVerifyService.testConnect(userName,password);
+
+        Cluster cluster = ClusterManagerFactory.buildeClusterManager("cmh_hadoop");
+        cluster.add(new com.chinamobile.rt.ws.bdoc_demo.bean.cluster.ClusterBean());
 
         List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
 
@@ -130,10 +148,6 @@ public class ClusterResource {
     public String update(
             @ApiParam(name = "request",value = "当前servletrequest",required = true) HttpServletRequest request,
             @ApiParam(name = "clusterBean",value = "集群配置",required = true) ClusterBean clusterBean){
-
-
-
-
 
 
         return "server receive sucess!";

@@ -2,6 +2,7 @@ package com.chinamobile.rt.ws.bdoc_demo.service.cluster;
 
 import com.chinamobile.rt.ws.bdoc_demo.bean.CommonResponseBean;
 import com.chinamobile.rt.ws.bdoc_demo.bean.cluster.ClusterBean;
+import com.chinamobile.rt.ws.bdoc_demo.service.LifeCycle;
 
 /**
  * @Title cluster interface
@@ -10,7 +11,7 @@ import com.chinamobile.rt.ws.bdoc_demo.bean.cluster.ClusterBean;
  * @Description
  * @Since V1.0
  */
-public interface Cluster {
+public interface Cluster extends LifeCycle {
 
     /***
     * @Titile add cluster
@@ -46,4 +47,9 @@ public interface Cluster {
     * @Since V1.0
     */
     public CommonResponseBean delete(ClusterBean cluster);
+
+
+    public interface Component{
+        String getServiceName();
+    }
 }

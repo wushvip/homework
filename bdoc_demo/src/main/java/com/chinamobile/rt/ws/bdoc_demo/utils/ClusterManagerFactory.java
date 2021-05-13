@@ -1,10 +1,4 @@
-package com.chinamobile.rt.ws.bdoc_demo.utils;/**
- * @Title
- * @Author Administrator
- * @Date 2021-04-09 14:21
- * @Description
- * @Since V1.0
- */
+package com.chinamobile.rt.ws.bdoc_demo.utils;
 
 import com.chinamobile.rt.ws.bdoc_demo.bean.ClusterImplEnum;
 import com.chinamobile.rt.ws.bdoc_demo.service.cluster.Cluster;
