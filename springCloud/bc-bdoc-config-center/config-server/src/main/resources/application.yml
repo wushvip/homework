@@ -1,0 +1,45 @@
+#使用共享文件夹作为配置中心配置方式
+server:
+  port: 8988
+  servlet:
+    context-path: /bdoc
+spring:
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          #search-locations: file:D:/new-life/springCloud/bc-bdoc-config-center/src/main/resources/config/bdoc/
+          #search-locations: file:D:\new-life\common\Common\springcloud\config-center\src\main\resources\config\bdoc
+          search-locations: file:D:\new-life\springCloud\bdoc
+#使用github作为配置中心配置方式
+#server:
+#  port: 8900
+#  servlet:
+#    context-path: /configCenter
+
+#spring:
+#  application:
+#    name: config-center
+#  profiles:
+#  cloud:
+#    config:
+#      server:
+#        encrypt.enabled: false
+#        git:
+#          # spring Cloud 1.x需要在后缀加上“/”结尾
+#          uri: https://github.com/wushvip/spring-cloud
+#          searchPaths: bdoc  #多个配置文件目录，用 “,”隔开
+#          username:
+#          password:
+#          default-label: develop
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    fetch-registry: false
+#    #设置为true代表向eureka服务注册自己
+#    register-with-eureka: false
+#    service-url:
+#      defaultZone:  http://localhost:5060/eureka/eureka

@@ -1,0 +1,12 @@
+tracer.property: "I am the default"
+spring.datasource.driverClassName: "com.mysql.jdbc.Driver"
+spring.datasource.url: "jdbc:mysql://localhost:3306/cloud_db?useSSL=false&useUnicode=true&amp&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC"
+spring.datasource.username: "bdoc"
+spring.datasource.password: "{cipher}b82873d8e9a09d76d1e6327c0dbef7f8b5b8b2af92d648ab7568bd74da7a7b8a"
+spring.datasource.validation-query: "SELECT 1 FROM DUAL"
+spring.datasource.max-wait: 10000
+spring.datasource.test-on-borrow: "true"
+spring.datasource.max-idle: 30
+spring.datasource.max-active:  100
+spring.datasource.max-lifetime: 300000
+spring.jpa.database: "MYSQL"

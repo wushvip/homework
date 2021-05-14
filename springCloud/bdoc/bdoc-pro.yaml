@@ -1,0 +1,5 @@
+tracer.property: "I am the pro"
+spring.database.driverClassName: "com.mysql.jdbc.Driver"
+spring.datasource.url: "jdbc:mysql://10.139.12.101:3306/cloud_db?useSSL=false&useUnicode=true&amp&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC"
+spring.datasource.username: "bdoc"
+spring.datasource.password: "{cipher}967517a92c8621a3cdaca216202acc50da510c19d698047b5c818071b0965676"
