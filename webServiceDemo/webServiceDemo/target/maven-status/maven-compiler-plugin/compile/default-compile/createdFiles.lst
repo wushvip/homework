@@ -1,0 +1,12 @@
+com\webService\client\axis\axisClientO4.class
+com\zero\utils\IOUtils.class
+com\webService\client\axis\GzAxisClientO4.class
+com\webService\client\cxf\CxfDemo.class
+com\webService\client\axis\axisClient3.class
+com\webService\client\axis\NeiMenfAxisClient2.class
+com\webService\client\axis\springbootClient.class
+com\webService\client\axis\axisClient.class
+com\webService\client\axis\axisClient2.class
+com\util\CallWebServiceUtil.class
+com\webService\client\axis\ShClient.class
+com\webService\client\axis\ShanxiClient.class

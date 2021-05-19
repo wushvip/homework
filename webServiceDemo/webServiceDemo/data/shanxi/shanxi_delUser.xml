@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<request>
+    <body>
+        <method>UserDelete</method>
+        <values>
+            <object>
+                <parameter>
+                    <appField>userid</appField>
+                    <fieldValue>test0704</fieldValue>
+                </parameter>
+            </object>
+        </values>
+    </body>
+    <head>
+        <accId>admin</accId>
+        <accId>testUser</accId>
+        <appId>SHNAXIBDOC</appId>
+        <appName>山西大数据平台</appName>
+        <clientIP>127.0.0.1</clientIP>
+        <requestTime>2019-07-01 19:41:28</requestTime>
+        <sign>sign</sign>
+    </head>
+</request>

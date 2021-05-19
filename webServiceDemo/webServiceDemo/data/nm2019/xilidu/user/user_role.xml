@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<modifyParams>
+    <operatorID>1</operatorID>
+    <relations>
+        <relation>
+            <accountID>testUser03</accountID>
+            <operType>0</operType>
+            <operatorID>testUser03</operatorID>
+            <roleIDs>
+                <roleID>6</roleID>
+             	<roleID>75</roleID>
+            </roleIDs>
+        </relation>
+    </relations>
+    <rightType>rightType</rightType>
+</modifyParams>

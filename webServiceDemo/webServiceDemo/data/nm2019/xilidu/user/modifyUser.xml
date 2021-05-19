@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<modifyParams>
+    <accounts>
+        <account>
+            <accountID>testUser10</accountID>
+            <accountPasswordSHA1>123456</accountPasswordSHA1>
+            <email>1414@qq.com</email>
+            <gender>1</gender>
+            <mobile>12465754678</mobile>
+            <name>李四</name>
+            <optAccountId>testUser01</optAccountId>
+            <orgcode>2</orgcode>
+            <userStatus>0</userStatus>
+        </account>
+    </accounts>
+    <operatorID>1</operatorID>
+    <regionID>1</regionID>
+</modifyParams>

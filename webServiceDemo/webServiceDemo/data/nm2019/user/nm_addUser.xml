@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounts>
+<account>
+	<accId>testUser0524</accId>
+    <name>三</name>
+	<sn>张</sn>
+	<description>描述 </description>
+	<email>123@qq.com </email>
+	<gender>男</gender>
+	<telephoneNumber>13876577296</telephoneNumber>
+	<mobile>12676897562</mobile>
+	<startTime>2019-05-20 </startTime>
+	<endTime>2020-12-31 </endTime>
+	<idCardNumber>32082619940713221X</idCardNumber>
+	<employeeNumber>146001</employeeNumber>
+	<o>1</o>
+	<employeeType></employeeType>
+	<supporterCorpName>中国移动 </supporterCorpName>
+</account>
+</accounts>

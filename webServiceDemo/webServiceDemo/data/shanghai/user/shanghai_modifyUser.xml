@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<USERMODIFYREQ>
+    <HEAD>
+        <CODE></CODE>
+        <SID></SID>
+        <TIMESTAMP>20190523135623</TIMESTAMP>
+        <SERVICEID>SHNGBDOC</SERVICEID>
+    </HEAD>
+    <BODY>
+        <OPERATORID>admin</OPERATORID>
+        <OPERATORPWD>2b59a37659593602a6509d9cb0dd374d3aa29b72115c523dfc5f249357a97a0c</OPERATORPWD>
+        <OPERATORIP>10.138.31.3</OPERATORIP>
+        <MODIFYMODE>change</MODIFYMODE>
+        <USERINFO>
+            <USERID>68</USERID>
+            <LOGINNO>testUser0528</LOGINNO>
+            <USERNAME>张三三</USERNAME>
+            <ORGID>4</ORGID>
+            <EMAIL>shanghai1@qq.com</EMAIL>
+            <MOBILE>15376879876</MOBILE>
+            <EFFECTDATE>2019-05-23</EFFECTDATE>
+            <EXPIREDATE>2099-12-31</EXPIREDATE>
+            <REMARK>desc</REMARK>
+            <ROLE>6</ROLE>
+            <PROCESSROLE></PROCESSROLE>
+            <ISSENTSMS></ISSENTSMS>
+         </USERINFO>
+      </BODY>
+</USERMODIFYREQ>
+            

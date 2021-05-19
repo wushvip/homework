@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<accounts>
+<account>
+	<accId>testUser0520</accId>
+<userPasswordMD5>17e24dd0c68e9bc1d716d7ecde5590a7</userPasswordMD5>
+<userPasswordSHA1>2f148f23e78e4a5ef58fd54e1849a4858c7d0eeb</userPasswordSHA1>
+    <name>snow</name>
+	<sn>jhon</sn>
+	<description>desc </description>
+	<email>123@qq.com </email>
+	<gender>1</gender>
+	<telephoneNumber>13876577296</telephoneNumber>
+	<mobile>12676897562</mobile>
+	<startTime>2019-05-20 </startTime>
+	<endTime>2020-12-31 </endTime>
+	<idCardNumber>32082619940713221X</idCardNumber>
+	<employeeNumber>146001 </employeeNumber>
+	<o>1</o>
+	<employeeType></employeeType>
+	<supporterCorpName>china mobile</supporterCorpName>
+</account>
+
+<account>
+	<accId>testUser0521</accId>
+<userPasswordMD5>17e24dd0c68e9bc1d716d7ecde5590a7</userPasswordMD5>
+<userPasswordSHA1>2f148f23e78e4a5ef58fd54e1849a4858c7d0eeb</userPasswordSHA1>
+    <name>si</name>
+	<sn>li</sn>
+	<description>desc </description>
+	<email>123@qq.com </email>
+	<gender>1</gender>
+	<telephoneNumber>13876577296</telephoneNumber>
+	<mobile>12676897562</mobile>
+	<startTime>2019-05-20 </startTime>
+	<endTime>2020-12-31 </endTime>
+	<idCardNumber>32082619940713221X</idCardNumber>
+	<employeeNumber>146001 </employeeNumber>
+	<o>1</o>
+	<employeeType></employeeType>
+	<supporterCorpName>china mobile </supporterCorpName>
+</account>
+</accounts>

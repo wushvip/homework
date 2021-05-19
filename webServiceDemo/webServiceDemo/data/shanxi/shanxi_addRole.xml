@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<request>
+    <body>
+        <method>RoleAdd</method>
+        <page>
+            <currentpage>1</currentpage>
+            <pagesize>0</pagesize>
+            <totalrow>2</totalrow>
+        </page>
+        <values>
+            <object>
+                <parameter>
+                    <appField>roleid</appField>
+                    <fieldValue>101</fieldValue>
+                </parameter>
+                <parameter>
+                    <appField>roleName</appField>
+                    <fieldValue>testrole0704</fieldValue>
+                </parameter>
+                <parameter>
+                    <appField>roledesc</appField>
+                    <fieldValue>测试角色</fieldValue>
+                </parameter>
+            </object>
+        </values>
+    </body>
+    <head>
+        <accId>liuhongyi</accId>
+        <accId>yangxin</accId>
+        <appId>bi</appId>
+        <appName>经营分析</appName>
+        <clientIP>10.32.3.120</clientIP>
+        <requestTime>2011-01-25 11:12:13</requestTime>
+        <sign>123456</sign>
+    </head>
+</request>

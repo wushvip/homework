@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<request>
+    <body>
+        <method>userAdd</method>
+        <page>
+            <currentpage>1</currentpage>
+            <pagesize>0</pagesize>
+            <totalrow>2</totalrow>
+        </page>
+        <values>
+            <object>
+            <parameter>
+                    <appField>userid</appField>
+                    <fieldValue>test0704</fieldValue>
+                </parameter>
+                <parameter>
+                    <appField>username</appField>
+                    <fieldValue>钱德进</fieldValue>
+                </parameter>
+                <parameter>
+                    <appField>userpassword</appField>
+                    <fieldValue>6RQeLsa6MDte5N0V</fieldValue>
+                </parameter>
+                <parameter>
+                    <appField>phone</appField>
+                    <fieldValue>15304795914</fieldValue>
+                </parameter>
+            </object>
+        </values>
+    </body>
+    <head>
+        <accId>admin</accId>
+        <accId>testUser</accId>
+        <appId>SHNAXIBDOC</appId>
+        <appName>山西大数据平台</appName>
+        <clientIP>127.0.0.1</clientIP>
+        <requestTime>2019-07-01 18:33:11</requestTime>
+        <sign>sign</sign>
+    </head>
+</request>
