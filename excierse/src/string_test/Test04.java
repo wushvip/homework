@@ -43,11 +43,9 @@ public class Test04 {
     }
 
 
-    class  Inner{
+    private class  Inner{
 
         private String inn = "son";
-
-
 
         private void test(){
             System.out.println(a);

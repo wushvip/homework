@@ -11,7 +11,7 @@ public class TestInteger {
         // 取回的是已经缓存的地址，从缓存的下标取值。
         System.out.println(Integer.parseInt("1"));
 
-        Integer a = 128,b=128;
+        Integer a = -128,b=-128;
         System.out.println(a==b);
 
         Integer m=1,n=2;//自动装箱

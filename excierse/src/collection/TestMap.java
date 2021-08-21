@@ -54,6 +54,7 @@ public class TestMap {
         Map<Integer,String> map = new HashMap<>(16);
 
         map.put(Integer.valueOf(2),"two");
+        map.put(Integer.valueOf(2),"twotwo");
         map.put(Integer.valueOf(5),"five");
         map.put(Integer.valueOf(1),"one");
         map.put(Integer.valueOf(3),"three");
