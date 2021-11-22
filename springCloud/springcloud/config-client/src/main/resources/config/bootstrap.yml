@@ -1,0 +1,28 @@
+#使用共享文件夹作为配置中心配置方式
+server:
+  port: 7003
+spring:
+  application:
+    name: pcpaas-foura
+  profiles:
+    active: test
+  cloud:
+#使用spring cloud config配置
+#    config:
+#      uri: http://localhost:7001/configCenter
+#      label: develop
+    nacos:
+      config:
+        #file-extension: yml,yaml
+        group: foura
+        server-addr: http://10.43.250.150:8848
+      server-addr: http://10.43.250.150:8848
+#  nacos:
+#    config:
+#      file-extension: properties,yml,yaml
+#      group: foura
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh,bus-env,health,info

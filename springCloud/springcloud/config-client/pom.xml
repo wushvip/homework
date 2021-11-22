@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!--<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.4.RELEASE</version>
+		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+	</parent>-->
+
+    <repositories>
+        <repository>
+            <id>bc-hadoop-external</id>
+            <url>http://100.71.9.12:8083/repository/internal/</url>
+        </repository>
+        <repository>
+            <id>bc-hadoop-internal</id>
+            <url>http://100.73.9.12:8083/repository/internal/</url>
+        </repository>
+    </repositories>
+	<parent>
+		<groupId>com.chinamobile.cmss.oms.springcloud</groupId>
+		<artifactId>springcloud</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.chinamobile.cmss.oms.springcloud.config</groupId>
+	<artifactId>config-center</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>config-center</name>
+	<description>Config Server For Bdoc Project</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<!--<spring-cloud.version>GreenwichGreenwich.SR6</spring-cloud.version>-->
+		<!--<spring-cloud.version>Camden.SR5</spring-cloud.version>-->
+		<nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
+		<spring-cloud-alibaba.version>2.0.3.RELEASE</spring-cloud-alibaba.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!--<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>-->
+
+		<!--<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-bus-kafka</artifactId>
+		</dependency>
+-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!--<dependency>
+			<groupId>com.alibaba.boot</groupId>
+			<artifactId>nacos-config-spring-boot-stater</artifactId>
+			<version>${nacos-config-spring-boot.version}</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>-->
+
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

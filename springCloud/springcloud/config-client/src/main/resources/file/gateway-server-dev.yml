@@ -1,0 +1,99 @@
+server:
+  port: 7000
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      #默认会从eureka中获取服务名称进行转发
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: product-server
+        uri: lb://product-server
+        predicates:
+          - Path=/product/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+      #这种转发无法实现负载均衡，只能固定访问到某些服务
+      - id: consumer-server
+        uri: lb://consumer-server
+        predicates:
+          - Path=/consumer/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+      - id: zipkin-server
+        uri: lb://zipkin-server
+        predicates:
+          - Path=/zipkin/**
+      - id: config-center
+        uri: lb://config-center
+        predicates:
+          - Path=/config/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+      - id: eureka-server
+        uri: lb://eureka-server
+        predicates:
+          - Path=/eureka/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+
+# 必须要关闭eureka的服务注册与发现，自定义的名称才能使用
+# 与默认eureka服务发现存在矛盾，开启这个后无法从eureka中获取服务名称进行转发
+ribbon:
+  eureka:
+    enabled: false
+
+eureka-server:
+  ribbon:
+    listOfServers: 10.254.9.78:8761, 10.254.9.78:8762, 10.254.9.78:8763
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+consumer-server:
+  ribbon:
+    listOfServers: 10.254.9.78:7003, 10.254.9.78:7004
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+product-server:
+  ribbon:
+    listOfServers: 10.254.9.78:7001, 10.254.9.78:7002
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+zipkin-server:
+  ribbon:
+    listOfServers: 10.254.9.78:9442
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+config-center:
+  ribbon:
+    listOfServers: 10.254.9.78:8900
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-2,zone-1,zone-3
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+

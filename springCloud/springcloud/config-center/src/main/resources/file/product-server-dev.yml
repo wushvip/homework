@@ -1,0 +1,58 @@
+server:
+  port: 7002
+
+spring:
+  rabbitmq:
+    host: 10.254.9.78
+    port: 5672
+    username: springcloud
+    password: springcloud
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1
+      percentage: 1.0
+  zipkin:
+# 关闭服务发现，否则Spring Cloud会把zipkin的url当做服务名称
+    discoveryClientEnabled: false
+    sender:
+      type: web  # 设置使用http的方式传输数据
+    enabled: true
+    base-url: http://10.254.9.78:9442
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    metadata-map:
+      zone: zone-1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-1,zone-2,zone-3
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+#    service-url:
+#    #defaultZone
+#      defaultZone: http://peer1:8761/eureka,http://peer2:8762/eureka/
+zone: 
+  name: zone-1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh,bus-env,health,info
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:7070/eureka/eureka

@@ -1,0 +1,50 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: gateway-server
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+      - id: product-server
+        # uri以lb://开头（lb代表从注册中心获取服务），后面接的就是你需要转发到的服务名称
+        uri: lb://product-server
+        predicates:
+          - Path=/product/**
+        filters:
+#          StripPrefix参数表示在将请求发送到下游之前从请求中剥离的路径个数 如1即向网关 /product/aaa发送请求为product-server/aaa
+          - StripPrefix=1
+          - RequestTime=true
+      - id: consumer-server
+        uri: lb://consumer-server
+        predicates:
+          - Path=/consumer/**
+        filters:
+          - StripPrefix=1
+          - RequestTime=true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-2,zone-1,zone-3
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+

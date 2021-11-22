@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: hystrix-dashboard
+server:
+  port: 7004
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    metadata-map:
+      zone: zone-1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-1,zone-2,zone-3
+    service-url:
+      zone-1: http://localhost:8761/eureka/
+#      zone-2: http://peer2:8762/eureka/
+#      zone-3: http://peer3:8763/eureka/
+#    service-url:
+#    #defaultZone
+#      defaultZone: http://peer1:8761/eureka,http://peer2:8762/eureka/
+zone.name: zone-1
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:7070/eureka/eureka
+#logging:
+#  file: hystrix-dashboard.log
+info:
+  app.name: springcloud-hystrix-dashboard
+  app.version: v1.0
+  app.company: cmss
+  build.artifactId: "@project.artifactId@"
+  build.version: "@project.version@"
+

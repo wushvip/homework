@@ -1,0 +1,87 @@
+server:
+    #定义端口号
+  port: 7003
+spring:
+  rabbitmq:
+    host: 10.254.9.78
+    port: 5672
+    username: springcloud
+    password: springcloud
+  application:
+  #定义应用名称，即服务名称
+    name: consumer-server
+
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1
+      percentage: 1.0
+  zipkin:
+# 关闭服务发现，否则Spring Cloud会把zipkin的url当做服务名称
+    discoveryClientEnabled: false
+    sender:
+      type: web  # 设置使用http的方式传输数据
+    enabled: true
+    base-url: http://10.254.9.78:9442
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    status-page-url-path: /monitor/info
+    health-check-url-path: /monitor/health
+    #服务续约任务的调用间隔时间，默认为30秒
+    lease-renewal-interval-in-seconds: 30
+    #服务失效的时间，默认为90秒
+    lease-expiration-duration-in-seconds: 90
+    metadata-map:
+      zone: zone-1
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-1,zone-2,zone-3
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+    registry-fetch-interval-seconds: 5
+#    service-url:
+#      defaultZone: http://peer1:8761/eureka/,http://peer2:8762/eureka/,http://peer3:8763/eureka/
+# 属性列出了公开的端点的ID
+
+management:
+  endpoint:
+    #开启关闭服务
+    shutdown:
+      enabled: true
+    health:
+      #其中show-details的值有三个：never，when-authorized，always。具体含义如下：
+      #never：从不展示详情（默认）
+      #when-authorized：详情只展示给授权用户，授权角色可使用 management.endpoint.health.roles 进行配置
+      #always：展示详情给所有用户
+      show-details: always
+  endpoints:
+    web:
+#      跨域配置
+#      cors:
+#        allowed-origins: http://example.com
+#        allowed-methods: GET,POST
+      #修改访问路径  2.0之前默认是/   2.0默认是 /actuator  可以通过这个属性值修改
+      base-path: /monitor
+      exposure:
+#        exclude: shutdown,info  # 排除端点，不可访问；多端点之间用逗号分隔
+        include: "*" # 包含端点，可以访问；多端点之间用逗号分隔 httptrace,env
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: demo
+    version: V1.0
+    encoding: UTF-8
+    java:
+      version: 1.8

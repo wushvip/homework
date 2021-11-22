@@ -1,0 +1,53 @@
+server:
+  port: 9442
+
+#表示zipkin数据存储方式是mysql
+zipkin:
+  storage:
+    StorageComponent: mysql
+spring:
+  #表示当前程序不使用sleuth
+  sleuth:
+    enabled: true
+  application:
+    name: zipkin-server
+#数据库脚本创建地址，当有多个时可使用[x]表示集合第几个元素，脚本可到官网下载，需要先手动到数据库执行
+  datasource:
+    schema[0]: classpath:/zipkin.sql
+    url: jdbc:mysql://10.139.17.87:3306/infinite?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: bdoc
+    password: 1qw2!QW@
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    continue-on-error: true
+
+  #rabbitmq配置
+  #spring.rabbitmq.host=10.254.9.78
+  #spring.rabbitmq.port=5672
+  #spring.rabbitmq.username=springcloud
+  #spring.rabbitmq.password=springcloud
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    #地区
+    region: suzhou
+    availability-zones:
+      suzhou: zone-2,zone-1,zone-3
+    service-url:
+      zone-1: http://peer1:8761/eureka/
+      zone-2: http://peer2:8762/eureka/
+      zone-3: http://peer3:8763/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+
+

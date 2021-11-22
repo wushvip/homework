@@ -1,0 +1,62 @@
+#使用共享文件夹作为配置中心配置方式
+server:
+  port: 8900
+  context-path: /configCenter
+spring:
+  profiles:
+    active: native
+
+  rabbitmq:
+    host: 10.254.9.78
+    port: 5672
+    username: springcloud
+    password: springcloud
+  cloud:
+    config:
+      server:
+        native:
+          #search-locations: file:/wy/springcloud/configserver/config/file
+          search-locations: file:D:\home\springCloud\config
+#使用github作为配置中心配置方式
+#file:///wy/springcloud/configserver/config/file/product-server
+#server:
+#  port: 8900
+#  servlet:
+#    context-path: /configCenter
+#spring:
+#  application:
+#    name: config-center
+#  cloud:
+#    config:
+#      server:
+#        encrypt.enabled: false
+#        git:
+#          # spring Cloud 1.x需要在后缀加上“/”结尾
+#          uri: https://github.com/wushvip/spring-cloud
+#          searchPaths: bdoc  #多个配置文件目录，用 “,”隔开
+#          username:
+#          password:
+#          default-label: develop
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh,bus-env,health,info
+
+#eureka:
+#  instance:
+#    hostname: peer1
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    prefer-same-zone-eureka: true
+#    #地区
+#    region: suzhou
+#    availability-zones:
+#      suzhou: zone-1,zone-2,zone-3
+#    service-url:
+#      zone-1: http://peer1:8761/eureka/
+#      zone-2: http://peer2:8762/eureka/
+#      zone-3: http://peer3:8763/eureka/
+#    registry-fetch-interval-seconds: 5

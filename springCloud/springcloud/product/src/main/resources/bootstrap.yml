@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: product-server
+  profile:
+    active: dev1
+  cloud:
+    config:
+      profile: dev1
+      name: product-server
+      uri: http://10.254.9.78:8900
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    base-url: http://10.254.9.78:9442
+  #rabbitmq:
+    #host: 10.254.9.78
+    #port: 5672
+    #username: springcloud
+    #password: springcloud
